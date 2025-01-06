@@ -1,18 +1,11 @@
 // import all the pages here
-import LoginPage from "../../app/pages/loginpage";
-import landingPage from "../pages/userPage/landingPage";
+import LandingPage from "../pages/userPage/landingPage";
 
-// Navigation Links
-export const Navigation = [
-  { label: "landingPage", path: "/" },
-  //{ label: "Login", path: "/" },
-];
+export const Navigation = [{ label: "landingPage", path: "/" }];
 
 // App Routes
 export const APP_ROUTES = {
-  MAIN: [
-    { path: "/", element: <LoginPage /> },
-  ],
+  MAIN: [{ path: "/", element: <LandingPage /> }],
   ADMIN: [
     // { path: "/Dashboard", element: <DashboardPage/> },
   ],
@@ -31,5 +24,5 @@ export const API_ENDPOINTS = {
 
 export const APP_COLORS = {
   primary: "bg-[#FAF9F6]",
-  
-};    
+  secondary: "bg-[#C62A35]",
+};

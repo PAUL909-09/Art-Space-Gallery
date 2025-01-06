@@ -1,6 +1,6 @@
 import { APP_COLORS } from "../config/config";
 import lopenze_logo from "../../assets/lopenze_logo.png";
-import HamburgerMenu from "./hamburgerMenu";
+
 import { NavLink } from "react-router-dom";
 import SearchBar from "../components/searchBar";
 
