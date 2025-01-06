@@ -4,7 +4,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        roboto: ["Goldman",  "sans-serif"],
+        Montserrat: ["Montserrat", "sans-serif"],
         sanserif: ["sans-serif"],
       },
     },

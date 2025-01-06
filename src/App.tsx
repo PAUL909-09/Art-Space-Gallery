@@ -5,7 +5,9 @@ const router = createBrowserRouter(Routes);
 const Router = () => {
   return (
     <>
+    <div className="font-Montserrat">
       <RouterProvider router={router} />
+      </div>
     </>
   );
 };

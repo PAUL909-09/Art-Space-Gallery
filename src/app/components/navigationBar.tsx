@@ -10,10 +10,10 @@ const navigationBar = () => {
       
       <div className="flex items-center space-x-6">
         <img src={lopenze_logo} alt="logo" className="h-12 w-12" />
-        <HamburgerMenu />
+        
       </div>
 
-      <div className="flex flex-1 space-x-10 text-base ml-6">
+      <div className="flex flex-1 space-x-10 text-sm ml-6">
         <NavLink
           to="/Home"
           className={({ isActive }) =>
