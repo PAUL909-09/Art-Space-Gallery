@@ -15,7 +15,7 @@ const navigationBar = () => {
 
       <div className="flex flex-1 space-x-10 text-sm ml-6">
         <NavLink
-          to="/Home"
+          to="/"
           className={({ isActive }) =>
             isActive
               ? "bg-[#EBBF17] px-4 py-3 rounded-md flex items-center space-x-2"
@@ -25,7 +25,7 @@ const navigationBar = () => {
           <span className="-m-4">HOME</span>
         </NavLink>
         <NavLink
-          to="/Home"
+          to="/exhibitPage"
           className={({ isActive }) =>
             isActive
               ? "bg-[#EBBF17] px-4 py-3 rounded-md flex items-center space-x-2"
@@ -35,7 +35,7 @@ const navigationBar = () => {
           <span className="-m-4">EXHIBITIONS</span>
         </NavLink>
         <NavLink
-          to="/Home"
+          to="/artistPage"
           className={({ isActive }) =>
             isActive
               ? "bg-[#EBBF17] px-4 py-3 rounded-md flex items-center space-x-2"

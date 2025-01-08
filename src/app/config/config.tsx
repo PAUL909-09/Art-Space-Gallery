@@ -1,10 +1,12 @@
 // import all the pages here
 import LandingPage from "../pages/userPage/landingPage";
 import ExhibitPage from "../pages/userPage/exhibitPage";
+import ArtistPage from "../pages/userPage/ArtistPage";
 
 export const Navigation = [
   { label: "landingPage", path: "/" },
   { label: "exhibitPage", path: "/exhibitPage" },
+  { label: "artistPage", path: "/artistPage" },
 ];
 
 // App Routes
@@ -12,6 +14,7 @@ export const APP_ROUTES = {
   MAIN: [
     { path: "/", element: <LandingPage /> },
     { path: "/exhibitPage", element: <ExhibitPage /> },
+    { path: "/artistPage", element: <ArtistPage /> },
   ],
   ADMIN: [
     // { path: "/Dashboard", element: <DashboardPage/> },
