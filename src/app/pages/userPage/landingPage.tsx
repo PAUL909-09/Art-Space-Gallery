@@ -1,8 +1,7 @@
-import React from 'react'
 
 const landingPage = () => {
   return (
-    <div>landingPage</div>
+    <div>landingPage ni paul</div>
   )
 }
 
