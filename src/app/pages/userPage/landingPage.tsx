@@ -14,29 +14,35 @@ const LandingPage = () => {
         className="relative bg-cover bg-center text-white py-20 px-5 sm:py-28 lg:py-36 flex items-center justify-center transition-all duration-700 ease-in-out"
         style={{ backgroundImage: `url(${Image[0].src})`, height: "90vh" }}
       >
-        <div className="absolute inset-0 bg-black opacity-50"></div>
-        <div className="max-w-lg sm:max-w-xl md:max-w-3xl mx-auto text-center relative z-10">
-          <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-4 animate-[pulse_1.5s_ease-in-out_2] hover:animate-none transition-all duration-700 ease-in-out">
-            The Lopenze Art Space:
-            <br />A Hub of Creativity and Inspiration
-          </h1>
-          <p className="text-base sm:text-lg md:text-xl animate-[pulse_1.5s_ease-in-out_2] hover:animate-none transition-all duration-500 ease-in-out">
-            The Lopenze Art Space is dedicated to showcasing the vibrant arts
-            and cultural scene. With curated exhibitions and inspiring
-            collaborations, it’s the perfect platform for creative exploration.
-          </p>
-          <a
-            href="#explore"
-            className="mt-6 sm:mt-8 inline-block bg-[#C62A35] text-white font-semibold py-2 px-4 sm:py-3 sm:px-6 rounded-md shadow-lg transition-transform duration-300 ease-in-out transform hover:scale-105"
-          >
-              Explore More
-          </a>
+        <div className="flex items-center justify-start min-h-screen">
+          <div className="bg-black bg-opacity-50 p-8 rounded-lg w-1/2 text-left ml-10">
+            <div className="text-4xl font-semibold">
+              <h1>The Lopenze Art Space: </h1>
+              <h2>
+                A Hub of{" "}
+                <span className="text-[#C62A35] font-bold">Creativity</span>
+              </h2>
+              <h2>
+                and{" "}
+                <span className="text-[#C62A35] font-bold">Inspiration.</span>
+              </h2>
+            </div>
+
+            <p className="mt-6">
+              The Lopenze Art Space, often referred to as the Lopenze Art
+              Gallery, is a vibrant cultural landmark dedicated to showcasing
+              artistic expression and fostering creativity. Located at the heart
+              of its community, the gallery is a sanctuary for artists, art
+              enthusiasts, and visitors seeking to immerse themselves in diverse
+              forms of art.
+            </p>
+          </div>
         </div>
       </section>
 
       {/* Vision Section */}
       <section className="relative min-h-screen flex flex-col justify-center items-center bg-gradient-to-b from-gray-900 to-gray-700 text-center">
-        <div className="absolute inset-0 bg-gradient-to-b from-gray-400 to-gray-900 opacity-100"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-gray-400 to-black opacity-100"></div>
         <h2 className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-4 relative z-10 text-white transition-all duration-500 ease-in-out hover:scale-105">
           <span className="text-gray-300">A</span>{" "}
           <span className="text-red-600">Vision</span>{" "}
@@ -155,15 +161,13 @@ const LandingPage = () => {
         </div>
       </section>
 
-      {/* Wide Selection of Arts */}
-      <section className="relative min-h-screen py-16 px-5 bg-gray-100">
-        {/* Title Section */}
-        <h2 className="text-6xl font-extrabold text-center text-red-600 tracking-tight mb-16">
-          <span className="relative inline-block">WIDE SELECTIONS OF ARTS</span>
+   
+      <section className="w-full ">    
+        <h2 className="text-8xl font-extrabold text-end text-[#C62A35] tracking-tight mb-16 mt-4">
+          <span className="mr-5">WIDE SELECTIONS OF ARTS</span>
         </h2>
 
-        {/* Categories Section */}
-        <div className="bg-black py-10 rounded-lg shadow-lg">
+        <div className="bg-black py-10 shadow-lg">
           <div className="flex flex-wrap justify-center gap-6">
             {/* Example Category */}
             {[
