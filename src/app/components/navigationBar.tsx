@@ -1,81 +1,57 @@
-import { APP_COLORS } from "../config/config";
-import lopenze_logo from "../../assets/lopenze_logo.png";
-
+import { APP_COLORS, APP_ROUTES } from "../config/config";
 import { NavLink } from "react-router-dom";
 import SearchBar from "../components/searchBar";
+import lopenze_logo from "../../assets/lopenze_logo.png";
+import HamburgerMenu from "./hamburgerMenu";
+import React, { useState } from "react";
 
-const navigationBar = () => {
+const NavigationBar = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen((prev) => !prev); // Toggles between true and false
+  };
+
   return (
-    <nav className={`h-20 ${APP_COLORS.primary} flex items-center shadow-sm px-10`}>
-      
+    <nav
+      className={`h-20 ${APP_COLORS.primary} flex items-center shadow-md px-10 relative z-20 bg-white`}
+    >
+      {/* Logo Section */}
       <div className="flex items-center space-x-6">
         <img src={lopenze_logo} alt="logo" className="h-12 w-12" />
-        
+        <HamburgerMenu isOpen={isMenuOpen} onClick={toggleMenu} />
       </div>
 
+      {/* Navigation Links */}
       <div className="flex flex-1 space-x-10 text-sm ml-6">
-        <NavLink
-          to="/"
-          className={({ isActive }) =>
-            isActive
-              ? "bg-[#EBBF17] px-4 py-3 rounded-md flex items-center space-x-2"
-              : "text-black  px-4 py-3 flex items-center space-x-2"
-          }
-        >
-          <span className="-m-4">HOME</span>
-        </NavLink>
-        <NavLink
-          to="/exhibitPage"
-          className={({ isActive }) =>
-            isActive
-              ? "bg-[#EBBF17] px-4 py-3 rounded-md flex items-center space-x-2"
-              : "text-black  px-4 py-3 flex items-center space-x-2"
-          }
-        >
-          <span className="-m-4">EXHIBITIONS</span>
-        </NavLink>
-        <NavLink
-          to="/artistPage"
-          className={({ isActive }) =>
-            isActive
-              ? "bg-[#EBBF17] px-4 py-3 rounded-md flex items-center space-x-2"
-              : "text-black  px-4 py-3 flex items-center space-x-2"
-          }
-        >
-          <span className="-m-4">ARTISTS</span>
-        </NavLink>
-        <NavLink
-          to="/Home"
-          className={({ isActive }) =>
-            isActive
-              ? "bg-[#EBBF17] px-4 py-3 rounded-md flex items-center space-x-2"
-              : "text-black  px-4 py-3 flex items-center space-x-2"
-          }
-        >
-          <span className="-m-4">PAINTINGS</span>
-        </NavLink>
-        <NavLink
-          to="/Home"
-          className={({ isActive }) =>
-            isActive
-              ? "bg-[#EBBF17] px-4 py-3 rounded-md flex items-center space-x-2"
-              : "text-black  px-4 py-3 flex items-center space-x-2"
-          }
-        >
-          <span className="-m-4">SCULPTURES</span>
-        </NavLink>
-        <NavLink
-          to="/Home"
-          className={({ isActive }) =>
-            isActive
-              ? "bg-[#EBBF17] px-4 py-3 rounded-md flex items-center space-x-2"
-              : "text-black  px-4 py-3 flex items-center space-x-2"
-          }
-        >
-          <span className="-m-4">ALL ARTS</span>
-        </NavLink>
+        {APP_ROUTES.MAIN.map((route) => (
+          <NavLink
+            key={route.path}
+            to={route.path}
+            aria-label={route.path}
+            className={({ isActive }) =>
+              isActive
+                ? `text-${APP_COLORS.secondary.replace("bg-", "")} font-semibold`
+                : "text-black font-semibold"
+            }
+            style={{
+              textDecoration: "none",
+            }}
+          >
+            {route.path === "/"
+              ? "HOME"
+              : route.path === "/exhibitionsPage"
+              ? "EXHIBITIONS"
+              : route.path === "/featuredArtistPage"
+              ? "FEATURED ARTISTS"
+              : route.path === "/allArtPage"
+              ? "ALL ARTS"
+              : route.path.replace("/", "").toUpperCase()}
+          </NavLink>
+        ))}
       </div>
 
+      {/* Search Bar */}
       <div className="ml-auto">
         <SearchBar />
       </div>
@@ -83,4 +59,4 @@ const navigationBar = () => {
   );
 };
 
-export default navigationBar;
+export default NavigationBar;
