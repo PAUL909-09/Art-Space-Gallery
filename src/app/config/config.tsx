@@ -18,6 +18,18 @@ import DashboardAdmin from "../pages/adminPage/dashboard";
 import LogInAdmin from "../pages/adminPage/logInAdmin";
 import AddExhibitAdmin from "../pages/adminPage/addExhibit";
 
+//artistPages
+import AllArtArtist from "../pages/artistPage/allArtAdminArtist";
+import ExhibitPageArtist from "../pages/artistPage/exhibitPageArtist";
+import FeaturedArtistPageArtist from "../pages/artistPage/featuredArtistArtist";
+import LandingPageArtist from "../pages/artistPage/landingPageArtist";
+import LogInArtist from "../pages/artistPage/logInArtist";
+import ProfileArtist from "../pages/artistPage/profile";
+
+
+
+
+
 import BGexhibitions from "../../assets/BGexhibitions.png";
 import imageSlide from "../../assets/Image slide.png";
 import lopenzeLogo from "../../assets/lopenze_logo.png";
@@ -250,40 +262,49 @@ export const ArtsData = [
   },
 ];
 
+
+// App Routes
+export const APP_ROUTES = {
+  MAIN: [
+    { path: "/", element: <LandingPage /> },
+    { path: "/exhibitionsPage", element: <ExhibitPage /> },
+    { path: "/featuredArtistPage", element: <FeaturedArtist /> },
+    { path: "/allArtPage", element: <AllArtPage /> },
+    { path: "/logIn", element: <LogIn /> },
+    { path: "/profile", element: <Profile /> },
+  ],
+  ADMIN: [
+    { path: "/admin", element: <LandingPageAdmin /> },
+    { path: "/exhibitionsPageAdmin", element: <ExhibitPageAdmin /> },
+    { path: "/featuredArtistPageAdmin", element: <FeaturedArtistPageAdmin /> },
+    { path: "/allArtPageAdmin", element: <AllArtPageAdmin /> },
+    { path: "/dashboardAdmin", element: <DashboardAdmin /> },
+    { path: "/addExhibitAdmin", element: <AddExhibitAdmin /> },
+    { path: "/createAccountAdmin", element: <CreateAccountAdmin /> },
+    { path: "/logInAdmin", element: <LogInAdmin /> },
+    { path: "/profileAdmin", element: <ProfileAdmin /> },
+  ],
+  ARTIST: [
+    { path: "/artist", element: <LandingPageArtist /> },
+    { path: "/allArtArtist", element: <AllArtArtist /> },
+    { path: "/exhibitPageArtist", element: <ExhibitPageArtist /> },
+    { path: "/featuredArtistArtist", element: <FeaturedArtistPageArtist /> },
+    { path: "/landingPageArtist", element: <LandingPageArtist /> },
+    { path: "/logInArtist", element: <LogInArtist /> },
+    { path: "/profileArtist", element: <ProfileArtist /> },
+  ],
+};
+=======
 //Login Image
 export const LoginPicture = [
   { src: LoginImage, alt: "Login Picture" },
 ];
 
-  // App Routes
-  export const APP_ROUTES = {
-    MAIN: [
-      { path: "/", element: <LandingPage /> },
-      { path: "/exhibitionsPage", element: <ExhibitPage /> },
-      { path: "/featuredArtistPage", element: <FeaturedArtist /> },
-      { path: "/allArtPage", element: <AllArtPage /> },
-      { path: "/logIn", element: <LogIn /> },
-      { path: "/profile", element: <Profile /> },
-    ],
-    ADMIN: [
-      { path: "/admin", element: <LandingPageAdmin /> },
-      { path: "/exhibitionsPageAdmin", element: <ExhibitPageAdmin /> },
-      { path: "/featuredArtistPageAdmin", element: <FeaturedArtistPageAdmin /> },
-      { path: "/allArtPageAdmin", element: <AllArtPageAdmin /> },
-      { path: "/dashboardAdmin", element: <DashboardAdmin /> },
-      { path: "/addExhibitAdmin", element: <AddExhibitAdmin /> },
-      { path: "/createAccountAdmin", element: <CreateAccountAdmin /> },
-      { path: "/logInAdmin", element: <LogInAdmin /> },
-      { path: "/logOutAdmin", element: <LogOutAdmin /> },    
-      { path: "/addArt", element: <AddArt /> },    
-      
-    ],
-  };
-
 //Icons
 export const Icons =[
   { src: AddImageIcon, alt: "Add Image Icon" },
 ];
+
 
 // API Endpoints
 export const API_ENDPOINTS = {

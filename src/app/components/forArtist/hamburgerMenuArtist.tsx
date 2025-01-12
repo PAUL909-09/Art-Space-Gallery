@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 interface HamburgerMenuProps {
   isOpen: boolean; // Controls whether the dropdown is visible
@@ -8,13 +8,8 @@ interface HamburgerMenuProps {
   role: "admin" | "artist" | "user"; // User role to determine menu options
 }
 
-const HamburgerMenuAdmin: React.FC<HamburgerMenuProps> = ({
-  isOpen,
-  onClick,
-  role,
-}) => {
+const HamburgerMenuAdmin: React.FC<HamburgerMenuProps> = ({ isOpen, onClick, role }) => {
   const dropdownRef = useRef<HTMLDivElement>(null);
-  const navigate = useNavigate();
 
   // Close menu when clicking outside
   const handleClickOutside = (event: MouseEvent) => {
@@ -35,10 +30,7 @@ const HamburgerMenuAdmin: React.FC<HamburgerMenuProps> = ({
     };
   }, [isOpen]);
 
-  const handleNavigation = (path: string) => {
-    navigate(path);
-    onClick(); // Hide the hamburger menu after navigation
-  };
+  
 
   return (
     <div className="relative">
@@ -65,46 +57,45 @@ const HamburgerMenuAdmin: React.FC<HamburgerMenuProps> = ({
           <ul className="flex flex-col space-y-3 p-4">
             {role === "admin" ? (
               <>
-                <li
-                  onClick={() => handleNavigation("/dashboardAdmin")}
+                <NavLink
+                  to="/dashboard"
                   className="hover:text-[#C62A35] cursor-pointer"
                 >
                   Dashboard
-                </li>
-                <li
-                  onClick={() => handleNavigation("/createAccountAdmin")}
+                </NavLink>
+                <NavLink
+                  to="/createAccount"
                   className="hover:text-[#C62A35] cursor-pointer"
                 >
                   Create Account
-                </li>
-                <li
-                  onClick={() => handleNavigation("/addExhibitAdmin")}
+                </NavLink>
+                <NavLink
+                  to="/addExhibit"
                   className="hover:text-[#C62A35] cursor-pointer"
                 >
                   Add Exhibit
-                </li>
-                <li
-                  onClick={() => handleNavigation("/logOutAdmin")}
+                </NavLink>
+                <NavLink
+                  to="/logout"
                   className="hover:text-[#C62A35] cursor-pointer"
                 >
                   Logout
-                </li>
+                </NavLink>
               </>
             ) : role === "artist" ? (
               <>
                 <NavLink
                   to="/profileArtist"
-
                   className="hover:text-[#C62A35] cursor-pointer"
                 >
                   My Profile
-                </li>
-                <li
-                  onClick={() => handleNavigation("/logout")}
+                </NavLink>
+                <NavLink
+                  to="/logout"
                   className="hover:text-[#C62A35] cursor-pointer"
                 >
                   Logout
-                </li>
+                </NavLink>
               </>
             ) : null}
           </ul>

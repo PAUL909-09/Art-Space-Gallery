@@ -1,6 +1,6 @@
-import NavigationBar from '../components/navigationBar'
+import NavigationBar from '../components/forArtist/navigationBarArtist'
 import { Outlet } from 'react-router-dom'
-import Footer from '../components/footer'
+import Footer from '../components/forArtist/footerArtist'
 
 const artistLayout = () => {
   return (
