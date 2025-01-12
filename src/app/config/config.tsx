@@ -1,12 +1,26 @@
 // import all the pages here
+
+//userPages
 import LandingPage from "../pages/userPage/landingPage";
 import ExhibitPage from "../pages/userPage/exhibitPage";
-import FeaturedArtistPage from "../pages/userPage/featuredArtist";
+import FeaturedArtist from "../pages/userPage/featuredArtist";
 import AllArtPage from "../pages/userPage/allArt";
+import LogIn from "../pages/userPage/logIn";
+
+//adminPages
+import CreateAccountAdmin from "../pages/adminPage/createAccount";
+import ProfileAdmin from "../pages/adminPage/profile";
+import LandingPageAdmin from "../pages/adminPage/landingPageAdmin";
+import ExhibitPageAdmin from "../pages/adminPage/exhibitPageAdmin";
+import FeaturedArtistPageAdmin from "../pages/adminPage/featuredArtistAdmin";
+import AllArtPageAdmin from "../pages/adminPage/allArtAdmin";
+import DashboardAdmin from "../pages/adminPage/dashboard";
+import LogInAdmin from "../pages/adminPage/logInAdmin";
+import AddExhibitAdmin from "../pages/adminPage/addExhibit";
+
+import BGexhibitions from "../../assets/BGexhibitions.png";
 import imageSlide from "../../assets/Image slide.png";
 import lopenzeLogo from "../../assets/lopenze_logo.png";
-import BGexhibitions from "../../assets/BGexhibitions.png";
-
 import Exhibit_1 from "../../assets/Exhibits/Exhibit_1.png";
 import Exhibit_2 from "../../assets/Exhibits/Exhibit_2.png";
 import Exhibit_3 from "../../assets/Exhibits/Exhibit_3.png";
@@ -35,17 +49,12 @@ import imageArt6 from "../../assets/Arts/imageArt6.png";
 import imageArt7 from "../../assets/Arts/imageArt7.png";
 import imageArt8 from "../../assets/Arts/imageArt8.png";
 import imageArt9 from "../../assets/Arts/imageArt9.png";
-import AddExhibit from "../pages/userPage/addExhibit";
 import ExhibitImage1 from "../../assets/Exhibits/ExhibitImage1.png";
 import ExhibitImage2 from "../../assets/Exhibits/ExhibitImage2.png";
 import ExhibitImage3 from "../../assets/Exhibits/ExhibitImage3.png";
 import ExhibitImage4 from "../../assets/Exhibits/ExhibitImage4.png";
-import Dashboard from "../pages/userPage/dashboard";
-import LogIn from "../pages/userPage/logIn";
+
 // import createAccount from "../pages/userPage/createAccount";
-import CreateAccount from "../pages/userPage/createAccount";
-import SignUp from "../pages/userPage/signUp";
-import Profile from "../pages/userPage/profile";
 
 //Images
 export const Image = [
@@ -235,32 +244,26 @@ export const ArtsData = [
     image: { src: imageArt9, alt: "imageArt9" },
   },
 ];
-export const Navigation = [
-  { label: "landingPage", path: "/" },
-  { label: "exhibitions", path: "/exhibitions" },
-  { label: "featuredArtist", path: "/featuredArtist" },
-  { label: "Allarts", path: "/allArt" },
-  { label: "addArtist", path: "/addArtist" },
-  { label: "SignUp", path: "/SignUp" },
-];
 
 // App Routes
 export const APP_ROUTES = {
   MAIN: [
     { path: "/", element: <LandingPage /> },
     { path: "/exhibitionsPage", element: <ExhibitPage /> },
-    { path: "/featuredArtistPage", element: <FeaturedArtistPage /> },
+    { path: "/featuredArtistPage", element: <FeaturedArtist /> },
     { path: "/allArtPage", element: <AllArtPage /> },
-    { path: "/dashboard", element: <Dashboard /> },
-    { path: "/addExhibit", element: <AddExhibit /> },
-    { path: "/createAccount", element: <CreateAccount /> },
     { path: "/logIn", element: <LogIn /> },
-    { path: "/signUp", element: <SignUp /> },
-    { path: "/profile", element: <Profile /> },
   ],
-  
   ADMIN: [
-    // { path: "/Dashboard", element: <DashboardPage/> },
+    { path: "/admin", element: <LandingPageAdmin /> },
+    { path: "/exhibitionsPageAdmin", element: <ExhibitPageAdmin /> },
+    { path: "/featuredArtistPageAdmin", element: <FeaturedArtistPageAdmin /> },
+    { path: "/allArtPageAdmin", element: <AllArtPageAdmin /> },
+    { path: "/dashboardAdmin", element: <DashboardAdmin /> },
+    { path: "/addExhibitAdmin", element: <AddExhibitAdmin /> },
+    { path: "/createAccountAdmin", element: <CreateAccountAdmin /> },
+    { path: "/logInAdmin", element: <LogInAdmin /> },
+    { path: "/profileAdmin", element: <ProfileAdmin /> },
   ],
 };
 

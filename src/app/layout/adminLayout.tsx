@@ -1,8 +1,14 @@
-import React from 'react'
+import NavigationBar from '../components/forAdmin/navigationBarAdmin'
+import { Outlet } from 'react-router-dom'
+import FooterAdmin from '../components/forAdmin/footerAdmin'
 
 const adminLayout = () => {
   return (
-    <div>adminLayout</div>
+    <div>
+      <NavigationBar hamburgerShow={true} role="admin" />
+      <Outlet />
+      <FooterAdmin />
+    </div>
   )
 }
 

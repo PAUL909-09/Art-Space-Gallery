@@ -8,7 +8,7 @@ interface HamburgerMenuProps {
   role: "admin" | "artist" | "user"; // User role to determine menu options
 }
 
-const HamburgerMenu: React.FC<HamburgerMenuProps> = ({ isOpen, onClick, role }) => {
+const HamburgerMenuAdmin: React.FC<HamburgerMenuProps> = ({ isOpen, onClick, role }) => {
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   // Close menu when clicking outside
@@ -105,4 +105,4 @@ const HamburgerMenu: React.FC<HamburgerMenuProps> = ({ isOpen, onClick, role }) 
   );
 };
 
-export default HamburgerMenu;
+export default HamburgerMenuAdmin;

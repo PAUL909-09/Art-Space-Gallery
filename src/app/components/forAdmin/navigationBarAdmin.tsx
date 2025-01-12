@@ -1,8 +1,8 @@
-import { APP_COLORS} from "../config/config";
+import { APP_COLORS } from "../../config/config";
 import { NavLink } from "react-router-dom";
-import SearchBar from "../components/searchBar";
-import lopenze_logo from "../../assets/lopenze_logo.png";
-import HamburgerMenu from "./hamburgerMenu";
+import SearchBar from "../searchBar";
+import lopenze_logo from "../../../assets/lopenze_logo.png";
+import HamburgerMenuAdmin from "./hamburgerMenuAdmin";
 import React, { useState } from "react";
 
 interface NavigationBarProps {
@@ -27,12 +27,12 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ hamburgerShow, role }) =>
       {/* Logo Section */}
       <div className="flex items-center space-x-6">
         <img src={lopenze_logo} alt="Lopenze Logo" className="w-12 h-12" />
-        {hamburgerShow && <HamburgerMenu isOpen={menuOpen} onClick={toggleMenu} role={validRole} />}
+        {hamburgerShow && <HamburgerMenuAdmin isOpen={menuOpen} onClick={toggleMenu} role={validRole} />}
       </div>
 
       <div className="flex flex-1 space-x-10 text-sm ml-6">
         <NavLink
-          to="/"
+          to="/admin"
           className={({ isActive }) =>
             isActive
               ? "text-[#C62A35] px-4 py-3 rounded-md flex items-center space-x-2"
@@ -42,7 +42,7 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ hamburgerShow, role }) =>
           <span className="-m-4">HOME</span>
         </NavLink>
         <NavLink
-          to="/exhibitionsPage"
+          to="/exhibitionsPageAdmin"
           className={({ isActive }) =>
             isActive
               ? "text-[#C62A35] px-4 py-3 rounded-md flex items-center space-x-2"
@@ -52,7 +52,7 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ hamburgerShow, role }) =>
           <span className="-m-4">EXHIBITIONS</span>
         </NavLink>
         <NavLink
-          to="/featuredArtistPage"
+          to="/featuredArtistPageAdmin"
           className={({ isActive }) =>
             isActive
               ? "text-[#C62A35] px-4 py-3 rounded-md flex items-center space-x-2"
@@ -62,7 +62,7 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ hamburgerShow, role }) =>
           <span className="-m-4">LOPENZE ARTISTS</span>
         </NavLink>
         <NavLink
-          to="/allArtPage"
+          to="/allArtPageAdmin"
           className={({ isActive }) =>
             isActive
               ? "text-[#C62A35] px-4 py-3 rounded-md flex items-center space-x-2"

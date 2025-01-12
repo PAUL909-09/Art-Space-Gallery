@@ -2,14 +2,14 @@ import NavigationBar from '../components/navigationBar'
 import { Outlet } from 'react-router-dom'
 import Footer from '../components/footer'
 
-const userLayout = () => {
+const artistLayout = () => {
   return (
     <div>
-      <NavigationBar hamburgerShow={false} role='user'/>
+      <NavigationBar hamburgerShow={true} role="artist" />
       <Outlet />
       <Footer />
     </div>
   )
 }
 
-export default userLayout
+export default artistLayout
