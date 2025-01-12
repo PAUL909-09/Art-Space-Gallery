@@ -18,6 +18,18 @@ import DashboardAdmin from "../pages/adminPage/dashboard";
 import LogInAdmin from "../pages/adminPage/logInAdmin";
 import AddExhibitAdmin from "../pages/adminPage/addExhibit";
 
+//artistPages
+import AllArtArtist from "../pages/artistPage/allArtAdminArtist";
+import ExhibitPageArtist from "../pages/artistPage/exhibitPageArtist";
+import FeaturedArtistPageArtist from "../pages/artistPage/featuredArtistArtist";
+import LandingPageArtist from "../pages/artistPage/landingPageArtist";
+import LogInArtist from "../pages/artistPage/logInArtist";
+import ProfileArtist from "../pages/artistPage/profile";
+
+
+
+
+
 import BGexhibitions from "../../assets/BGexhibitions.png";
 import imageSlide from "../../assets/Image slide.png";
 import lopenzeLogo from "../../assets/lopenze_logo.png";
@@ -264,6 +276,15 @@ export const APP_ROUTES = {
     { path: "/createAccountAdmin", element: <CreateAccountAdmin /> },
     { path: "/logInAdmin", element: <LogInAdmin /> },
     { path: "/profileAdmin", element: <ProfileAdmin /> },
+  ],
+  ARTIST: [
+    { path: "/artist", element: <LandingPageArtist /> },
+    { path: "/allArtArtist", element: <AllArtArtist /> },
+    { path: "/exhibitPageArtist", element: <ExhibitPageArtist /> },
+    { path: "/featuredArtistArtist", element: <FeaturedArtistPageArtist /> },
+    { path: "/landingPageArtist", element: <LandingPageArtist /> },
+    { path: "/logInArtist", element: <LogInArtist /> },
+    { path: "/profileArtist", element: <ProfileArtist /> },
   ],
 };
 

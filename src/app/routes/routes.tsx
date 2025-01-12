@@ -4,6 +4,7 @@ import LandingPage from "../pages/userPage/landingPage";
 import PrivateRoute from "../config/privateRoute";
 import AdminLayout from "../layout/adminLayout";
 import UserLayout from "../layout/userLayout";
+import ArtistLayout from "../layout/artistLayout";
 
 const Routes: RouteObject[] = [
   {
@@ -24,6 +25,15 @@ const Routes: RouteObject[] = [
       {
         element: <AdminLayout />,
         children: APP_ROUTES.ADMIN,
+      },
+    ],
+  },
+  {
+    element: <PrivateRoute />, // Protect Artist routes
+    children: [
+      {
+        element: <ArtistLayout />,
+        children: APP_ROUTES.ARTIST,
       },
     ],
   },

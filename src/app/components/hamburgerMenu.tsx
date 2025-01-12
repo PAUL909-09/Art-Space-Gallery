@@ -85,7 +85,7 @@ const HamburgerMenu: React.FC<HamburgerMenuProps> = ({ isOpen, onClick, role }) 
             ) : role === "artist" ? (
               <>
                 <NavLink
-                  to="/myProfile"
+                  to="/profileArtist"
                   className="hover:text-[#C62A35] cursor-pointer"
                 >
                   My Profile
