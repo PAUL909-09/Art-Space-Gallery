@@ -9,7 +9,7 @@ import LogIn from "../pages/userPage/logIn";
 
 //adminPages
 import CreateAccountAdmin from "../pages/adminPage/createAccount";
-import ProfileAdmin from "../pages/adminPage/profile";
+//import ProfileAdmin from "../pages/adminPage/profile";
 import LandingPageAdmin from "../pages/adminPage/landingPageAdmin";
 import ExhibitPageAdmin from "../pages/adminPage/exhibitPageAdmin";
 import FeaturedArtistPageAdmin from "../pages/adminPage/featuredArtistAdmin";
@@ -53,6 +53,11 @@ import ExhibitImage1 from "../../assets/Exhibits/ExhibitImage1.png";
 import ExhibitImage2 from "../../assets/Exhibits/ExhibitImage2.png";
 import ExhibitImage3 from "../../assets/Exhibits/ExhibitImage3.png";
 import ExhibitImage4 from "../../assets/Exhibits/ExhibitImage4.png";
+import LogOutAdmin from "../pages/adminPage/logOutAdmin";
+import LoginImage from "../../assets/LoginImage.png";
+import AddImageIcon from "../../assets/AddImageIcon.png"
+import AddArt from "../pages/adminPage/addArt";
+import Profile from "../pages/adminPage/profile";
 
 // import createAccount from "../pages/userPage/createAccount";
 
@@ -245,27 +250,40 @@ export const ArtsData = [
   },
 ];
 
-// App Routes
-export const APP_ROUTES = {
-  MAIN: [
-    { path: "/", element: <LandingPage /> },
-    { path: "/exhibitionsPage", element: <ExhibitPage /> },
-    { path: "/featuredArtistPage", element: <FeaturedArtist /> },
-    { path: "/allArtPage", element: <AllArtPage /> },
-    { path: "/logIn", element: <LogIn /> },
-  ],
-  ADMIN: [
-    { path: "/admin", element: <LandingPageAdmin /> },
-    { path: "/exhibitionsPageAdmin", element: <ExhibitPageAdmin /> },
-    { path: "/featuredArtistPageAdmin", element: <FeaturedArtistPageAdmin /> },
-    { path: "/allArtPageAdmin", element: <AllArtPageAdmin /> },
-    { path: "/dashboardAdmin", element: <DashboardAdmin /> },
-    { path: "/addExhibitAdmin", element: <AddExhibitAdmin /> },
-    { path: "/createAccountAdmin", element: <CreateAccountAdmin /> },
-    { path: "/logInAdmin", element: <LogInAdmin /> },
-    { path: "/profileAdmin", element: <ProfileAdmin /> },
-  ],
-};
+//Login Image
+export const LoginPicture = [
+  { src: LoginImage, alt: "Login Picture" },
+];
+
+  // App Routes
+  export const APP_ROUTES = {
+    MAIN: [
+      { path: "/", element: <LandingPage /> },
+      { path: "/exhibitionsPage", element: <ExhibitPage /> },
+      { path: "/featuredArtistPage", element: <FeaturedArtist /> },
+      { path: "/allArtPage", element: <AllArtPage /> },
+      { path: "/logIn", element: <LogIn /> },
+      { path: "/profile", element: <Profile /> },
+    ],
+    ADMIN: [
+      { path: "/admin", element: <LandingPageAdmin /> },
+      { path: "/exhibitionsPageAdmin", element: <ExhibitPageAdmin /> },
+      { path: "/featuredArtistPageAdmin", element: <FeaturedArtistPageAdmin /> },
+      { path: "/allArtPageAdmin", element: <AllArtPageAdmin /> },
+      { path: "/dashboardAdmin", element: <DashboardAdmin /> },
+      { path: "/addExhibitAdmin", element: <AddExhibitAdmin /> },
+      { path: "/createAccountAdmin", element: <CreateAccountAdmin /> },
+      { path: "/logInAdmin", element: <LogInAdmin /> },
+      { path: "/logOutAdmin", element: <LogOutAdmin /> },    
+      { path: "/addArt", element: <AddArt /> },    
+      
+    ],
+  };
+
+//Icons
+export const Icons =[
+  { src: AddImageIcon, alt: "Add Image Icon" },
+];
 
 // API Endpoints
 export const API_ENDPOINTS = {
