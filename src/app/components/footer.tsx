@@ -2,7 +2,7 @@ import { APP_COLORS, APP_ROUTES } from "../config/config";
 import { MdEmail } from "react-icons/md";
 import { IoCall } from "react-icons/io5";
 import { FaFacebook, FaInstagram, FaMapPin, FaTwitter } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -51,25 +51,13 @@ const Footer = () => {
             </div>
           </div>
 
-          <div className="mt-8 flex justify-center gap-x-4">
-            <div className="px-4 py-2 border border-gray-300 rounded-md transition duration-300 ease-in-out hover:scale-105">
-              <p className="text-sm font-bold">ABOUT US</p>
-              <a
-                href="/about"
-                className="text-sm underline hover:text-blue-500"
-              >
-                Learn more about us
-              </a>
-            </div>
-            <div className="px-4 py-2 border border-gray-300  rounded-md transition duration-300 ease-in-out hover:scale-105">
-              <p className="text-sm font-bold">LOGIN</p>
-              <Link
-                to={APP_ROUTES.HAMBURGER.find((route) => route.path === "/logIn")?.path || "#"} // Use the path from APP_ROUTES
-                className="text-sm underline hover:text-blue-500"
-              >
-                Click here to login
-              </Link>
-            </div>
+          <div className="mt-12 font-light text-center">
+            <p className="text-md">
+              Are you a Member or Admin? click{" "}
+              <span className="underline text-blue-400">
+                <NavLink to="/login">login</NavLink>
+              </span>
+            </p>
           </div>
         </div>
 
@@ -77,25 +65,17 @@ const Footer = () => {
         <div className="w-3/5 bg-black h-auto flex justify-center items-center space-x-4 text-white">
           <div className="flex flex-col items-center">
             <div className="flex flex-col items-center">
-              <div className="text-center">
-                <h1 className="text-sm font-bold">Navigation</h1>
-              </div>
-              <div className="text-center mt-5">
-                <h1 className="text-sm font-Montserrat">HOME</h1>
-              </div>
-              <div className="text-center mt-5">
-                <h1 className="text-sm font-Montserrat">EXHIBITIONS</h1>
-              </div>
-              <div className="text-center mt-5">
-                <h1 className="text-sm font-Montserrat">FEATURED ARTISTS</h1>
-              </div>
+              <h1 className="text-sm font-bold">Navigations</h1>
 
-              <div className="text-center mt-5">
-                <h1 className="text-sm font-Montserrat">ALL ART</h1>
+              <div className="flex flex-col items-center space-y-4 mt-4">
+              <NavLink to="/">Home</NavLink>
+              <NavLink to="/exhibitionsPage">Exhibitions</NavLink>
+              <NavLink to="/featuredArtistPage">Artists</NavLink>
+              <NavLink to="/allArtPage">All Arts</NavLink>
               </div>
             </div>
 
-            <p className="text-sm font-Montserrat m-0 text-center mt-16">
+            <p className="text-sm font-Montserrat m-0 text-center mt-9">
               Follow us on social media for the latest updates and artistic
               inspiration!
               <br />

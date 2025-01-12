@@ -4,7 +4,6 @@ import LandingPage from "../pages/userPage/landingPage";
 import PrivateRoute from "../config/privateRoute";
 import AdminLayout from "../layout/adminLayout";
 import UserLayout from "../layout/userLayout";
-import ExhibitPage from "../pages/userPage/exhibitPage";
 
 const Routes: RouteObject[] = [
   {
@@ -18,10 +17,6 @@ const Routes: RouteObject[] = [
   {
     element: <UserLayout />,
     children: APP_ROUTES.MAIN,
-  },
-  {
-    element: <UserLayout />,
-    children: APP_ROUTES.HAMBURGER,
   },
   {
     element: <PrivateRoute />, // Protect ADMIN routes

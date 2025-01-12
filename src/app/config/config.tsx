@@ -251,8 +251,6 @@ export const APP_ROUTES = {
     { path: "/exhibitionsPage", element: <ExhibitPage /> },
     { path: "/featuredArtistPage", element: <FeaturedArtistPage /> },
     { path: "/allArtPage", element: <AllArtPage /> },
-  ],
-  HAMBURGER: [
     { path: "/dashboard", element: <Dashboard /> },
     { path: "/addExhibit", element: <AddExhibit /> },
     { path: "/createAccount", element: <CreateAccount /> },
@@ -260,6 +258,7 @@ export const APP_ROUTES = {
     { path: "/signUp", element: <SignUp /> },
     { path: "/profile", element: <Profile /> },
   ],
+  
   ADMIN: [
     // { path: "/Dashboard", element: <DashboardPage/> },
   ],

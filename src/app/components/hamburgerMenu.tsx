@@ -34,8 +34,7 @@
 
 import React, { useRef, useEffect } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
-import { APP_ROUTES } from "../config/config";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 interface HamburgerMenuProps {
   isOpen: boolean; // Controls whether the dropdown is visible
@@ -88,32 +87,12 @@ const HamburgerMenu: React.FC<HamburgerMenuProps> = ({ isOpen, onClick }) => {
           className="absolute top-10 left-0 w-[900px] bg-black text-white shadow-lg rounded-md z-50 font-medium tracking-wide px-2 py-2 mt-5 transition-all duration-300 ease-in-out"
         >
           <ul className="flex flex-col space-y-3 p-4">
-            {APP_ROUTES.HAMBURGER.map((route) => (
-              <li
-                key={route.path}
-                className="cursor-pointer hover:text-gray-400"
-                onClick={() => {
-                  navigate(route.path); // Navigate to the route path
-                  onClick(); // Close the menu after navigation
-                }}
-              >
-                {route.path === "/createAccount"
-                  ? "CREATE ACCOUNT"
-                  : route.path === "/addExhibit"
-                  ? "ADD EXHIBIT"
-                  : route.path === "/dashboard"
-                  ? "DASHBOARD"
-                  : route.path === "/addArt"
-                  ? "ADD ART"
-                  : route.path === "/logIn"
-                  ? "LOG IN"
-                  : route.path === "/signUp"
-                  ? "SIGN UP"
-                   : route.path === "/profile"
-                  ? "PROFILE"
-                  : route.path}
-              </li>
-            ))}
+            <NavLink
+              to= "/"
+              className="hover:text-[#C62A35] cursor-pointer"
+            >
+              Home
+            </NavLink>
           </ul>
         </div>
       )}
