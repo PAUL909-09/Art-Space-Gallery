@@ -24,7 +24,7 @@ import ExhibitPageArtist from "../pages/artistPage/exhibitPageArtist";
 import FeaturedArtistPageArtist from "../pages/artistPage/featuredArtistArtist";
 import LandingPageArtist from "../pages/artistPage/landingPageArtist";
 import LogInArtist from "../pages/artistPage/logInArtist";
-import ProfileArtist from "../pages/artistPage/profile";
+import ProfileArtist from "../pages/artistPage/artistProfile";
 
 
 
@@ -70,6 +70,10 @@ import LoginImage from "../../assets/LoginImage.png";
 import AddImageIcon from "../../assets/AddImageIcon.png"
 import AddArt from "../pages/adminPage/addArt";
 import Profile from "../pages/adminPage/profile";
+import logOutAdmin from "../pages/adminPage/logOutAdmin";
+import LogOutArtist from "../pages/artistPage/logOutArtist";
+import ViewArts from "../pages/userPage/viewArts";
+import ViewExhibits from "../pages/userPage/viewExhibits";
 
 // import createAccount from "../pages/userPage/createAccount";
 
@@ -272,6 +276,9 @@ export const APP_ROUTES = {
     { path: "/allArtPage", element: <AllArtPage /> },
     { path: "/logIn", element: <LogIn /> },
     { path: "/profile", element: <Profile /> },
+    { path: "/viewArts", element: <ViewArts /> },
+    { path: "/viewExhibits", element: <ViewExhibits /> },
+
   ],
   ADMIN: [
     { path: "/admin", element: <LandingPageAdmin /> },
@@ -282,7 +289,9 @@ export const APP_ROUTES = {
     { path: "/addExhibitAdmin", element: <AddExhibitAdmin /> },
     { path: "/createAccountAdmin", element: <CreateAccountAdmin /> },
     { path: "/logInAdmin", element: <LogInAdmin /> },
-    { path: "/profileAdmin", element: <ProfileAdmin /> },
+    { path: "/logOutAdmin", element: <LogOutAdmin /> },
+    { path: "/addArt", element: <AddArt /> },    
+   // { path: "/profileAdmin", element: <ProfileAdmin /> },
   ],
   ARTIST: [
     { path: "/artist", element: <LandingPageArtist /> },
@@ -291,10 +300,11 @@ export const APP_ROUTES = {
     { path: "/featuredArtistArtist", element: <FeaturedArtistPageArtist /> },
     { path: "/landingPageArtist", element: <LandingPageArtist /> },
     { path: "/logInArtist", element: <LogInArtist /> },
+    { path: "/logOutArtist", element: <LogOutArtist /> },
     { path: "/profileArtist", element: <ProfileArtist /> },
   ],
 };
-=======
+
 //Login Image
 export const LoginPicture = [
   { src: LoginImage, alt: "Login Picture" },

@@ -1,33 +1,36 @@
 import React from "react";
 import { APP_COLORS, ArtsData, ArtsImage } from "../../config/config";
+import { useNavigate } from "react-router-dom";
 
 const AllArt = () => {
+  const navigate = useNavigate();
+
+  const handleViewMore = (art: {
+    title: string;
+    artist: string;
+    type: string;
+    description: string;
+    image: { src: string; alt: string };
+  }) => {
+    navigate("/viewArts", { state: art });
+  };
+
   return (
     <div>
-      {" "}
       <section className={`relative min-h-screen bg-${APP_COLORS.primary} p-8`}>
-        {/* Title */}
         <h1
           className={`text-6xl font-extrabold text-center mb-10 text-${APP_COLORS.secondary}`}
         >
           ALL ARTS
         </h1>
-
-        {/* Creative Image Layout */}
         <div className="relative w-full h-full flex flex-wrap justify-center items-center">
           {ArtsImage.map((image, index) => {
             const isEven = index % 2 === 0;
-
             return (
               <div
                 key={index}
                 className={`relative rounded-lg shadow-lg overflow-hidden group transition-all duration-500 ease-in-out`}
-                // style={{
-                //   width: `${image.width}px`,
-                //   height: `${image.height}px`,
-                // }}
               >
-                {/* Image */}
                 <div
                   className={`transform ${
                     isEven
@@ -41,53 +44,12 @@ const AllArt = () => {
                     className="object-cover w-full h-full"
                   />
                 </div>
-                {/* Caption */}
-                {/* <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-60 text-white text-center p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                  {image.alt}
-                </div> */}
               </div>
             );
           })}
         </div>
       </section>
 
-      {/* backup */}
-      {/* <section className={`relative min-h-screen bg-${APP_COLORS.primary} p-8`}>
-       
-        <h1
-          className={`text-6xl font-extrabold text-center mb-10 text-${APP_COLORS.secondary}`}
-        >
-          ALL ARTS
-        </h1>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
-          {ArtsImage.map((image, index) => {
-            return (
-              <div
-                key={index}
-                className="group relative overflow-hidden rounded-lg shadow-lg bg-white transition-transform transform hover:scale-105 hover:shadow-2xl"
-              >
-   
-                <img
-                  src={image.src}
-                  alt={image.alt}
-                  className="w-full h-64 object-cover rounded-t-lg"
-                />
-
-                <div className="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-center items-center">
-                  <h2 className="text-xl font-bold text-white mb-2">
-                    {image.alt}
-                  </h2>
-                  <button className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600">
-                    View Details
-                  </button>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      </section> */}
-      {/* Art section */}
       <section className="bg-white py-16 px-5">
         <h1 className="text-4xl font-bold text-center text-black mb-12">
           ARTS
@@ -108,7 +70,10 @@ const AllArt = () => {
                 <p className="text-red-600 font-medium">Artist: {art.artist}</p>
                 <p className="text-red-600 font-medium">Type: {art.type}</p>
                 <p className="text-gray-700 text-sm mt-4">{art.description}</p>
-                <button className="flex items-center justify-center mt-6 mx-auto bg-red-600 text-white px-6 py-2  shadow hover:bg-red-700 transform hover:scale-105 transition-all duration-300">
+                <button
+                  onClick={() => handleViewMore(art)}
+                  className="flex items-center justify-center mt-6 mx-auto bg-red-600 text-white px-6 py-2 shadow hover:bg-red-700 transform hover:scale-105 transition-all duration-300"
+                >
                   View More
                 </button>
               </div>
@@ -138,3 +103,4 @@ const getImagePositionStyles = (index: number) => {
 };
 
 export default AllArt;
+

@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 interface HamburgerMenuProps {
   isOpen: boolean; // Controls whether the dropdown is visible
@@ -8,8 +8,13 @@ interface HamburgerMenuProps {
   role: "admin" | "artist" | "user"; // User role to determine menu options
 }
 
-const HamburgerMenuAdmin: React.FC<HamburgerMenuProps> = ({ isOpen, onClick, role }) => {
+const HamburgerMenuArtist: React.FC<HamburgerMenuProps> = ({
+  isOpen,
+  onClick,
+  role,
+}) => {
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const navigate = useNavigate();
 
   // Close menu when clicking outside
   const handleClickOutside = (event: MouseEvent) => {
@@ -30,7 +35,10 @@ const HamburgerMenuAdmin: React.FC<HamburgerMenuProps> = ({ isOpen, onClick, rol
     };
   }, [isOpen]);
 
-  
+  const handleNavigation = (path: string) => {
+    navigate(path);
+    onClick(); // Hide the hamburger menu after navigation
+  };
 
   return (
     <div className="relative">
@@ -57,45 +65,45 @@ const HamburgerMenuAdmin: React.FC<HamburgerMenuProps> = ({ isOpen, onClick, rol
           <ul className="flex flex-col space-y-3 p-4">
             {role === "admin" ? (
               <>
-                <NavLink
-                  to="/dashboard"
+                <li
+                  onClick={() => handleNavigation("/dashboardAdmin")}
                   className="hover:text-[#C62A35] cursor-pointer"
                 >
                   Dashboard
-                </NavLink>
-                <NavLink
-                  to="/createAccount"
+                </li>
+                <li
+                  onClick={() => handleNavigation("/createAccountAdmin")}
                   className="hover:text-[#C62A35] cursor-pointer"
                 >
                   Create Account
-                </NavLink>
-                <NavLink
-                  to="/addExhibit"
+                </li>
+                <li
+                  onClick={() => handleNavigation("/addExhibitAdmin")}
                   className="hover:text-[#C62A35] cursor-pointer"
                 >
                   Add Exhibit
-                </NavLink>
-                <NavLink
-                  to="/logout"
+                </li>
+                <li
+                  onClick={() => handleNavigation("/logoutAdmin")}
                   className="hover:text-[#C62A35] cursor-pointer"
                 >
                   Logout
-                </NavLink>
+                </li>
               </>
             ) : role === "artist" ? (
               <>
-                <NavLink
-                  to="/profileArtist"
+                <li
+                  onClick={() => handleNavigation("/profileArtist")}
                   className="hover:text-[#C62A35] cursor-pointer"
                 >
                   My Profile
-                </NavLink>
-                <NavLink
-                  to="/logout"
+                </li>
+                <li
+                  onClick={() => handleNavigation("/logOutArtist")}
                   className="hover:text-[#C62A35] cursor-pointer"
                 >
                   Logout
-                </NavLink>
+                </li>
               </>
             ) : null}
           </ul>
@@ -105,4 +113,5 @@ const HamburgerMenuAdmin: React.FC<HamburgerMenuProps> = ({ isOpen, onClick, rol
   );
 };
 
-export default HamburgerMenuAdmin;
+export default HamburgerMenuArtist;
+

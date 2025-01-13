@@ -91,7 +91,7 @@ const HamburgerMenu: React.FC<HamburgerMenuProps> = ({ isOpen, onClick, role }) 
                   My Profile
                 </NavLink>
                 <NavLink
-                  to="/logout"
+                  to="/logOutArtist"
                   className="hover:text-[#C62A35] cursor-pointer"
                 >
                   Logout

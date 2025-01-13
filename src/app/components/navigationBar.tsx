@@ -1,18 +1,22 @@
-import { APP_COLORS} from "../config/config";
+import { APP_COLORS } from "../config/config";
 import { NavLink } from "react-router-dom";
-import SearchBar from "../components/searchBar";
+import SearchBar from "./searchBar";
 import lopenze_logo from "../../assets/lopenze_logo.png";
 import HamburgerMenu from "./hamburgerMenu";
 import React, { useState } from "react";
+import HamburgerMenuArtist from "./forArtist/hamburgerMenuArtist";
 
 interface NavigationBarProps {
   hamburgerShow: boolean;
   role: string;
 }
 
-const NavigationBar: React.FC<NavigationBarProps> = ({ hamburgerShow, role }) => {
+const NavigationBar: React.FC<NavigationBarProps> = ({
+  hamburgerShow,
+  role,
+}) => {
   const validRole = role === "admin" || role === "artist" ? role : "user";
- 
+
   const [menuOpen, setMenuOpen] = useState(false);
 
   // Function to toggle the menu
@@ -27,7 +31,13 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ hamburgerShow, role }) =>
       {/* Logo Section */}
       <div className="flex items-center space-x-6">
         <img src={lopenze_logo} alt="Lopenze Logo" className="w-12 h-12" />
-        {hamburgerShow && <HamburgerMenu isOpen={menuOpen} onClick={toggleMenu} role={validRole} />}
+        {hamburgerShow && (
+          <HamburgerMenu
+            isOpen={menuOpen}
+            onClick={toggleMenu}
+            role={validRole}
+          />
+        )}
       </div>
 
       <div className="flex flex-1 space-x-10 text-sm ml-6">

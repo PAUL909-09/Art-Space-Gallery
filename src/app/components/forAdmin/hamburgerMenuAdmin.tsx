@@ -84,7 +84,7 @@ const HamburgerMenuAdmin: React.FC<HamburgerMenuProps> = ({
                   Add Exhibit
                 </li>
                 <li
-                  onClick={() => handleNavigation("/logOutAdmin")}
+                  onClick={() => handleNavigation("/logoutAdmin")}
                   className="hover:text-[#C62A35] cursor-pointer"
                 >
                   Logout
@@ -92,15 +92,14 @@ const HamburgerMenuAdmin: React.FC<HamburgerMenuProps> = ({
               </>
             ) : role === "artist" ? (
               <>
-                <NavLink
-                  to="/profileArtist"
-
+                <li
+                  onClick={() => handleNavigation("/profileArtist")}
                   className="hover:text-[#C62A35] cursor-pointer"
                 >
                   My Profile
                 </li>
                 <li
-                  onClick={() => handleNavigation("/logout")}
+                  onClick={() => handleNavigation("/logoutArtist")}
                   className="hover:text-[#C62A35] cursor-pointer"
                 >
                   Logout
@@ -115,3 +114,4 @@ const HamburgerMenuAdmin: React.FC<HamburgerMenuProps> = ({
 };
 
 export default HamburgerMenuAdmin;
+
