@@ -59,6 +59,15 @@ const Footer = () => {
               </span>
             </p>
           </div>
+
+          <div className="mt-2  font-light text-center">
+            <p className="text-md">
+              Want to experience Lopenze? click{" "}
+              <span className="underline text-blue-400">
+                <NavLink to="/guest">be a Guest</NavLink>
+              </span>
+            </p>
+          </div>
         </div>
 
         {/* Right side - Black (60% width) */}
@@ -68,10 +77,10 @@ const Footer = () => {
               <h1 className="text-sm font-bold">Navigations</h1>
 
               <div className="flex flex-col items-center space-y-4 mt-4">
-              <NavLink to="/">Home</NavLink>
-              <NavLink to="/exhibitionsPage">Exhibitions</NavLink>
-              <NavLink to="/featuredArtistPage">Artists</NavLink>
-              <NavLink to="/allArtPage">All Arts</NavLink>
+                <NavLink to="/">Home</NavLink>
+                <NavLink to="/exhibitionsPage">Exhibitions</NavLink>
+                <NavLink to="/featuredArtistPage">Artists</NavLink>
+                <NavLink to="/allArtPage">All Arts</NavLink>
               </div>
             </div>
 

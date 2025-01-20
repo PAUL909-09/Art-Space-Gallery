@@ -2,7 +2,7 @@ import { useLocation } from "react-router-dom";
 import { ArtisyImage, ArtsData } from "../../config/config";
 import { useEffect } from "react";
 
-const ViewArts = () => {
+const ViewArtsArtist = () => {
   const location = useLocation();
   const art = location.state;
 
@@ -26,7 +26,7 @@ const ViewArts = () => {
       <section className="py-20 px-6">
         <div className="max-w-7xl mx-auto bg-white rounded-2xl shadow-2xl overflow-hidden transform hover:shadow-3xl transition duration-500">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
-
+            {/* Image Container */}
             <div className="relative h-[600px]">
               <img
                 src={art.image.src}
@@ -91,51 +91,30 @@ const ViewArts = () => {
       </section>
 
       {/* Artist Profile Section */}
-      <section className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-100 via-gray-200 to-gray-300">
-        <div className="max-w-sm w-full bg-white rounded-xl shadow-lg transform transition-all hover:scale-105 duration-300 overflow-hidden">
-          {/* Header Section with Background Image */}
-          <div className="relative">
-            <img
-       
-              className="w-full h-40 rounded-t-xl object-cover bg-gradient-to-r from-black to-[#C62A35]"
-            />
-            <div className="absolute top-24 left-1/2 transform -translate-x-1/2">
-              <div className="w-28 h-28 border-4 border-white rounded-full shadow-md overflow-hidden">
+      <section className="relative py-20 px-6 bg-gradient-to-br from-red-600 to-red-700">
+        <div className="max-w-md mx-auto">
+          <div className="bg-white rounded-2xl shadow-2xl overflow-hidden transform hover:scale-105 transition duration-500">
+            <div className="relative pt-20 pb-12 px-8 text-center">
+              <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
                 <img
                   src={ArtisyImage[0].src}
                   alt={ArtisyImage[0].Alt}
-                  className="w-full h-full object-cover"
+                  className="w-32 h-32 rounded-full border-8 border-white shadow-lg object-cover"
                 />
               </div>
-            </div>
-          </div>
 
-          {/* Content Section */}
-          <div className="pt-20 pb-8 px-6 text-center">
-            <h2 className="text-2xl font-bold text-black">{ArtisyImage[0].Name}</h2>
-            <p className="text-sm text-gray-600">{ArtisyImage[0].email}</p>
+              <h2 className="text-3xl font-bold text-gray-900 mb-2">
+                {ArtisyImage[0].Name}
+              </h2>
+              {/* <p className="text-lg text-gray-600 mb-8">{ArtisyImage[0].email}</p> */}
 
-            {/* Tagline */}
-            <div className="mt-3">
-              <span className="inline-block px-3 py-1 text-xs font-medium bg-red-100 text-red-600 rounded-full">
-                Professional Artist
-              </span>
-            </div>
-
-            {/* Button Section with C62A35 Color */}
-            <div className="mt-6">
-              <button className="px-6 py-2 bg-[#C62A35] text-white font-medium text-sm rounded-full shadow-lg hover:bg-red-700 transition-all duration-300 focus:ring-4 focus:ring-red-300">
+              <button className="w-full py-4 bg-gray-900 text-white text-lg font-semibold rounded-xl hover:bg-gray-800 transition-colors duration-300">
                 View Profile
               </button>
             </div>
           </div>
         </div>
       </section>
-
-
-
-
-
 
       {/* Related Arts */}
       <section className="py-24 px-6 bg-gradient-to-b from-gray-50 to-white">
@@ -205,4 +184,4 @@ const ViewArts = () => {
   );
 };
 
-export default ViewArts;
+export default ViewArtsArtist;

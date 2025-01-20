@@ -19,16 +19,12 @@ import LogInAdmin from "../pages/adminPage/logInAdmin";
 import AddExhibitAdmin from "../pages/adminPage/addExhibit";
 
 //artistPages
-import AllArtArtist from "../pages/artistPage/allArtAdminArtist";
+import AllArtArtist from "../pages/artistPage/allArtArtist";
 import ExhibitPageArtist from "../pages/artistPage/exhibitPageArtist";
 import FeaturedArtistPageArtist from "../pages/artistPage/featuredArtistArtist";
 import LandingPageArtist from "../pages/artistPage/landingPageArtist";
 import LogInArtist from "../pages/artistPage/logInArtist";
 import ProfileArtist from "../pages/artistPage/artistProfile";
-
-
-
-
 
 import BGexhibitions from "../../assets/BGexhibitions.png";
 import imageSlide from "../../assets/Image slide.png";
@@ -67,14 +63,22 @@ import ExhibitImage3 from "../../assets/Exhibits/ExhibitImage3.png";
 import ExhibitImage4 from "../../assets/Exhibits/ExhibitImage4.png";
 import LogOutAdmin from "../pages/adminPage/logOutAdmin";
 import LoginImage from "../../assets/LoginImage.png";
-import AddImageIcon from "../../assets/AddImageIcon.png"
+import AddImageIcon from "../../assets/AddImageIcon.png";
 import AddArt from "../pages/adminPage/addArt";
 import Profile from "../pages/adminPage/profile";
 import logOutAdmin from "../pages/adminPage/logOutAdmin";
 import LogOutArtist from "../pages/artistPage/logOutArtist";
 import ViewArts from "../pages/userPage/viewArts";
 import ViewExhibits from "../pages/userPage/viewExhibits";
-
+import Guest from "../pages/userPage/Guest";
+import ContactUs from "../pages/userPage/ContactUs";
+import ContactUsAdmin from "../pages/adminPage/ContactUsAdmin";
+import History from "../pages/adminPage/history";
+import GuestAdmin from "../pages/adminPage/GuestAdmin";
+import ViewArtsArtist from "../pages/artistPage/viewArtsArtist";
+import ViewArtsAdmin from "../pages/adminPage/viewArtsAdmin";
+import AddExhibitArtist from "../pages/artistPage/addExhibitArtist";
+import ArtistEditProfile from "../pages/artistPage/artistEditProfile";
 // import createAccount from "../pages/userPage/createAccount";
 
 //Images
@@ -89,22 +93,55 @@ export const ExhibitsImages = [
     src: Exhibit_1,
     alt: "Exhibit 1",
     title: "Exhibit Title 1",
-    description: "Description of Exhibit 1",
     date: "January 15, 2025",
+    location: "National Museum of Fine Arts, Manila, Philippines",
+    description:
+      "This exhibit showcases the richness of Filipino heritage through traditional and contemporary art forms. Featuring intricate paintings, sculptures, and crafts from local artists, 'Brushstrokes of Heritage' highlights the stories and culture of the Philippines. Visitors can also enjoy live painting sessions, craft demonstrations, and cultural performances that bring the artwork to life.",
   },
   {
     src: Exhibit_2,
     alt: "Exhibit 2",
     title: "Exhibit Title 2",
-    description: "Description of Exhibit 2",
-    date: "February 20, 2025",
+    date: "January 15, 2025",
+    location: "National Museum of Fine Arts, Manila, Philippines",
+    description:
+      "This exhibit showcases the richness of Filipino heritage through traditional and contemporary art forms. Featuring intricate paintings, sculptures, and crafts from local artists, 'Brushstrokes of Heritage' highlights the stories and culture of the Philippines. Visitors can also enjoy live painting sessions, craft demonstrations, and cultural performances that bring the artwork to life.",
   },
   {
     src: Exhibit_3,
     alt: "Exhibit 3",
     title: "Exhibit Title 3",
-    description: "Description of Exhibit 3",
-    date: "March 10, 2025",
+    date: "January 15, 2025",
+    location: "National Museum of Fine Arts, Manila, Philippines",
+    description:
+      "This exhibit showcases the richness of Filipino heritage through traditional and contemporary art forms. Featuring intricate paintings, sculptures, and crafts from local artists, 'Brushstrokes of Heritage' highlights the stories and culture of the Philippines. Visitors can also enjoy live painting sessions, craft demonstrations, and cultural performances that bring the artwork to life.",
+  },
+  {
+    src: Exhibit_1,
+    alt: "Exhibit 4",
+    title: "Cultural Kaleidoscope",
+    date: "February 20, 2025",
+    location: "Cultural Center of the Philippines, Pasay City",
+    description:
+      "Experience a vibrant celebration of cultural diversity through an array of art forms, including painting, sculpture, and digital media. The 'Cultural Kaleidoscope' exhibit brings together artists from different backgrounds to showcase the beauty of cultural fusion and the power of artistic expression in fostering understanding among communities.",
+  },
+  {
+    src: Exhibit_2,
+    alt: "Exhibit 5",
+    title: "Art Beyond Boundaries",
+    date: "March 5, 2025",
+    location: "Ayala Museum, Makati City",
+    description:
+      "Breaking traditional boundaries, 'Art Beyond Boundaries' features innovative works by contemporary artists who challenge the status quo. This exhibit explores themes of identity, technology, and the future, offering visitors a glimpse into the possibilities of art in a rapidly changing world.",
+  },
+  {
+    src: Exhibit_3,
+    alt: "Exhibit 6",
+    title: "Nature's Symphony",
+    date: "March 25, 2025",
+    location: "The Mind Museum, Taguig City",
+    description:
+      "Delve into the harmonious relationship between art and nature with 'Nature's Symphony.' This exhibit features breathtaking landscapes, wildlife art, and environmental installations that highlight the beauty and fragility of our natural world. Join us in celebrating the wonders of nature and the artists who capture its essence.",
   },
 ];
 
@@ -118,6 +155,7 @@ export const ExhibitsData = [
     description:
       "A collection of introspective artworks exploring solitude, self-reflection, and inner peace. Paintings, photographs, and installations reveal the profound power of stillness in a chaotic world.",
     image: { src: ExhibitImage1, alt: "ExhibitsImage1" },
+    views: 250,
   },
   {
     title: "The Art of Now",
@@ -126,6 +164,7 @@ export const ExhibitsData = [
     description:
       "Step into a realm where imagination knows no bounds. This exhibit brings together an eclectic collection of artworks that traverse diverse styles, mediums, and perspectives.",
     image: { src: ExhibitImage2, alt: "ExhibitsImage2" },
+    views: 400,
   },
   {
     title: "Faces of Humanity",
@@ -134,6 +173,7 @@ export const ExhibitsData = [
     description:
       "A powerful exploration of identity and diversity. This exhibit features portraits, sculptures, and multimedia projects that celebrate the stories and struggles that define us as human beings.",
     image: { src: ExhibitImage3, alt: "ExhibitsImage3" },
+    views: 320,
   },
   {
     title: "Fragments of Time",
@@ -142,6 +182,7 @@ export const ExhibitsData = [
     description:
       "Explore the relationship between history and memory through mixed-media art and photography. 'Fragments of Time' captures moments that define our collective past and inspire reflections on our shared future.",
     image: { src: ExhibitImage4, alt: "ExhibitsImage4" },
+    views: 500,
   },
 ];
 
@@ -176,6 +217,36 @@ export const ArtisyImage = [
     Name: "Stephanie Lucero",
     Email: "Lucero090@gmail.com",
   },
+  {
+    src: Artist_4,
+    Alt: "Artist1",
+    Name: "Ajihmer Balahula",
+    Email: "Aje@gmail.com",
+  },
+  {
+    src: Artist_5,
+    Alt: "Artist2",
+    Name: "John Paul Almazan",
+    Email: "Almazan@gmail.com",
+  },
+  {
+    src: Artist_1,
+    Alt: "Artist3",
+    Name: "Arianne Gupa",
+    Email: "Gupaa9@gmail.com",
+  },
+  {
+    src: Artist_3,
+    Alt: "Artist4",
+    Name: "Martinne Tanada",
+    Email: "Mars29@gmail.com",
+  },
+  {
+    src: Artist_2,
+    Alt: "Artist5",
+    Name: "Stephanie Lucero",
+    Email: "Lucero090@gmail.com",
+  },
 ];
 
 export const ArtsImage = [
@@ -198,6 +269,7 @@ export const ArtsData = [
     type: "Digital Print",
     description:
       "Created in 1999, this artwork presents a contemporary interpretation of the Virgin of Guadalupe, blending traditional religious iconography with modern digital techniques.",
+    views: 123,
     image: { src: imageArt1, alt: "imageArt1" },
   },
   {
@@ -206,6 +278,7 @@ export const ArtsData = [
     type: "Painting/Print",
     description:
       "Abelardo Lopez, born in 1957, depicts the landscapes of Oaxaca in his paintings and prints, capturing the region's vibrant colors and rich cultural heritage.",
+    views: 456,
     image: { src: imageArt2, alt: "imageArt2" },
   },
   {
@@ -214,6 +287,7 @@ export const ArtsData = [
     type: "Painting on Canvas",
     description:
       "Created by one of Venezuela's most accomplished 18th-century artists, this painting reflects López's mastery in religious iconography, depicting the Virgin Mary as a guide and protector.",
+    views: 789,
     image: { src: imageArt3, alt: "imageArt3" },
   },
   {
@@ -222,6 +296,7 @@ export const ArtsData = [
     type: "Oil Painting",
     description:
       "This piece brings to life the magical charm of forests, creating a captivating blend of realism and fantasy through vibrant brushstrokes.",
+    views: 101,
     image: { src: imageArt4, alt: "imageArt4" },
   },
   {
@@ -230,6 +305,7 @@ export const ArtsData = [
     type: "Watercolor",
     description:
       "A surreal depiction of dreamlike states, crafted with soft, flowing watercolors to evoke a sense of wonder and tranquility.",
+    views: 234,
     image: { src: imageArt5, alt: "imageArt5" },
   },
   {
@@ -238,6 +314,7 @@ export const ArtsData = [
     type: "Digital Collage",
     description:
       "A bold digital collage capturing the chaotic energy of urban life, blending abstract and geometric elements with vivid colors.",
+    views: 567,
     image: { src: imageArt6, alt: "imageArt6" },
   },
   {
@@ -246,6 +323,7 @@ export const ArtsData = [
     type: "Acrylic Painting",
     description:
       "A stunning acrylic work capturing the beauty of a golden sunset across a tranquil horizon, blending warm hues with striking contrasts.",
+    views: 890,
     image: { src: imageArt7, alt: "imageArt7" },
   },
   {
@@ -254,6 +332,7 @@ export const ArtsData = [
     type: "Clay Sculpture",
     description:
       "A remarkable clay sculpture showcasing intricate detailing, celebrating traditional artistry with a modern twist.",
+    views: 345,
     image: { src: imageArt8, alt: "imageArt8" },
   },
   {
@@ -262,10 +341,10 @@ export const ArtsData = [
     type: "Mixed Media",
     description:
       "An innovative mixed media piece that imagines a futuristic world, combining digital and physical elements for a compelling narrative.",
+    views: 678,
     image: { src: imageArt9, alt: "imageArt9" },
   },
 ];
-
 
 // App Routes
 export const APP_ROUTES = {
@@ -278,7 +357,8 @@ export const APP_ROUTES = {
     { path: "/profile", element: <Profile /> },
     { path: "/viewArts", element: <ViewArts /> },
     { path: "/viewExhibits", element: <ViewExhibits /> },
-
+    { path: "/guest", element: <Guest /> },
+    { path: "/contactUs", element: <ContactUs /> },
   ],
   ADMIN: [
     { path: "/admin", element: <LandingPageAdmin /> },
@@ -290,31 +370,35 @@ export const APP_ROUTES = {
     { path: "/createAccountAdmin", element: <CreateAccountAdmin /> },
     { path: "/logInAdmin", element: <LogInAdmin /> },
     { path: "/logOutAdmin", element: <LogOutAdmin /> },
-    { path: "/addArt", element: <AddArt /> },    
-   // { path: "/profileAdmin", element: <ProfileAdmin /> },
+    { path: "/addArt", element: <AddArt /> },
+    { path: "/contactUsAdmin", element: <ContactUsAdmin /> },
+    { path: "/history", element: <History /> },
+    { path: "/guestAdmin", element: <GuestAdmin /> },
+    { path: "/viewArtsAdmin", element: <ViewArtsAdmin /> },
+    // { path: "/profileAdmin", element: <ProfileAdmin /> },
   ],
   ARTIST: [
     { path: "/artist", element: <LandingPageArtist /> },
     { path: "/allArtArtist", element: <AllArtArtist /> },
     { path: "/exhibitPageArtist", element: <ExhibitPageArtist /> },
+    { path: "/addExhibitArtist", element: <AddExhibitArtist /> },
     { path: "/featuredArtistArtist", element: <FeaturedArtistPageArtist /> },
     { path: "/landingPageArtist", element: <LandingPageArtist /> },
     { path: "/logInArtist", element: <LogInArtist /> },
     { path: "/logOutArtist", element: <LogOutArtist /> },
-    { path: "/profileArtist", element: <ProfileArtist /> },
+    { path: "/profileArtist", element: <ProfileArtist /> }, 
+    { path: "/viewArtsArtist", element: <ViewArtsArtist /> },
+    { path: "/viewExhibits", element: <ViewExhibits /> },
+    { path: "/artistEditProfile", element: <ArtistEditProfile /> },
+
   ],
 };
 
 //Login Image
-export const LoginPicture = [
-  { src: LoginImage, alt: "Login Picture" },
-];
+export const LoginPicture = [{ src: LoginImage, alt: "Login Picture" }];
 
 //Icons
-export const Icons =[
-  { src: AddImageIcon, alt: "Add Image Icon" },
-];
-
+export const Icons = [{ src: AddImageIcon, alt: "Add Image Icon" }];
 
 // API Endpoints
 export const API_ENDPOINTS = {

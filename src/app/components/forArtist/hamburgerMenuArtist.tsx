@@ -99,6 +99,12 @@ const HamburgerMenuArtist: React.FC<HamburgerMenuProps> = ({
                   My Profile
                 </li>
                 <li
+                  onClick={() => handleNavigation("/addExhibitArtist")}
+                  className="hover:text-[#C62A35] cursor-pointer"
+                >
+                  Add Exhibit
+                </li>
+                <li
                   onClick={() => handleNavigation("/logOutArtist")}
                   className="hover:text-[#C62A35] cursor-pointer"
                 >

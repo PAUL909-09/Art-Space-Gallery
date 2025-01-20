@@ -4,9 +4,53 @@ import {
   ExhibitsImages,
   ArtsData,
 } from "../../config/config";
+import ExhibitCard from "../../components/Cards/ExhibitCard";
+import { useState } from "react";
+import SliderArrow from "../../components/Buttons/SliderArrow";
+import ArtistProfileCard from "../../components/Cards/ArtistProfileCard";
+import { IoChevronBackSharp, IoChevronForwardSharp } from "react-icons/io5";
 import Button from "../../components/Buttons/button";
+import { FiEye } from "react-icons/fi";
+import ArtCard from "../../components/Cards/ArtCard";
 
-const LandingPageAdmin = () => {
+const ITEMS_PER_PAGE = 5;
+
+const LandingPage: React.FC = () => {
+  const [currentIndex, setCurrentIndex] = useState(0); // Tracks the index of the first visible card
+  const cardsPerPage = 3; // Number of cards to show per slide
+  // Number of cards to show per slide
+
+  const handleNext = () => {
+    if (currentIndex + cardsPerPage < ExhibitsImages.length) {
+      setCurrentIndex(currentIndex + cardsPerPage);
+    }
+  };
+
+  const handlePrevious = () => {
+    if (currentIndex - cardsPerPage >= 0) {
+      setCurrentIndex(currentIndex - cardsPerPage);
+    }
+  };
+
+  const [currentPage, setCurrentPage] = useState(0);
+
+  // Calculate visible artists
+  const startIndex = currentPage * ITEMS_PER_PAGE;
+  const endIndex = startIndex + ITEMS_PER_PAGE;
+  const visibleArtists = ArtisyImage.slice(startIndex, endIndex);
+
+  // Handle arrow clicks
+  const handlePrevPage = () => {
+    if (currentPage > 0) setCurrentPage((prev) => prev - 1);
+  };
+
+  const handleNextPage = () => {
+    if (endIndex < ArtisyImage.length) setCurrentPage((prev) => prev + 1);
+  };
+  function handlePrev(): void {
+    throw new Error("Function not implemented.");
+  }
+
   return (
     <div>
       {/* Hero Banner */}
@@ -38,6 +82,38 @@ const LandingPageAdmin = () => {
             </p>
           </div>
         </div>
+
+        {/* Previous Navigation Button */}
+        <div className="absolute bottom-10 left-10">
+          <Button
+            onClick={handlePrev}
+            variant="primary"
+            className="px-6 py-3 text-sm shadow-lg hover:scale-105 hover:shadow-xl transition-all duration-300 ease-in-out backdrop-blur-md bg-black bg-opacity-50 rounded-md focus:outline-none focus:ring-4 focus:ring-white/70"
+          >
+            <span className="flex items-center">
+              <IoChevronBackSharp className="text-2xl text-white mr-2 hover:text-gray-300" />
+              <span className="text-white font-semibold hover:text-gray-300">
+                Previous
+              </span>
+            </span>
+          </Button>
+        </div>
+
+        {/* Next Navigation Button */}
+        <div className="absolute bottom-10 right-10">
+          <Button
+            onClick={handleNext}
+            variant="primary"
+            className="px-6 py-3 text-sm shadow-lg hover:scale-105 hover:shadow-xl transition-all duration-300 ease-in-out backdrop-blur-md bg-black bg-opacity-50 rounded-md focus:outline-none focus:ring-4 focus:ring-white/70"
+          >
+            <span className="flex items-center">
+              <span className="text-white font-semibold hover:text-grey-300">
+                Next
+              </span>
+              <IoChevronForwardSharp className="text-2xl text-white ml-2 hover:text-gray-100" />
+            </span>
+          </Button>
+        </div>
       </section>
 
       {/* Vision Section */}
@@ -67,56 +143,56 @@ const LandingPageAdmin = () => {
         </h2>
         <div className="relative flex items-center justify-between">
           {/* Left Arrow */}
-          <button className="absolute left-0 z-10 bg-white rounded-full shadow-lg p-3 transform -translate-y-1/2 hover:scale-110 transition-transform duration-300 ease-in-out">
-            <span className="text-gray-800 text-3xl">&larr;</span>
-          </button>
+          <SliderArrow
+            direction="left"
+            onClick={handlePrevious}
+            disabled={currentIndex === 0}
+          />
 
           {/* Exhibit Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full px-8 transition-all duration-500">
-            {ExhibitsImages.map((exhibit, index) => (
-              <div
-                key={index}
-                className="bg-white shadow-lg rounded-lg overflow-hidden transform transition-transform duration-300 hover:scale-105 hover:shadow-2xl"
-              >
-                {/* Image Section */}
-                <div className="relative h-64">
-                  <img
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 w-full px-6 overflow-hidden">
+            <div
+              className="flex transition-transform duration-500 ease-in-out"
+              style={{
+                transform: `translateX(-${
+                  currentIndex * (100 / cardsPerPage)
+                }%)`,
+                width: `${(100 * ExhibitsImages.length) / cardsPerPage}%`,
+              }}
+            >
+              {ExhibitsImages.map((exhibit, index) => (
+                <div
+                  key={index}
+                  className="flex-shrink-0 w-full md:w-1/3 px-2"
+                  style={{ width: `${100 / cardsPerPage}%` }}
+                >
+                  <ExhibitCard
                     src={exhibit.src}
                     alt={exhibit.alt}
-                    className="w-full h-full object-cover transition-all duration-500"
+                    title={exhibit.title}
+                    date={exhibit.date}
+                    location={exhibit.location}
+                    description={exhibit.description}
+                    isExpanded={false} // Removed expanded logic for simplicity
+                    onReadMore={() => {}}
                   />
-                  <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center text-white opacity-0 hover:opacity-100 transition-opacity duration-500 ease-in-out">
-                    <p className="text-lg font-bold text-center transition-all duration-500 ease-in-out">
-                      {exhibit.title}
-                    </p>
-                  </div>
                 </div>
-
-                {/* Content Section */}
-                <div className="p-4">
-                  <h3 className="text-xl font-bold text-gray-800 mb-1 transition-all duration-500 ease-in-out">
-                    {exhibit.title}
-                  </h3>
-                  <p className="text-sm text-gray-600 mb-2 transition-all duration-500 ease-in-out">
-                    {exhibit.date}
-                  </p>
-                  <p className="text-gray-700 text-sm leading-relaxed transition-all duration-500 ease-in-out">
-                    {exhibit.description}
-                  </p>
-                </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
 
           {/* Right Arrow */}
-          <button className="absolute right-0 z-10 bg-white rounded-full shadow-lg p-3 transform -translate-y-1/2 hover:scale-110 transition-transform duration-300 ease-in-out">
-            <span className="text-gray-800 text-3xl">&rarr;</span>
-          </button>
+          <SliderArrow
+            direction="right"
+            onClick={handleNext}
+            disabled={currentIndex + cardsPerPage >= ExhibitsImages.length}
+          />
         </div>
       </section>
 
       {/* Artists */}
       <section className="relative min-h-screen bg-red-50 py-16 px-5 backdrop-blur-md">
+        {/* Header Section */}
         <div className="text-center mb-12">
           <h2 className="relative inline-block text-7xl font-bold text-gray-900">
             <span className="relative z-10">LOPENZE</span>
@@ -131,38 +207,33 @@ const LandingPageAdmin = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-7 mx-auto">
-          {ArtisyImage.map((artist, index) => (
-            <div
+        {/* Artists Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-7 mx-auto">
+          {visibleArtists.map((artist, index) => (
+            <ArtistProfileCard
               key={index}
-              className="bg-white rounded-lg shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-110 hover:rotate-1 p-4 text-center"
-            >
-              <img
-                src={artist.src}
-                alt={artist.Alt}
-                className="w-32 h-32 object-cover rounded-full mx-auto mb-4 transition-transform duration-500 transform hover:scale-125"
-              />
-              <h3 className="text-xl font-semibold text-gray-800">
-                {artist.Name}
-              </h3>
-              <p className="text-sm text-gray-600">{artist.Email}</p>
-
-              {/* Using the Button component */}
-              <div className="font-Montserrat mt-5">
-                <Button
-                  variant="secondary"
-                  className="transition-transform duration-500 transform hover:scale-105"
-                >
-                  Contact Artist
-                </Button>
-              </div>
-            </div>
+              src={artist.src}
+              alt={artist.Alt}
+              name={artist.Name}
+              email={artist.Email}
+            />
           ))}
         </div>
+        {/* Pagination Arrows */}
+        <div className="flex justify-between w-full">
+          <SliderArrow
+            direction="left"
+            onClick={handlePrevPage}
+            disabled={currentPage === 0}
+          />
+          <SliderArrow
+            direction="right"
+            onClick={handleNextPage}
+            disabled={endIndex >= ArtisyImage.length}
+          />
+        </div>
       </section>
-
-   
-      <section className="w-full ">    
+      <section className="w-full ">
         <h2 className="text-8xl font-extrabold text-end text-[#C62A35] tracking-tight mb-16 mt-4">
           <span className="mr-5">WIDE SELECTIONS OF ARTS</span>
         </h2>
@@ -194,7 +265,7 @@ const LandingPageAdmin = () => {
       </section>
 
       {/* Art section */}
-      <section className="bg-white py-16 px-5">
+      {/* <section className="bg-white py-16 px-5">
         <h1 className="text-4xl font-bold text-center text-black mb-12">
           ARTS
         </h1>
@@ -221,9 +292,37 @@ const LandingPageAdmin = () => {
             </div>
           ))}
         </div>
+      </section> */}
+
+      <section className="bg-white py-16 px-5">
+        <h1 className="text-7xl font-extrabold text-center mb-12 relative">
+          <span
+            className="text-transparent bg-clip-text bg-gradient-to-r from-black to-[#C62A35]"
+            style={{ backgroundColor: "#FAF9F6" }}
+          >
+            ARTS
+          </span>
+          {/* Decorative line and animated dot */}
+          <div className="relative mt-4 flex justify-center items-center">
+            <div
+              className="w-24 h-1 bg-gradient-to-r from-black to-[#C62A35] rounded"
+              style={{ backgroundColor: "#FAF9F6" }}
+            ></div>
+            {/* <span
+              className="w-3 h-3 bg-[#C62A35] rounded-full animate-bounce ml-2"
+              style={{ borderColor: "black", borderWidth: "1px" }}
+            ></span> */}
+          </div>
+        </h1>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+          {ArtsData.map((art, index) => (
+            <ArtCard key={index} art={art} />
+          ))}
+        </div>
       </section>
     </div>
   );
 };
 
-export default LandingPageAdmin;
+export default LandingPage;

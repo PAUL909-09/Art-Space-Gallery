@@ -13,6 +13,7 @@ const AllArt = () => {
     image: { src: string; alt: string };
   }) => {
     navigate("/viewArts", { state: art });
+    window.scrollTo(0, 0); // scroll to the top of the page
   };
 
   return (

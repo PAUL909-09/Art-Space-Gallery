@@ -12,7 +12,7 @@ interface NavigationBarProps {
 
 const NavigationBar: React.FC<NavigationBarProps> = ({ hamburgerShow, role }) => {
   const validRole = role === "admin" || role === "artist" ? role : "user";
- 
+
   const [menuOpen, setMenuOpen] = useState(false);
 
   // Function to toggle the menu
@@ -71,6 +71,17 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ hamburgerShow, role }) =>
         >
           <span className="-m-4">ALL ARTS</span>
         </NavLink>
+        <NavLink
+          to="/contactUs"
+          className={({ isActive }) =>
+            isActive
+              ? "text-[#C62A35] px-4 py-3 rounded-md flex items-center space-x-2"
+              : "text-black  px-4 py-3 flex items-center space-x-2"
+          }
+        >
+          <span className="-m-4">CONTACT US</span>
+        </NavLink>
+        
       </div>
 
       {/* Search Bar */}

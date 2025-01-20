@@ -1,5 +1,6 @@
 import { ArtisyImage } from "../../config/config";
 import Button from "../../components/Buttons/button";
+import ArtistProfileCard from "../../components/Cards/ArtistProfileCard";
 
 const FeaturedArtist = () => {
   return (
@@ -12,23 +13,13 @@ const FeaturedArtist = () => {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 mx-auto px-4 mt-10">
         {ArtisyImage.map((artist, index) => (
-          <div
+          <ArtistProfileCard
             key={index}
-            className="bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:scale-105 p-4 flex flex-col"
-          >
-            <img
-              src={artist.src}
-              className="w-full h-56 object-cover mb-4 rounded-t-lg transition-transform duration-300 transform hover:scale-110"
-              alt={artist.Alt}
-            />
-            <h3 className="text-xl font-semibold text-gray-800 mb-1">
-              {artist.Name}
-            </h3>
-            <p className="flex items-center text-sm text-gray-600 mb-4">
-              {artist.Email}
-            </p>
-            <Button className="bg-black text-white mt-auto">VIEW MORE</Button>
-          </div>
+            src={artist.src}
+            alt={artist.Alt}
+            name={artist.Name}
+            email={artist.Email}
+          />
         ))}
       </div>
     </section>

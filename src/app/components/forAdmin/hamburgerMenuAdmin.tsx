@@ -84,11 +84,26 @@ const HamburgerMenuAdmin: React.FC<HamburgerMenuProps> = ({
                   Add Exhibit
                 </li>
                 <li
+                  onClick={() => handleNavigation("/guestAdmin")}
+                  className="hover:text-[#C62A35] cursor-pointer"
+                >
+                  Invite Guest
+                </li>
+                <li
+                  onClick={() => handleNavigation("/history")}
+                  className="hover:text-[#C62A35] cursor-pointer"
+                >
+                  History
+                </li>
+                <li
                   onClick={() => handleNavigation("/logoutAdmin")}
                   className="hover:text-[#C62A35] cursor-pointer"
                 >
                   Logout
                 </li>
+
+
+
               </>
             ) : role === "artist" ? (
               <>

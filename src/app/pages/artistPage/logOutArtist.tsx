@@ -14,7 +14,7 @@ const logOutArtist = () => {
       <div className="flex items-center justify-center mt-10 h-48 bg-[#C62A35]">
         <Button
           children="Log out"
-          className="w-100 max-w-xs flex items-center justify-center px-4 py-2 rounded-lg bg-[#000000] text-white font-bold hover:bg-[#C53030]"
+          className="w-100 max-w-xs flex items-center justify-center px-4 py-2 rounded-lg bg-black text-white font-bold hover:bg-[#C53030]"
         />
       </div>
     </div>

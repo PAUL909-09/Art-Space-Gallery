@@ -2,6 +2,9 @@
 import React from "react";
 import { ArtisyImage, ArtsData } from "../../config/config";
 import { FaInstagram, FaFacebook, FaShareSquare } from "react-icons/fa"; // Import React Icons for Instagram and Facebook
+import { AiOutlineEdit } from "react-icons/ai";
+import { NavLink } from "react-router-dom";
+import ArtCard from "../../components/Cards/ArtCard";
 
 const Profile = () => {
   return (
@@ -15,13 +18,26 @@ const Profile = () => {
         <div className="flex flex-col lg:flex-row items-center lg:items-start gap-12 relative">
           {/* Profile Image */}
           <div className="flex flex-col items-center">
-            <div className="w-48 h-48 lg:w-56 lg:h-56 rounded-full overflow-hidden border-8 border-[#C62A35] shadow-xl transform hover:scale-105 transition duration-300">
+            <div className="relative w-48 h-48 lg:w-56 lg:h-56 rounded-full overflow-hidden border-8 border-[#C62A35] shadow-xl transform hover:scale-105 transition duration-300">
+              {/* Profile Image */}
               <img
                 src={ArtisyImage[4].src}
                 alt="Profile"
                 className="w-full h-full object-cover"
               />
             </div>
+            {/* Edit Icon with Circle */}
+            <NavLink
+              to="/artistEditProfile"
+            >
+              <div className="flex items-center justify-center">
+                <div className="bg-white rounded-full p-2 shadow-md hover:bg-gray-200 transition">
+                  <AiOutlineEdit className="h-6 w-6 text-[#C62A35]" />
+                </div>
+              </div>
+            </NavLink>
+
+
 
             {/* Buttons Below the Image */}
             <div className="mt-8 flex flex-col justify-center gap-2">
@@ -92,36 +108,13 @@ const Profile = () => {
           <h1 className="text-3xl lg:text-2xl font-bold text-left text-black mb-20 mt-20">
             All Artworks by <span className="text-[#C62A35]">"Alma Lopez"</span>
           </h1>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
             {ArtsData.map((art, index) => (
-              <article
-                key={index}
-                className="bg-white rounded-xl shadow-lg overflow-hidden transform hover:scale-105 transition duration-300 group"
-              >
-                <img
-                  src={art.image.src}
-                  alt={art.image.alt}
-                  className="w-full h-56 object-cover hover:opacity-90 transition"
-                />
-                <div className="p-6">
-                  <h2 className="text-xl font-semibold text-black">
-                    {art.title}
-                  </h2>
-                  <p className="text-[#C62A35] font-medium mt-2">
-                    Artist: {art.artist}
-                  </p>
-                  <p className="text-[#C62A35] font-medium">Type: {art.type}</p>
-                  <p className="text-black text-sm mt-4 leading-relaxed">
-                    {art.description}
-                  </p>
-                  <button className="mt-6 w-full bg-gradient-to-r from-[#C62A35] to-red-800 text-white py-3 rounded-lg shadow-md opacity-0 group-hover:opacity-100 transition duration-300">
-                    View More
-                  </button>
-                </div>
-              </article>
+              <ArtCard key={index} art={art} />
             ))}
           </div>
         </section>
+
 
         {/* Footer */}
         <div className="mt-12 text-center border-t pt-6">
@@ -131,7 +124,7 @@ const Profile = () => {
           </p>
         </div>
       </div>
-    </div>
+    </div >
   );
 };
 
