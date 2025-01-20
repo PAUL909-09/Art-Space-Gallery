@@ -1,35 +1,71 @@
+import { Icons } from "../../config/config";
+import { useState } from "react";
+
 const AddExhibit = () => {
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+
+  const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (file) {
+      const imageUrl = URL.createObjectURL(file);
+      setSelectedImage(imageUrl);
+    }
+  };
+
   return (
     <section className="min-h-screen bg-black font-Montserrat">
       {/* <header className="bg-black text-red-500 text-xl font-bold p-4 border-b border-gray-700">
         ADD ARTIST
       </header> */}
       <div className="flex flex-col items-center py-12 px-4">
-        <h1 className="text-4xl text-white font-extrabold mb-4">ADD EXHIBITION</h1>
+        <h1 className="text-4xl text-white font-extrabold mb-4">
+          ADD EXHIBITION
+        </h1>
         <p className="text-gray-400 text-center text-sm mb-8 max-w-xl">
-          The exhibition featured a stunning <span className="text-red-500">collection</span> of contemporary art, showcasing the <span className="text-red-500">creative talents</span> of both emerging and established <span className="text-red-500">artists</span>.
+          The exhibition featured a stunning{" "}
+          <span className="text-red-500">collection</span> of contemporary art,
+          showcasing the <span className="text-red-500">creative talents</span>{" "}
+          of both emerging and established{" "}
+          <span className="text-red-500">artists</span>.
         </p>
         <div className="bg-gray-800 p-8 rounded-lg shadow-lg w-full max-w-xl">
           <div className="flex flex-col items-center mb-6">
-            <div className="bg-gray-700 w-48 h-48 flex items-center justify-center rounded-lg">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-12 w-12 text-gray-400"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth="2"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M12 4v16m8-8H4"
+            <div
+              className="bg-gray-700 w-[350px] h-[350px] flex items-center justify-center rounded-lg cursor-pointer hover:bg-gray-600 transition-colors"
+              onClick={() => document.getElementById("fileInput")?.click()}
+            >
+              {selectedImage ? (
+                <img
+                  src={selectedImage}
+                  alt="Selected artwork"
+                  className="w-full h-full object-cover rounded-lg"
                 />
-              </svg>
+              ) : (
+                <div className="flex flex-col items-center gap-4">
+                  <div className="rounded-full bg-white p-4">
+                    <img
+                      src={Icons[0]?.src || "default-icon.png"}
+                      alt={Icons[0]?.alt || "default-icon"}
+                      className="h-8 w-8"
+                    />
+                  </div>
+                  <p className="text-gray-300 text-sm">Click to upload image</p>
+                </div>
+              )}
+              <input
+                type="file"
+                id="fileInput"
+                className="hidden"
+                accept="image/*"
+                onChange={handleImageUpload}
+              />
             </div>
           </div>
           <form>
-            <label className="block text-sm text-gray-400 font-semibold mb-2" htmlFor="name">
+            <label
+              className="block text-sm text-gray-400 font-semibold mb-2"
+              htmlFor="name"
+            >
               NAME
             </label>
             <input
@@ -39,7 +75,10 @@ const AddExhibit = () => {
               className="w-full p-3 mb-4 text-black rounded-md focus:outline-none focus:ring focus:ring-red-500"
             />
 
-            <label className="block text-sm text-gray-400 font-semibold mb-2" htmlFor="email">
+            <label
+              className="block text-sm text-gray-400 font-semibold mb-2"
+              htmlFor="email"
+            >
               EMAIL
             </label>
             <input
@@ -49,7 +88,10 @@ const AddExhibit = () => {
               className="w-full p-3 mb-4 text-black rounded-md focus:outline-none focus:ring focus:ring-red-500"
             />
 
-            <label className="block text-sm text-gray-400 font-semibold mb-2" htmlFor="contact">
+            <label
+              className="block text-sm text-gray-400 font-semibold mb-2"
+              htmlFor="contact"
+            >
               CONTACT NO.
             </label>
             <input
@@ -59,7 +101,10 @@ const AddExhibit = () => {
               className="w-full p-3 mb-4 text-black rounded-md focus:outline-none focus:ring focus:ring-red-500"
             />
 
-            <label className="block text-sm text-gray-400 font-semibold mb-2" htmlFor="social">
+            <label
+              className="block text-sm text-gray-400 font-semibold mb-2"
+              htmlFor="social"
+            >
               SOCIAL MEDIA
             </label>
             <input
@@ -69,7 +114,10 @@ const AddExhibit = () => {
               className="w-full p-3 mb-4 text-black rounded-md focus:outline-none focus:ring focus:ring-red-500"
             />
 
-            <label className="block text-sm text-gray-400 font-semibold mb-2" htmlFor="description">
+            <label
+              className="block text-sm text-gray-400 font-semibold mb-2"
+              htmlFor="description"
+            >
               DESCRIPTION
             </label>
             <textarea
@@ -95,7 +143,6 @@ const AddExhibit = () => {
           </form>
         </div>
       </div>
-      
     </section>
   );
 };

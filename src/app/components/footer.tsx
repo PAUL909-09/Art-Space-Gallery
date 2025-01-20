@@ -1,8 +1,9 @@
-import { APP_COLORS, APP_ROUTES } from "../config/config";
+
 import { MdEmail } from "react-icons/md";
 import { IoCall } from "react-icons/io5";
 import { FaFacebook, FaInstagram, FaMapPin, FaTwitter } from "react-icons/fa";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import { APP_COLORS } from "../config/config";
 
 const Footer = () => {
   return (
@@ -19,8 +20,8 @@ const Footer = () => {
             className="mt-2 font-sans font-semibold text-sm leading-loose font-montserrat"
             style={{ wordSpacing: "4px" }}
           >
-            At Lopeze's Art Studio, we’re always excited to hear from you!
-            Whether you’re looking to collaborate, inquire about custom
+            At Lopeze's Art Studio, we're always excited to hear from you!
+            Whether you're looking to collaborate, inquire about custom
             artworks, or simply share your thoughts, our team is here to help.
           </p>
 
@@ -60,7 +61,7 @@ const Footer = () => {
             </p>
           </div>
 
-          <div className="mt-2  font-light text-center">
+          <div className="mt-2 font-light text-center">
             <p className="text-md">
               Want to experience Lopenze? click{" "}
               <span className="underline text-blue-400">
@@ -77,10 +78,27 @@ const Footer = () => {
               <h1 className="text-sm font-bold">Navigations</h1>
 
               <div className="flex flex-col items-center space-y-4 mt-4">
-                <NavLink to="/">Home</NavLink>
-                <NavLink to="/exhibitionsPage">Exhibitions</NavLink>
-                <NavLink to="/featuredArtistPage">Artists</NavLink>
-                <NavLink to="/allArtPage">All Arts</NavLink>
+                <NavLink to="/admin" onClick={() => window.scrollTo(0, 0)}>
+                  Home
+                </NavLink>
+                <NavLink
+                  to="/exhibitionsPageAdmin"
+                  onClick={() => window.scrollTo(0, 0)}
+                >
+                  Exhibitions
+                </NavLink>
+                <NavLink
+                  to="/featuredArtistPageAdmin"
+                  onClick={() => window.scrollTo(0, 0)}
+                >
+                  Artists
+                </NavLink>
+                <NavLink
+                  to="/allArtPageAdmin"
+                  onClick={() => window.scrollTo(0, 0)}
+                >
+                  All Arts
+                </NavLink>
               </div>
             </div>
 
@@ -88,9 +106,9 @@ const Footer = () => {
               Follow us on social media for the latest updates and artistic
               inspiration!
               <br />
-              Let’s create something beautiful together. Drop us a message, and
+              Let's create something beautiful together. Drop us a message, and
               <br />
-              we’ll get back to you as soon as possible.
+              we'll get back to you as soon as possible.
             </p>
 
             <div className="flex space-x-4 gap-x-4 mt-9 mb-1">

@@ -35,13 +35,13 @@ const GuestAdmin = () => {
                         <input
                             type="text"
                             placeholder="NAME"
-                            className="w-full p-3 rounded-md border border-gray-300 text-black focus:outline-none focus:ring-2 focus:ring-[#C62A35] transition duration-200"
+                            className="w-full p-3 rounded-md border border-gray-600 text-black focus:outline-none focus:ring-2 focus:ring-[#C62A35] transition duration-200"
                             required
                         />
                         <input
                             type="text"
                             placeholder="CONTACT NO."
-                            className="w-full p-3 rounded-md border border-gray-300 text-black focus:outline-none focus:ring-2 focus:ring-[#C62A35] transition duration-200"
+                            className="w-full p-3 rounded-md border border-gray-600 text-black focus:outline-none focus:ring-2 focus:ring-[#C62A35] transition duration-200"
                             required
                         />
                     </div>
@@ -50,16 +50,10 @@ const GuestAdmin = () => {
                     <input
                         type="email"
                         placeholder="EMAIL"
-                        className="w-full p-3 rounded-md border border-gray-300 text-black focus:outline-none focus:ring-2 focus:ring-[#C62A35] transition duration-200"
+                        className="w-full p-3 rounded-md border border-gray-600 text-black focus:outline-none focus:ring-2 focus:ring-[#C62A35] transition duration-200"
                         required
                     />
 
-                    {/* Message */}
-                    <textarea
-                        placeholder="MESSAGE (Optional)"
-                        className="w-full p-3 rounded-md border border-gray-300 text-black focus:outline-none focus:ring-2 focus:ring-[#C62A35] transition duration-200"
-                        rows="4"
-                    ></textarea>
 
                     {/* Submit Button */}
                     <button

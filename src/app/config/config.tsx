@@ -14,10 +14,12 @@ import LandingPageAdmin from "../pages/adminPage/landingPageAdmin";
 import ExhibitPageAdmin from "../pages/adminPage/exhibitPageAdmin";
 import FeaturedArtistPageAdmin from "../pages/adminPage/featuredArtistAdmin";
 import AllArtPageAdmin from "../pages/adminPage/allArtAdmin";
-import DashboardAdmin from "../pages/adminPage/dashboard";
+import DashboardAdmin from "../pages/adminPage/dashboardAdmin";
 import LogInAdmin from "../pages/adminPage/logInAdmin";
 import AddExhibitAdmin from "../pages/adminPage/addExhibit";
-
+import LandingPage1 from "../../assets/landingPage/LandingPage1.png";
+import LandingPage2 from "../../assets/landingPage/LandingPage2.png";
+import LandingPage3 from "../../assets/landingPage/LandingPage3.png";
 //artistPages
 import AllArtArtist from "../pages/artistPage/allArtArtist";
 import ExhibitPageArtist from "../pages/artistPage/exhibitPageArtist";
@@ -27,11 +29,12 @@ import LogInArtist from "../pages/artistPage/logInArtist";
 import ProfileArtist from "../pages/artistPage/artistProfile";
 
 import BGexhibitions from "../../assets/BGexhibitions.png";
-import imageSlide from "../../assets/Image slide.png";
+
 import lopenzeLogo from "../../assets/lopenze_logo.png";
 import Exhibit_1 from "../../assets/Exhibits/Exhibit_1.png";
 import Exhibit_2 from "../../assets/Exhibits/Exhibit_2.png";
 import Exhibit_3 from "../../assets/Exhibits/Exhibit_3.png";
+import Exhibit_4 from "../../assets/Exhibits/Exhibit_4.png";
 import Artist_1 from "../../assets/Artist/Artist_1.png";
 import Artist_2 from "../../assets/Artist/Artist_2.png";
 import Artist_3 from "../../assets/Artist/Artist_3.png";
@@ -79,110 +82,129 @@ import ViewArtsArtist from "../pages/artistPage/viewArtsArtist";
 import ViewArtsAdmin from "../pages/adminPage/viewArtsAdmin";
 import AddExhibitArtist from "../pages/artistPage/addExhibitArtist";
 import ArtistEditProfile from "../pages/artistPage/artistEditProfile";
+import ViewArtistProfile from "../pages/userPage/viewArtistProfile";
+import ViewExhibitsArtist from "../pages/artistPage/viewExhibitsArtist";
+import ViewArtistProfileArtist from "../pages/artistPage/viewArtistProfileArtist";
+import ViewExhibitsAdmin from "../pages/adminPage/viewExhibitsAdmin";
+import ViewArtistAdmin from "../pages/adminPage/viewArtistProfileAdmin";
 // import createAccount from "../pages/userPage/createAccount";
 
 //Images
 export const Image = [
-  { src: imageSlide, alt: "Image Slide" },
   { src: lopenzeLogo, alt: "Lopenze Logo" },
   { src: BGexhibitions, alt: "BGexhibitions" },
 ];
 
-export const ExhibitsImages = [
-  {
-    src: Exhibit_1,
-    alt: "Exhibit 1",
-    title: "Exhibit Title 1",
-    date: "January 15, 2025",
-    location: "National Museum of Fine Arts, Manila, Philippines",
-    description:
-      "This exhibit showcases the richness of Filipino heritage through traditional and contemporary art forms. Featuring intricate paintings, sculptures, and crafts from local artists, 'Brushstrokes of Heritage' highlights the stories and culture of the Philippines. Visitors can also enjoy live painting sessions, craft demonstrations, and cultural performances that bring the artwork to life.",
-  },
-  {
-    src: Exhibit_2,
-    alt: "Exhibit 2",
-    title: "Exhibit Title 2",
-    date: "January 15, 2025",
-    location: "National Museum of Fine Arts, Manila, Philippines",
-    description:
-      "This exhibit showcases the richness of Filipino heritage through traditional and contemporary art forms. Featuring intricate paintings, sculptures, and crafts from local artists, 'Brushstrokes of Heritage' highlights the stories and culture of the Philippines. Visitors can also enjoy live painting sessions, craft demonstrations, and cultural performances that bring the artwork to life.",
-  },
-  {
-    src: Exhibit_3,
-    alt: "Exhibit 3",
-    title: "Exhibit Title 3",
-    date: "January 15, 2025",
-    location: "National Museum of Fine Arts, Manila, Philippines",
-    description:
-      "This exhibit showcases the richness of Filipino heritage through traditional and contemporary art forms. Featuring intricate paintings, sculptures, and crafts from local artists, 'Brushstrokes of Heritage' highlights the stories and culture of the Philippines. Visitors can also enjoy live painting sessions, craft demonstrations, and cultural performances that bring the artwork to life.",
-  },
-  {
-    src: Exhibit_1,
-    alt: "Exhibit 4",
-    title: "Cultural Kaleidoscope",
-    date: "February 20, 2025",
-    location: "Cultural Center of the Philippines, Pasay City",
-    description:
-      "Experience a vibrant celebration of cultural diversity through an array of art forms, including painting, sculpture, and digital media. The 'Cultural Kaleidoscope' exhibit brings together artists from different backgrounds to showcase the beauty of cultural fusion and the power of artistic expression in fostering understanding among communities.",
-  },
-  {
-    src: Exhibit_2,
-    alt: "Exhibit 5",
-    title: "Art Beyond Boundaries",
-    date: "March 5, 2025",
-    location: "Ayala Museum, Makati City",
-    description:
-      "Breaking traditional boundaries, 'Art Beyond Boundaries' features innovative works by contemporary artists who challenge the status quo. This exhibit explores themes of identity, technology, and the future, offering visitors a glimpse into the possibilities of art in a rapidly changing world.",
-  },
-  {
-    src: Exhibit_3,
-    alt: "Exhibit 6",
-    title: "Nature's Symphony",
-    date: "March 25, 2025",
-    location: "The Mind Museum, Taguig City",
-    description:
-      "Delve into the harmonious relationship between art and nature with 'Nature's Symphony.' This exhibit features breathtaking landscapes, wildlife art, and environmental installations that highlight the beauty and fragility of our natural world. Join us in celebrating the wonders of nature and the artists who capture its essence.",
-  },
+export const LandingPageImage = [
+  { src: LandingPage1, alt: "Landing Page1" },
+  { src: LandingPage2, alt: "Landing Page2" },
+  { src: LandingPage3, alt: "Landing Page3" },
 ];
-
-// File: src/app/config/config.tsx
 
 export const ExhibitsData = [
   {
+    id: "1",
     title: "Shades of Solitude",
     date: "December 10–December 30, 2024",
     location: "Serenity Art Gallery, Davao City",
     description:
       "A collection of introspective artworks exploring solitude, self-reflection, and inner peace. Paintings, photographs, and installations reveal the profound power of stillness in a chaotic world.",
-    image: { src: ExhibitImage1, alt: "ExhibitsImage1" },
+    image: {
+      src: ExhibitImage1,
+      alt: "ExhibitsImage1",
+    },
     views: 250,
   },
   {
+    id: "2",
     title: "The Art of Now",
     date: "January 15–February 5, 2024",
     location: "Boundless Arts Studio, Makati",
     description:
       "Step into a realm where imagination knows no bounds. This exhibit brings together an eclectic collection of artworks that traverse diverse styles, mediums, and perspectives.",
-    image: { src: ExhibitImage2, alt: "ExhibitsImage2" },
+    image: {
+      src: ExhibitImage2,
+      alt: "ExhibitsImage2",
+    },
     views: 400,
   },
   {
+    id: "3",
     title: "Faces of Humanity",
     date: "September 1–September 20, 2024",
     location: "Cultural Center of the Philippines, Pasay City",
     description:
       "A powerful exploration of identity and diversity. This exhibit features portraits, sculptures, and multimedia projects that celebrate the stories and struggles that define us as human beings.",
-    image: { src: ExhibitImage3, alt: "ExhibitsImage3" },
+    image: {
+      src: ExhibitImage3,
+      alt: "ExhibitsImage3",
+    },
     views: 320,
   },
   {
+    id: "4",
     title: "Fragments of Time",
     date: "April 10–April 30, 2024",
     location: "Metropolitan Art Museum, Quezon City",
     description:
       "Explore the relationship between history and memory through mixed-media art and photography. 'Fragments of Time' captures moments that define our collective past and inspire reflections on our shared future.",
-    image: { src: ExhibitImage4, alt: "ExhibitsImage4" },
+    image: {
+      src: ExhibitImage4,
+      alt: "ExhibitsImage4",
+    },
     views: 500,
+  },
+  {
+    id: "5",
+    title: "Brushstrokes of Heritage",
+    date: "January 15, 2025",
+    location: "National Museum of Fine Arts, Manila, Philippines",
+    description:
+      "This exhibit showcases the richness of Filipino heritage through traditional and contemporary art forms. Featuring intricate paintings, sculptures, and crafts from local artists, 'Brushstrokes of Heritage' highlights the stories and culture of the Philippines. Visitors can also enjoy live painting sessions, craft demonstrations, and cultural performances that bring the artwork to life.",
+    image: {
+      src: Exhibit_1,
+      alt: "Exhibit 1",
+    },
+    views: 650,
+  },
+  {
+    id: "6",
+    title: "Cultural Kaleidoscope",
+    date: "February 20, 2025",
+    location: "Cultural Center of the Philippines, Pasay City",
+    description:
+      "Experience a vibrant celebration of cultural diversity through an array of art forms, including painting, sculpture, and digital media. The 'Cultural Kaleidoscope' exhibit brings together artists from different backgrounds to showcase the beauty of cultural fusion and the power of artistic expression in fostering understanding among communities.",
+    image: {
+      src: Exhibit_4,
+      alt: "Exhibit 4",
+    },
+    views: 456,
+  },
+  {
+    id: "7",
+    title: "Art Beyond Boundaries",
+    date: "March 5, 2025",
+    location: "Ayala Museum, Makati City",
+    description:
+      "Breaking traditional boundaries, 'Art Beyond Boundaries' features innovative works by contemporary artists who challenge the status quo. This exhibit explores themes of identity, technology, and the future, offering visitors a glimpse into the possibilities of art in a rapidly changing world.",
+    image: {
+      src: Exhibit_2,
+      alt: "Exhibit 5",
+    },
+    views: 54,
+  },
+  {
+    id: "8",
+    title: "Nature's Symphony",
+    date: "March 25, 2025",
+    location: "The Mind Museum, Taguig City",
+    description:
+      "Delve into the harmonious relationship between art and nature with 'Nature's Symphony.' This exhibit features breathtaking landscapes, wildlife art, and environmental installations that highlight the beauty and fragility of our natural world. Join us in celebrating the wonders of nature and the artists who capture its essence.",
+    image: {
+      src: Exhibit_3,
+      alt: "Exhibit 6",
+    },
+    views: 23,
   },
 ];
 
@@ -192,60 +214,100 @@ export const ArtisyImage = [
     Alt: "Artist1",
     Name: "Ajihmer Balahula",
     Email: "Aje@gmail.com",
+    Instagram: "@ajihmer.art",
+    Facebook: "Ajihmer Balahula Art",
+    Description:
+      "Contemporary artist specializing in abstract expressionism. My work explores themes of identity and cultural heritage through bold colors and dynamic compositions.",
   },
   {
     src: Artist_2,
     Alt: "Artist2",
     Name: "John Paul Almazan",
     Email: "Almazan@gmail.com",
+    Instagram: "@jpalmazan",
+    Facebook: "JP Almazan Fine Arts",
+    Description:
+      "Traditional oil painter focused on Philippine landscapes and cultural scenes. Each piece tells a story of our rich heritage and natural beauty.",
   },
   {
     src: Artist_3,
     Alt: "Artist3",
     Name: "Arianne Gupa",
     Email: "Gupaa9@gmail.com",
+    Instagram: "@arianne.creates",
+    Facebook: "Arianne Gupa Arts",
+    Description:
+      "Mixed media artist combining traditional techniques with digital elements. I create immersive pieces that bridge the gap between classical and contemporary art.",
   },
   {
     src: Artist_4,
     Alt: "Artist4",
     Name: "Martinne Tanada",
     Email: "Mars29@gmail.com",
+    Instagram: "@martinne.art",
+    Facebook: "Martinne T Gallery",
+    Description:
+      "Digital artist and illustrator specializing in fantasy and surreal artwork. My pieces transport viewers to dreamlike worlds filled with wonder and imagination.",
   },
   {
     src: Artist_5,
     Alt: "Artist5",
     Name: "Stephanie Lucero",
     Email: "Lucero090@gmail.com",
+    Instagram: "@steph.lucero",
+    Facebook: "Stephanie Lucero Art",
+    Description:
+      "Watercolor specialist focusing on botanical and nature-inspired pieces. I capture the delicate beauty of flora and fauna through subtle colors and precise brushwork.",
   },
   {
     src: Artist_4,
     Alt: "Artist1",
     Name: "Ajihmer Balahula",
     Email: "Aje@gmail.com",
+    Instagram: "@ajihmer.art",
+    Facebook: "Ajihmer Balahula Art",
+    Description:
+      "Contemporary artist specializing in abstract expressionism. My work explores themes of identity and cultural heritage through bold colors and dynamic compositions.",
   },
   {
     src: Artist_5,
     Alt: "Artist2",
     Name: "John Paul Almazan",
     Email: "Almazan@gmail.com",
+    Instagram: "@jpalmazan",
+    Facebook: "JP Almazan Fine Arts",
+    Description:
+      "Traditional oil painter focused on Philippine landscapes and cultural scenes. Each piece tells a story of our rich heritage and natural beauty.",
   },
   {
     src: Artist_1,
     Alt: "Artist3",
     Name: "Arianne Gupa",
     Email: "Gupaa9@gmail.com",
+    Instagram: "@arianne.creates",
+    Facebook: "Arianne Gupa Arts",
+    Description:
+      "Mixed media artist combining traditional techniques with digital elements. I create immersive pieces that bridge the gap between classical and contemporary art.",
   },
   {
     src: Artist_3,
     Alt: "Artist4",
     Name: "Martinne Tanada",
     Email: "Mars29@gmail.com",
+    Instagram: "@martinne.art",
+    Facebook: "Martinne T Gallery",
+    Description:
+      "Digital artist and illustrator specializing in fantasy and surreal artwork. My pieces transport viewers to dreamlike worlds filled with wonder and imagination.",
   },
   {
     src: Artist_2,
     Alt: "Artist5",
     Name: "Stephanie Lucero",
     Email: "Lucero090@gmail.com",
+    Instagram: "@steph.lucero",
+    Facebook: "Stephanie Lucero Art",
+    Description:
+      "Watercolor specialist focusing on botanical and nature-inspired pieces. I capture the delicate beauty of flora and fauna through subtle colors and precise brushwork.",
   },
 ];
 
@@ -346,6 +408,138 @@ export const ArtsData = [
   },
 ];
 
+//mock up data for history
+
+export type HistoryEntry = {
+  userImage: string;
+  userName: string;
+  userEmail: string;
+  action: string;
+  date: string;
+};
+export const mockHistoryData: HistoryEntry[] = [
+  {
+    userImage: ArtisyImage[0].src,
+    userName: ArtisyImage[0].Name,
+    userEmail: ArtisyImage[0].Email,
+    action: "Added a new art piece",
+    date: "Jan 19, 2025",
+  },
+  {
+    userImage: ArtisyImage[1].src,
+    userName: ArtisyImage[1].Name,
+    userEmail: ArtisyImage[1].Email,
+    action: "Updated profile information",
+    date: "Jan 18, 2025",
+  },
+  {
+    userImage: ArtisyImage[2].src,
+    userName: ArtisyImage[2].Name,
+    userEmail: ArtisyImage[2].Email,
+    action: "Created a new exhibition",
+    date: "Jan 17, 2025",
+  },
+  {
+    userImage: ArtisyImage[3].src,
+    userName: ArtisyImage[3].Name,
+    userEmail: ArtisyImage[3].Email,
+    action: "Deleted an artwork",
+    date: "Jan 16, 2025",
+  },
+  {
+    userImage: ArtisyImage[0].src,
+    userName: ArtisyImage[0].Name,
+    userEmail: ArtisyImage[0].Email,
+    action: "Modified exhibition details",
+    date: "Jan 15, 2025",
+  },
+  {
+    userImage: ArtisyImage[1].src,
+    userName: ArtisyImage[1].Name,
+    userEmail: ArtisyImage[1].Email,
+    action: "Added new social media links",
+    date: "Jan 14, 2025",
+  },
+  {
+    userImage: ArtisyImage[2].src,
+    userName: ArtisyImage[2].Name,
+    userEmail: ArtisyImage[2].Email,
+    action: "Updated artwork description",
+    date: "Jan 13, 2025",
+  },
+  {
+    userImage: ArtisyImage[3].src,
+    userName: ArtisyImage[3].Name,
+    userEmail: ArtisyImage[3].Email,
+    action: "Changed profile picture",
+    date: "Jan 12, 2025",
+  },
+  {
+    userImage: ArtisyImage[0].src,
+    userName: ArtisyImage[0].Name,
+    userEmail: ArtisyImage[0].Email,
+    action: "Added new art collection",
+    date: "Jan 11, 2025",
+  },
+];
+
+// Mock data for invited guests and artists
+export interface InvitedGuest {
+  id: string;
+  name: string;
+  email: string;
+  status: "Pending" | "Accepted" | "Declined";
+}
+
+export interface InvitedArtist {
+  id: string;
+  name: string;
+  email: string;
+  status: "Pending" | "Accepted" | "Declined";
+}
+
+export const mockInvitedGuests: InvitedGuest[] = [
+  {
+    id: "1",
+    name: "John Doe",
+    email: "john.doe@example.com",
+    status: "Accepted",
+  },
+  {
+    id: "2",
+    name: "Jane Smith",
+    email: "jane.smith@example.com",
+    status: "Pending",
+  },
+  {
+    id: "3",
+    name: "Mike Johnson",
+    email: "mike.j@example.com",
+    status: "Declined",
+  },
+];
+
+export const mockInvitedArtists: InvitedArtist[] = [
+  {
+    id: "1",
+    name: "Maria Garcia",
+    email: "maria.art@example.com",
+    status: "Accepted",
+  },
+  {
+    id: "2",
+    name: "David Chen",
+    email: "david.chen@example.com",
+    status: "Pending",
+  },
+  {
+    id: "3",
+    name: "Sarah Wilson",
+    email: "sarah.w@example.com",
+    status: "Accepted",
+  },
+];
+
 // App Routes
 export const APP_ROUTES = {
   MAIN: [
@@ -354,7 +548,7 @@ export const APP_ROUTES = {
     { path: "/featuredArtistPage", element: <FeaturedArtist /> },
     { path: "/allArtPage", element: <AllArtPage /> },
     { path: "/logIn", element: <LogIn /> },
-    { path: "/profile", element: <Profile /> },
+    { path: "/viewArtistProfile", element: <ViewArtistProfile /> },
     { path: "/viewArts", element: <ViewArts /> },
     { path: "/viewExhibits", element: <ViewExhibits /> },
     { path: "/guest", element: <Guest /> },
@@ -375,6 +569,9 @@ export const APP_ROUTES = {
     { path: "/history", element: <History /> },
     { path: "/guestAdmin", element: <GuestAdmin /> },
     { path: "/viewArtsAdmin", element: <ViewArtsAdmin /> },
+    { path: "/dashboardAdmin", element: <DashboardAdmin /> },
+    { path: "/viewExhibitsAdmin", element: <ViewExhibitsAdmin /> },
+    { path: "/viewArtistProfileAdmin", element: <ViewArtistAdmin /> },
     // { path: "/profileAdmin", element: <ProfileAdmin /> },
   ],
   ARTIST: [
@@ -386,11 +583,11 @@ export const APP_ROUTES = {
     { path: "/landingPageArtist", element: <LandingPageArtist /> },
     { path: "/logInArtist", element: <LogInArtist /> },
     { path: "/logOutArtist", element: <LogOutArtist /> },
-    { path: "/profileArtist", element: <ProfileArtist /> }, 
+    { path: "/profileArtist", element: <ProfileArtist /> },
     { path: "/viewArtsArtist", element: <ViewArtsArtist /> },
-    { path: "/viewExhibits", element: <ViewExhibits /> },
+    { path: "/viewExhibitsArtist", element: <ViewExhibitsArtist /> },
     { path: "/artistEditProfile", element: <ArtistEditProfile /> },
-
+    { path: "/viewArtistProfileArtist", element: <ViewArtistProfileArtist /> },
   ],
 };
 

@@ -1,8 +1,27 @@
 import { ArtisyImage } from "../../config/config";
 import Button from "../../components/Buttons/button";
 import ArtistProfileCard from "../../components/Cards/ArtistProfileCard";
+import { useNavigate } from "react-router-dom";
 
 const FeaturedArtist = () => {
+  const navigate = useNavigate();
+  
+  const handleViewArtistProfile = (artist: any) => {
+    const artistData = {
+      src: artist.src,
+      alt: artist.Alt,
+      name: artist.Name,
+      email: artist.Email,
+      instagram: artist.Instagram,
+      facebook: artist.Facebook,
+      description: artist.Description,
+    };
+
+    navigate("/viewArtistProfile", {
+      state: { artistData: JSON.stringify(artistData) },
+    });
+    window.scrollTo(0, 0);
+  };
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center py-10 bg-gray-50">
       <div className="text-center mb-12">
@@ -19,6 +38,10 @@ const FeaturedArtist = () => {
             alt={artist.Alt}
             name={artist.Name}
             email={artist.Email}
+            instagram={artist.Instagram}
+            facebook={artist.Facebook}
+            description={artist.Description}
+            onViewProfile={() => handleViewArtistProfile(artist)}
           />
         ))}
       </div>

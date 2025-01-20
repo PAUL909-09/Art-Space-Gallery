@@ -113,7 +113,7 @@ const ViewArts = () => {
           {/* Content Section */}
           <div className="pt-20 pb-8 px-6 text-center">
             <h2 className="text-2xl font-bold text-black">{ArtisyImage[0].Name}</h2>
-            <p className="text-sm text-gray-600">{ArtisyImage[0].email}</p>
+            {/* <p className="text-sm text-gray-600">{ArtisyImage[0].email}</p> */}
 
             {/* Tagline */}
             <div className="mt-3">

@@ -1,4 +1,4 @@
-// File: src/components/Dashboard.js
+
 import React from "react";
 import {
   PieChart,
@@ -317,11 +317,71 @@ const Dashboard = () => {
               <div className="grid grid-cols-3 p-4">
                 <div>
                   <button className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg flex items-center">
-                    + Add New Exhibit
+                    + Add New Account
                   </button>
                 </div>
                 <div></div>
                 <div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+       <section className="py-14 px-4 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-4xl font-bold mt-10 text-white mb-8">Guest</h2>
+          <div className="bg-gray-900 rounded-2xl overflow-hidden">
+            {/* Table Header */}
+            <div className="grid grid-cols-3 bg-gray-800 p-4">
+              <div className="text-white font-semibold">Email</div>
+              <div className="text-white font-semibold">Status</div>
+              <div className="text-white font-semibold text-right">Action</div>
+            </div>
+
+            {/* Table Rows */}
+            <div className="divide-y divide-gray-700">
+              {/* Row 1 */}
+              <div className="grid grid-cols-3 p-4 bg-red-900">
+                <div className="text-white">
+                  The possessed flower: Sunflower in the sunrise
+                </div>
+                <div className="text-white">On going</div>
+                <div className="flex justify-end gap-2">
+                  <button className="bg-yellow-400 hover:bg-yellow-500 text-black px-4 py-2 rounded-lg flex items-center">
+                    Edit <span className="ml-2">✏️</span>
+                  </button>
+                  <button className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg flex items-center">
+                    Delete <span className="ml-2">🗑️</span>
+                  </button>
+                </div>
+              </div>
+
+              {/* Row 2 */}
+              <div className="grid grid-cols-3 p-4">
+                <div className="text-white">
+                  Dancing swan: A performing arts
+                </div>
+                <div className="text-white">Coming soon</div>
+                <div className="flex justify-end gap-2">
+                  <button className="bg-yellow-400 hover:bg-yellow-500 text-black px-4 py-2 rounded-lg flex items-center">
+                    Edit <span className="ml-2">✏️</span>
+                  </button>
+                  <button className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg flex items-center">
+                    Delete <span className="ml-2">🗑️</span>
+                  </button>
+                </div>
+              </div>
+
+              {/* Add New Row */}
+              <div className="grid grid-cols-3 p-4">
+                <div>
+                  <button className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg flex items-center">
+                    + Add New Guest
+                  </button>
+                </div>
+                <div></div>
+                <div className="mb-10"></div>
               </div>
             </div>
           </div>

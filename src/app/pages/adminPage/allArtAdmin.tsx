@@ -1,7 +1,20 @@
 import React from "react";
 import { APP_COLORS, ArtsData, ArtsImage } from "../../config/config";
+import { useNavigate } from "react-router-dom";
 
-const AllArt = () => {
+const AllArtAdmin = () => {
+  const navigate = useNavigate();
+
+  const handleViewMore = (art: {
+    title: string;
+    artist: string;
+    type: string;
+    description: string;
+    image: { src: string; alt: string };
+  }) => {
+    navigate("/viewArtsAdmin", { state: art });
+    window.scrollTo(0, 0); // scroll to the top of the page
+  };
   return (
     <div>
       {" "}
@@ -22,18 +35,17 @@ const AllArt = () => {
               <div
                 key={index}
                 className={`relative rounded-lg shadow-lg overflow-hidden group transition-all duration-500 ease-in-out`}
-                // style={{
-                //   width: `${image.width}px`,
-                //   height: `${image.height}px`,
-                // }}
+              // style={{
+              //   width: `${image.width}px`,
+              //   height: `${image.height}px`,
+              // }}
               >
                 {/* Image */}
                 <div
-                  className={`transform ${
-                    isEven
+                  className={`transform ${isEven
                       ? "rotate-3 translate-y-5"
                       : "-rotate-3 -translate-y-5"
-                  } group-hover:rotate-0 group-hover:translate-y-0 group-hover:scale-110 transition-all duration-500`}
+                    } group-hover:rotate-0 group-hover:translate-y-0 group-hover:scale-110 transition-all duration-500`}
                 >
                   <img
                     src={image.src}
@@ -108,7 +120,10 @@ const AllArt = () => {
                 <p className="text-red-600 font-medium">Artist: {art.artist}</p>
                 <p className="text-red-600 font-medium">Type: {art.type}</p>
                 <p className="text-gray-700 text-sm mt-4">{art.description}</p>
-                <button className="flex items-center justify-center mt-6 mx-auto bg-red-600 text-white px-6 py-2  shadow hover:bg-red-700 transform hover:scale-105 transition-all duration-300">
+                <button
+                  onClick={() => handleViewMore(art)}
+                  className="flex items-center justify-center mt-6 mx-auto bg-red-600 text-white px-6 py-2 shadow hover:bg-red-700 transform hover:scale-105 transition-all duration-300"
+                >
                   View More
                 </button>
               </div>
@@ -137,4 +152,4 @@ const getImagePositionStyles = (index: number) => {
   return positions[index] || { top: "0%", left: "0%" };
 };
 
-export default AllArt;
+export default AllArtAdmin;

@@ -1,17 +1,15 @@
 import {
   ArtisyImage,
-  Image,
-  ExhibitsImages,
+  ExhibitsData,
   ArtsData,
+  LandingPageImage,
 } from "../../config/config";
 import ExhibitCard from "../../components/Cards/ExhibitCard";
 import { useState } from "react";
 import SliderArrow from "../../components/Buttons/SliderArrow";
 import ArtistProfileCard from "../../components/Cards/ArtistProfileCard";
-import { IoChevronBackSharp, IoChevronForwardSharp } from "react-icons/io5";
-import Button from "../../components/Buttons/button";
-import { FiEye } from "react-icons/fi";
 import ArtCard from "../../components/Cards/ArtCard";
+import { useNavigate } from "react-router-dom";
 
 const ITEMS_PER_PAGE = 5;
 
@@ -21,7 +19,7 @@ const LandingPage: React.FC = () => {
   // Number of cards to show per slide
 
   const handleNext = () => {
-    if (currentIndex + cardsPerPage < ExhibitsImages.length) {
+    if (currentIndex + cardsPerPage < ExhibitsData.length) {
       setCurrentIndex(currentIndex + cardsPerPage);
     }
   };
@@ -51,12 +49,53 @@ const LandingPage: React.FC = () => {
     throw new Error("Function not implemented.");
   }
 
+  const navigate = useNavigate();
+
+  const handleViewExhibit = (exhibit: any) => {
+    const exhibitData = {
+      id: exhibit.id,
+      title: exhibit.title,
+      date: exhibit.date,
+      location: exhibit.location,
+      description: exhibit.description,
+      image: { src: exhibit.image.src, alt: exhibit.image.alt },
+      views: exhibit.views,
+    };
+
+    navigate("/viewExhibitsArtist", {
+      state: { exhibitData: JSON.stringify(exhibitData) },
+    });
+    window.scrollTo(0, 0);
+  };
+
+  const handleViewArtistProfile = (artist: any) => {
+    const artistData = {
+      src: artist.src,
+      alt: artist.Alt,
+      name: artist.Name,
+      email: artist.Email,
+      instagram: artist.Instagram,
+      facebook: artist.Facebook,
+      description: artist.Description,
+    };
+
+    navigate("/viewArtistProfileArtist", {
+      state: { artistData: JSON.stringify(artistData) },
+    });
+    window.scrollTo(0, 0);
+  };
+
   return (
     <div>
       {/* Hero Banner */}
       <section
-        className="relative bg-cover bg-center text-white py-20 px-5 sm:py-28 lg:py-36 flex items-center justify-center transition-all duration-700 ease-in-out"
-        style={{ backgroundImage: `url(${Image[0].src})`, height: "90vh" }}
+        className="relative bg-cover bg-center text-white py-20 px-5 sm:py-28 lg:py-36 flex items-center justify-center transition-all duration-700 ease-in-out animate-[slideIn_1s_ease-in-out_1]"
+        style={{
+          backgroundImage: `url(${
+            LandingPageImage[currentIndex % LandingPageImage.length].src
+          })`,
+          height: "90vh",
+        }}
       >
         <div className="flex items-center justify-start min-h-screen">
           <div className="bg-black bg-opacity-50 p-8 rounded-lg w-1/2 text-left ml-10">
@@ -81,38 +120,6 @@ const LandingPage: React.FC = () => {
               forms of art.
             </p>
           </div>
-        </div>
-
-        {/* Previous Navigation Button */}
-        <div className="absolute bottom-10 left-10">
-          <Button
-            onClick={handlePrev}
-            variant="primary"
-            className="px-6 py-3 text-sm shadow-lg hover:scale-105 hover:shadow-xl transition-all duration-300 ease-in-out backdrop-blur-md bg-black bg-opacity-50 rounded-md focus:outline-none focus:ring-4 focus:ring-white/70"
-          >
-            <span className="flex items-center">
-              <IoChevronBackSharp className="text-2xl text-white mr-2 hover:text-gray-300" />
-              <span className="text-white font-semibold hover:text-gray-300">
-                Previous
-              </span>
-            </span>
-          </Button>
-        </div>
-
-        {/* Next Navigation Button */}
-        <div className="absolute bottom-10 right-10">
-          <Button
-            onClick={handleNext}
-            variant="primary"
-            className="px-6 py-3 text-sm shadow-lg hover:scale-105 hover:shadow-xl transition-all duration-300 ease-in-out backdrop-blur-md bg-black bg-opacity-50 rounded-md focus:outline-none focus:ring-4 focus:ring-white/70"
-          >
-            <span className="flex items-center">
-              <span className="text-white font-semibold hover:text-grey-300">
-                Next
-              </span>
-              <IoChevronForwardSharp className="text-2xl text-white ml-2 hover:text-gray-100" />
-            </span>
-          </Button>
         </div>
       </section>
 
@@ -157,24 +164,26 @@ const LandingPage: React.FC = () => {
                 transform: `translateX(-${
                   currentIndex * (100 / cardsPerPage)
                 }%)`,
-                width: `${(100 * ExhibitsImages.length) / cardsPerPage}%`,
+                width: `${(100 * ExhibitsData.length) / cardsPerPage}%`,
               }}
             >
-              {ExhibitsImages.map((exhibit, index) => (
+              {ExhibitsData.map((exhibit) => (
                 <div
-                  key={index}
+                  key={exhibit.id}
                   className="flex-shrink-0 w-full md:w-1/3 px-2"
                   style={{ width: `${100 / cardsPerPage}%` }}
                 >
                   <ExhibitCard
-                    src={exhibit.src}
-                    alt={exhibit.alt}
+                    id={exhibit.id}
+                    src={exhibit.image.src}
+                    alt={exhibit.image.alt}
                     title={exhibit.title}
                     date={exhibit.date}
                     location={exhibit.location}
                     description={exhibit.description}
-                    isExpanded={false} // Removed expanded logic for simplicity
-                    onReadMore={() => {}}
+                    views={exhibit.views}
+                    isExpanded={false}
+                    onViewMore={() => handleViewExhibit(exhibit)}
                   />
                 </div>
               ))}
@@ -185,7 +194,7 @@ const LandingPage: React.FC = () => {
           <SliderArrow
             direction="right"
             onClick={handleNext}
-            disabled={currentIndex + cardsPerPage >= ExhibitsImages.length}
+            disabled={currentIndex + cardsPerPage >= ExhibitsData.length}
           />
         </div>
       </section>
@@ -216,6 +225,10 @@ const LandingPage: React.FC = () => {
               alt={artist.Alt}
               name={artist.Name}
               email={artist.Email}
+              instagram={artist.Instagram}
+              facebook={artist.Facebook}
+              description={artist.Description}
+              onViewProfile={() => handleViewArtistProfile(artist)}
             />
           ))}
         </div>

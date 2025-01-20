@@ -1,8 +1,10 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import { APP_ROUTES, Icons } from "../../config/config";
+import { useState } from "react";
 
 const AddExhibit = () => {
   const navigate = useNavigate(); // Correct hook for navigation
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   return (
     <div>
@@ -34,13 +36,31 @@ const AddExhibit = () => {
               >
                 <div className="rounded-md outline outline-2 outline-offset-8 outline-black">
                   <img
-                    src={Icons[0]?.src || "default-icon.png"} // Fallback if Icons is empty
+                    src={selectedImage || Icons[0]?.src || "default-icon.png"} // Show selected image or fallback
                     alt={Icons[0]?.alt || "default-icon"}
-                    className="h-12 w-12 rounded-md"
+                    className={
+                      selectedImage
+                        ? "w-full h-full object-cover rounded-lg"
+                        : "h-12 w-12 rounded-md"
+                    }
                   />
                 </div>
               </div>
-              <input type="file" id="fileInput" className="hidden" />
+              <input
+                type="file"
+                id="fileInput"
+                className="hidden"
+                onChange={(e) => {
+                  const file = e.target.files?.[0];
+                  if (file) {
+                    const reader = new FileReader();
+                    reader.onloadend = () => {
+                      setSelectedImage(reader.result as string);
+                    };
+                    reader.readAsDataURL(file);
+                  }
+                }}
+              />
             </div>
             <form>
               <label
@@ -135,7 +155,9 @@ const AddExhibit = () => {
           <div
             className="w-10 h-10 bg-red-800 flex items-center justify-center rounded cursor-pointer"
             onClick={() => {
-              const route = APP_ROUTES.ADMIN.find((route) => route.path === "/addArt");
+              const route = APP_ROUTES.ADMIN.find(
+                (route) => route.path === "/addArt"
+              );
               if (route) navigate(route.path); // Safe navigation
             }}
           >
