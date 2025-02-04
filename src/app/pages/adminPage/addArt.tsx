@@ -75,6 +75,7 @@ const AddArt = () => {
           </div>
 
           {/* Artist Input */}
+          {/* Artist Input */}
           <div>
             <label
               htmlFor="artist"
@@ -86,6 +87,22 @@ const AddArt = () => {
               type="text"
               id="artist"
               placeholder="Enter artist name"
+              className="w-full p-3 text-black border border-black rounded-md focus:outline-none focus:ring-2 focus:ring-[#800000]"
+            />
+          </div>
+
+          {/* Dimensions Input */}
+          <div>
+            <label
+              htmlFor="dimensions"
+              className="block text-sm font-semibold text-black mb-2"
+            >
+              DIMENSIONS
+            </label>
+            <input
+              type="text"
+              id="dimensions"
+              placeholder="Enter dimensions (e.g., 12x16 inches)"
               className="w-full p-3 text-black border border-black rounded-md focus:outline-none focus:ring-2 focus:ring-[#800000]"
             />
           </div>

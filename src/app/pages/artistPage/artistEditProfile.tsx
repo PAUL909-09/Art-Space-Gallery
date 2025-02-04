@@ -1,151 +1,200 @@
-import { useNavigate } from "react-router-dom";
-import { Icons } from "../../config/config";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import ArtCard from "../../components/Cards/ArtCard";
+import Modal from "../../components/Modal/Modal";
+
+interface ArtistDataType {
+    ARTIST_DATA?: {
+        ArtWork: any[];
+        Profile: { src: string; alt: string };
+    };
+    Name: string;
+    ArtistType: string;
+    Email: string;
+    Instagram: string;
+    Facebook: string;
+    Description: string;
+}
+
 
 const ArtistEditProfile = () => {
-    const navigate = useNavigate(); // Correct hook for navigation
+    const navigate = useNavigate();
+    const location = useLocation();
+    const artistData = location.state?.artist || {};
+    const artistArtworks = location.state?.artistArtworks || [];
+
+
+
+
+    const [formData, setFormData] = useState({
+        name: "",
+        email: "",
+        contact: "",
+        social: "",
+        artStyle: "",
+        description: ""
+    });
+
+    const [selectedImage, setSelectedImage] = useState(artistData.ARTIST_DATA?.Profile?.src || "/default-avatar.png");
+    const [loading, setLoading] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState(false); // Modal state
+
+    useEffect(() => {
+        if (artistData) {
+            setFormData({
+                name: artistData.Name || "",
+                email: artistData.Email || "",
+                contact: artistData.Contact || "",
+                social: artistData.Instagram || "",
+                artStyle: artistData.ArtistType || "",
+                description: artistData.Description || ""
+            });
+
+            setSelectedImage(artistData.ARTIST_DATA?.Profile?.src || "/default-avatar.png");
+        }
+    }, [artistData]);
+
+    const handleChange = (e: { target: { id: any; value: any; }; }) => {
+        setFormData({ ...formData, [e.target.id]: e.target.value });
+    };
+
+    const handleImageChange = (e: { target: { files: Blob[]; }; }) => {
+        if (e.target.files && e.target.files[0]) {
+            const reader = new FileReader();
+            reader.onload = (event) => {
+                setSelectedImage(event.target.result);
+            };
+            reader.readAsDataURL(e.target.files[0]);
+        }
+    };
+
+    // const handleSubmit = (e: { preventDefault: () => void; }) => {
+    //     e.preventDefault();
+    //     setLoading(true);
+    //     setTimeout(() => {
+    //         setLoading(false);
+    //         alert("Profile updated successfully!");
+    //     }, 2000);
+    // };
+    const handleSubmit = (e: { preventDefault: () => void; }) => {
+        e.preventDefault();
+        setIsModalOpen(true); // Open the modal instead of directly saving
+    };
+
+    const handleModalConfirm = () => {
+        // Perform the actual save operation here (e.g., API call)
+        setLoading(true);
+        // Simulate a save (replace with your actual save logic)
+        setTimeout(() => {
+            setLoading(false);
+            alert("Profile updated successfully!");
+            navigate(-1); // Go back to the previous page after saving
+            setIsModalOpen(false); // Close the modal
+        }, 2000);
+    };
 
     return (
-        <div>
-            <section
-                className="min-h-screen bg-black font-Montserrat"
-                style={{ backgroundColor: "#201D1E" }}
-            >
-                <div className="flex flex-col items-center py-12 px-4 sm:px-6 lg:px-8">
-                    <h1 className="text-5xl text-white font-extrabold mb-12">
-                        EDIT PROFILE
-                    </h1>
+        <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-black via-[#C62A35] to-[#d35a47] p-6">
+            <div className="bg-white/30 backdrop-blur-md shadow-lg rounded-3xl p-8 max-w-4xl w-full border border-white/20">
+                <h1 className="text-4xl font-extrabold text-center text-white drop-shadow-md mb-6">Edit Profile</h1>
 
-                    <div className="w-full max-w-6xl  rounded-lg p-8">
-                        <div className="flex flex-wrap lg:flex-nowrap items-start gap-8">
-                            {/* Profile Image Section */}
-                            <div
-                                className="w-[300px] h-[300px] bg-white flex items-center justify-center rounded-lg cursor-pointer"
-                                onClick={() => document.getElementById("fileInput")?.click()}
-                            >
-                                <div className="w-16 h-16 flex items-center justify-center rounded-md outline outline-2 outline-black">
-                                    <img
-                                        src={Icons[0]?.src || "default-icon.png"} // Fallback if Icons is empty
-                                        alt={Icons[0]?.alt || "default-icon"}
-                                        className="h-12 w-12 rounded-md"
-                                    />
-                                </div>
-                            </div>
-                            <input type="file" id="fileInput" className="hidden" />
+                <div className="flex flex-col lg:flex-row items-center lg:items-start gap-10">
+                    <div className="relative group">
+                        <div
+                            className="w-48 h-48 rounded-full border-4 border-white shadow-lg bg-cover bg-center cursor-pointer"
+                            style={{ backgroundImage: `url(${selectedImage})` }}
+                            onClick={() => document.getElementById("fileInput")?.click()}
+                        ></div>
+                        <button
+                            onClick={() => document.getElementById("fileInput")?.click()}
+                            className="absolute bottom-2 right-2 bg-[#C62A35] text-white p-2 rounded-full text-sm shadow-md transition hover:bg-red-700"
+                        >
+                            Change
+                        </button>
+                        <input type="file" id="fileInput" className="hidden" onChange={handleImageChange} />
+                    </div>
 
-                            {/* Form Section */}
-                            <div className="flex-1">
-                                <form className="space-y-6">
-                                    <div>
-                                        <label
-                                            className="block text-sm text-gray-400 font-semibold mb-2"
-                                            htmlFor="name"
-                                        >
-                                            NAME
-                                        </label>
-                                        <input
-                                            type="text"
-                                            id="name"
-                                            placeholder="Enter the name"
-                                            className="w-full p-3 text-black rounded-md focus:outline-none focus:ring focus:ring-red-500"
-                                        />
-                                    </div>
+                    <form className="flex-1 space-y-4" onSubmit={handleSubmit}>
+                        <input
+                            type="text"
+                            id="name"
+                            value={formData.name}
+                            onChange={handleChange}
+                            className="w-full p-3 text-white bg-white/20 rounded-lg border border-white/40 focus:outline-none focus:ring-2 focus:ring-white/50"
+                            placeholder="Enter your name"
+                        />
+                        <input
+                            type="email"
+                            id="email"
+                            value={formData.email}
+                            onChange={handleChange}
+                            className="w-full p-3 text-white bg-white/20 rounded-lg border border-white/40 focus:outline-none focus:ring-2 focus:ring-white/50"
+                            placeholder="Enter your email"
+                        />
 
-                                    <div>
-                                        <label
-                                            className="block text-sm text-gray-400 font-semibold mb-2"
-                                            htmlFor="email"
-                                        >
-                                            EMAIL
-                                        </label>
-                                        <input
-                                            type="email"
-                                            id="email"
-                                            placeholder="Enter the email"
-                                            className="w-full p-3 text-black rounded-md focus:outline-none focus:ring focus:ring-red-500"
-                                        />
-                                    </div>
+                        <input
+                            type="text"
+                            id="social"
+                            value={formData.social}
+                            onChange={handleChange}
+                            className="w-full p-3 text-white bg-white/20 rounded-lg border border-white/40 focus:outline-none focus:ring-2 focus:ring-white/50"
+                            placeholder="Enter social media"
+                        />
+                        <input
+                            type="text"
+                            id="artStyle"
+                            value={formData.artStyle}
+                            onChange={handleChange}
+                            className="w-full p-3 text-white bg-white/20 rounded-lg border border-white/40 focus:outline-none focus:ring-2 focus:ring-white/50"
+                            placeholder="Enter art style"
+                        />
+                        <textarea
+                            id="description"
+                            value={formData.description}
+                            onChange={handleChange}
+                            className="w-full p-3 h-32 text-white bg-white/20 rounded-lg border border-white/40 focus:outline-none focus:ring-2 focus:ring-white/50 resize-none"
+                            placeholder="Enter description"
+                        ></textarea>
 
-                                    <div>
-                                        <label
-                                            className="block text-sm text-gray-400 font-semibold mb-2"
-                                            htmlFor="contact"
-                                        >
-                                            CONTACT NO.
-                                        </label>
-                                        <input
-                                            type="text"
-                                            id="contact"
-                                            placeholder="Enter contact number"
-                                            className="w-full p-3 text-black rounded-md focus:outline-none focus:ring focus:ring-red-500"
-                                        />
-                                    </div>
-
-                                    <div>
-                                        <label
-                                            className="block text-sm text-gray-400 font-semibold mb-2"
-                                            htmlFor="social"
-                                        >
-                                            SOCIAL MEDIA
-                                        </label>
-                                        <input
-                                            type="text"
-                                            id="social"
-                                            placeholder="Enter social media"
-                                            className="w-full p-3 text-black rounded-md focus:outline-none focus:ring focus:ring-red-500"
-                                        />
-                                    </div>
-
-                                    <div>
-                                        <label
-                                            className="block text-sm text-gray-400 font-semibold mb-2"
-                                            htmlFor="art-style"
-                                        >
-                                            ART STYLE
-                                        </label>
-                                        <input
-                                            type="text"
-                                            id="art-style"
-                                            placeholder="Enter art style"
-                                            className="w-full p-3 text-black rounded-md focus:outline-none focus:ring focus:ring-red-500"
-                                        />
-                                    </div>
-
-                                    <div>
-                                        <label
-                                            className="block text-sm text-gray-400 font-semibold mb-2"
-                                            htmlFor="description"
-                                        >
-                                            DESCRIPTION
-                                        </label>
-                                        <textarea
-                                            id="description"
-                                            placeholder="Enter description"
-                                            className="w-full p-3 h-48 text-black rounded-md focus:outline-none focus:ring focus:ring-red-500 resize-none"
-                                        ></textarea>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-
-                        {/* Buttons Section */}
-                        <div className="flex justify-center mt-8 space-x-4">
+                        {/* <div className="flex justify-center mt-6 space-x-4">
                             <button
                                 type="submit"
-                                className="bg-red-600 hover:bg-red-700 text-white py-3 px-8 rounded-md font-bold transition-colors"
+                                className="bg-[#C62A35] hover:bg-red-700 text-white py-3 px-8 rounded-lg font-bold transition-colors shadow-md"
                             >
-                                ADD
+                                {loading ? "Saving..." : "Save"}
                             </button>
                             <button
                                 type="button"
-                                className="border border-white hover:bg-gray-600 text-white py-3 px-8 rounded-md font-bold transition-colors"
+                                onClick={() => navigate(-1)}
+                                className="border border-white text-white hover:bg-white/20 py-3 px-8 rounded-lg font-bold transition-colors"
                             >
-                                CANCEL
+                                Cancel
+                            </button>
+                        </div> */}
+                        <div className="flex justify-center mt-6 space-x-4">
+                            <button type="button" onClick={handleSubmit} className="bg-[#C62A35] hover:bg-red-700 text-white py-3 px-8 rounded-lg font-bold transition-colors shadow-md">
+                                {loading ? "Saving..." : "Save"}
+                            </button>
+                            <button type="button" onClick={() => navigate(-1)} className="border border-white text-white hover:bg-white/20 py-3 px-8 rounded-lg font-bold transition-colors">
+                                Cancel
                             </button>
                         </div>
-                    </div>
+                        <Modal
+                            isOpen={isModalOpen}
+                            onClose={() => setIsModalOpen(false)}
+                            title="Confirm Profile Update"
+                            message="Are you sure you update your account?"
+                            confirmButtonText="Confirm Update"
+                            onConfirm={handleModalConfirm}
+                        // itemData={formData} // Removed itemData
+                        />
+                    </form>
                 </div>
-            </section>
+
+            </div>
         </div>
+
+
     );
 };
 

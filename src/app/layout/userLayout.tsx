@@ -1,15 +1,24 @@
-import NavigationBar from "../components/navigationBar";
-import { Outlet } from "react-router-dom";
-import Footer from "../components/footer";
+import { Outlet, useLocation } from "react-router-dom";
+import { useEffect } from "react";
+import NavigationBar from "../components/User/navigationBar";
+import Footer from "../components/User/footer";
 
-const userLayout = () => {
+const UserLayout = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0); // Scroll to top when route changes
+  }, [location.pathname]); // Runs whenever the pathname changes
+
   return (
     <div>
       <NavigationBar hamburgerShow={false} role="user" />
-      <Outlet />
+      <div className="mt-20"> {/* Prevent navbar from covering content */}
+        <Outlet />
+      </div>
       <Footer />
     </div>
   );
 };
 
-export default userLayout;
+export default UserLayout;

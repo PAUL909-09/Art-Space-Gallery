@@ -1,138 +1,168 @@
-import { APP_COLORS, APP_ROUTES } from "../../config/config";
 import { MdEmail } from "react-icons/md";
 import { IoCall } from "react-icons/io5";
-import { FaFacebook, FaInstagram, FaMapPin, FaTwitter } from "react-icons/fa";
-import { Link, NavLink } from "react-router-dom";
+import { FaFacebook, FaInstagram, FaTwitter } from "react-icons/fa";
+import { NavLink } from "react-router-dom";
+import { APP_COLORS } from "../../config/config";
 
 const FooterAdmin = () => {
   return (
-    <div className="flex flex-col ">
-      <div className="flex-grow">{/* Your other content goes here */}</div>
+    <div className="grid grid-cols-1 md:grid-cols-6">
+      {/* Left Panel (Red Section) */}
+      <div
+        className={`bg-red-600 text-white px-6 py-12 md:col-span-2`}
+        style={{ backgroundColor: APP_COLORS.secondary }}
+      >
+        <h1 className="text-xl font-bold mb-4">Get in Touch with Us!</h1>
+        <p className="text-sm leading-relaxed">
+          At Lopeze's Art Studio, we're always excited to hear from you! Whether
+          you're looking to collaborate, inquire about custom artworks, or
+          simply share your thoughts, our team is here to help.
+        </p>
 
-      <div className="flex">
-        {/* Left side - Red (40% width) */}
-        <div
-          className={`w-2/5 ${APP_COLORS.secondary} h-auto p-8 md:p-12 text-white`}
-        >
-          <h1 className="text-2xl font-bold">Get in Touch with Us!</h1>
-          <p
-            className="mt-2 font-sans font-semibold text-sm leading-loose font-montserrat"
-            style={{ wordSpacing: "4px" }}
-          >
-            At Lopeze's Art Studio, we're always excited to hear from you!
-            Whether you're looking to collaborate, inquire about custom
-            artworks, or simply share your thoughts, our team is here to help.
-          </p>
-
-          <div className="flex flex-col justify-center ml-14 mt-8 space-y-4">
-            <div className="flex space-x-2">
-              <MdEmail size={20} />
-              <p className="text-sm">
-                Email us:{" "}
-                <span className="font-bold">
-                  lopenzeartstudioemail@example.com
-                </span>
-              </p>
-            </div>
-            <div className="flex space-x-2">
-              <IoCall size={20} />
-              <p className="text-sm">
-                Call us: <span className="font-bold">09123456789</span>
-              </p>
-            </div>
-            <div className="flex space-x-2">
-              <FaMapPin size={20} />
-              <p className="text-sm">
-                Visit us:{" "}
-                <span className="font-bold">
-                  Lopez Quezon Province Philippines
-                </span>
-              </p>
-            </div>
-          </div>
-
-          <div className="mt-12 font-light text-center">
-            <p className="text-md">
-              Are you a Member or Admin? click{" "}
-              <span className="underline text-blue-400">
-                <NavLink to="/login">login</NavLink>
-              </span>
+        <div className="mt-6 space-y-4 px-6">
+          <div className="flex items-center">
+            <MdEmail className="mr-2" size={20} />
+            <p className="text-sm">
+              Email Us:{" "}
+              <strong className="text-[13px]">
+                lopenzeartstudioemail@example.com
+              </strong>
             </p>
           </div>
-
-          <div className="mt-2 font-light text-center">
-            <p className="text-md">
-              Want to experience Lopenze? click{" "}
-              <span className="underline text-blue-400">
-                <NavLink to="/guest">be a Guest</NavLink>
-              </span>
+          <div className="flex items-center">
+            <IoCall className="mr-2" size={20} />
+            <p className="text-sm">
+              Call Us: <strong className="text-[13px]">09123456789</strong>
+            </p>
+          </div>
+          <div className="flex items-center">
+            <MdEmail className="mr-2" size={20} />
+            <p className="text-sm">
+              Visit Us:{" "}
+              <strong className="text-[13px]">
+                Lopez Quezon Province Philippines
+              </strong>
             </p>
           </div>
         </div>
 
-        {/* Right side - Black (60% width) */}
-        <div className="w-3/5 bg-black h-auto flex justify-center items-center space-x-4 text-white">
-          <div className="flex flex-col items-center">
-            <div className="flex flex-col items-center">
-              <h1 className="text-sm font-bold">Navigations</h1>
+        <div className="flex items-center justify-center font-Montserrat mt-10 text-sm">
+          <p>
+            Are you a member or Admin?{" "}
+            <NavLink
+              to="/logInAdmin"
+              onClick={() => window.scrollTo(0, 0)}
+              className="text-blue-400 font-Montserrat underline "
+            >
+              Click login
+            </NavLink>
+          </p>
+        </div>
+      </div>
 
-              <div className="flex flex-col items-center space-y-4 mt-4">
-                <NavLink to="/admin" onClick={() => window.scrollTo(0, 0)}>
+      {/* Middle Panel (Black Section) */}
+      <div className="bg-black text-white p-12 md:col-span-3 flex flex-col justify-between">
+        <div>
+          <h1 className="text-xl font-bold mb-4 ">Our Socials!</h1>
+          <p className="text-sm mt-2 leading-relaxed">
+            Follow us on social media for the latest updates and artistic
+            inspiration! Let’s create something beautiful together. Drop us a
+            message, and we’ll get back to you as soon as possible.
+          </p>
+          <div className="flex space-x-6 mt-6">
+            <a
+              href="https://www.instagram.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-gray-400"
+            >
+              <FaInstagram size={25} />
+            </a>
+            <a
+              href="https://www.facebook.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-gray-400"
+            >
+              <FaFacebook size={25} />
+            </a>
+            <a
+              href="https://www.twitter.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-gray-400"
+            >
+              <FaTwitter size={25} />
+            </a>
+          </div>
+        </div>
+
+        <div className="mt-8">
+          <h1 className="text-lg font-bold">Be part of Lopenze</h1>
+          <p className="text-sm mt-2">
+            Step into a world of inspiration and artistic wonder at Lopeze Art
+            Space Gallery. Explore stunning works by talented artists, celebrate
+            creativity, and connect with a community that values the beauty of
+            art.
+          </p>
+          <NavLink
+            to="/guestAdmin"
+            onClick={() => window.scrollTo(0, 0)}
+            className="mt-4 px-4 py-2 border border-white rounded-lg hover:bg-white hover:text-black transition-all text-center block max-w-fit"
+          >
+            Be a Guest
+          </NavLink>
+        </div>
+      </div>
+
+      {/* Navigation Section */}
+      <div className="flex bg-black text-white w-full p-8 md:col-span-1">
+        {" "}
+        {/* Increased width of navigation section */}
+        {/* Divider for the line */}
+        <div className="w-0.5 bg-white"></div>
+        <div className="flex justify-center items-center">
+          {/* Navigation Section */}
+          <div className="pl-10 flex-grow text-center">
+            <h1 className="text-lg font-bold mb-6">Navigation</h1>
+            <ul className="space-y-4 text-sm">
+              <li>
+                <NavLink
+                  to="/admin"
+                  onClick={() => window.scrollTo(0, 0)}
+                  className="hover:underline"
+                >
                   Home
                 </NavLink>
+              </li>
+              <li>
                 <NavLink
                   to="/exhibitionsPageAdmin"
                   onClick={() => window.scrollTo(0, 0)}
+                  className="hover:underline"
                 >
                   Exhibitions
                 </NavLink>
+              </li>
+              <li>
                 <NavLink
                   to="/featuredArtistPageAdmin"
                   onClick={() => window.scrollTo(0, 0)}
+                  className="hover:underline"
                 >
-                  Artists
+                  Featured Artists
                 </NavLink>
+              </li>
+              <li>
                 <NavLink
                   to="/allArtPageAdmin"
                   onClick={() => window.scrollTo(0, 0)}
+                  className="hover:underline"
                 >
-                  All Arts
+                  All Art
                 </NavLink>
-              </div>
-            </div>
-
-            <p className="text-sm font-Montserrat m-0 text-center mt-9">
-              Follow us on social media for the latest updates and artistic
-              inspiration!
-              <br />
-              Let's create something beautiful together. Drop us a message, and
-              <br />
-              we'll get back to you as soon as possible.
-            </p>
-
-            <div className="flex space-x-4 gap-x-4 mt-9 mb-1">
-              <a
-                href="https://www.instagram.com"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <FaInstagram size={30} />
-              </a>
-              <a
-                href="https://www.facebook.com"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <FaFacebook size={30} />
-              </a>
-              <a
-                href="https://www.twitter.com"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <FaTwitter size={30} />
-              </a>
-            </div>
+              </li>
+            </ul>
           </div>
         </div>
       </div>

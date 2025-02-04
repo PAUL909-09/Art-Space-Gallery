@@ -1,8 +1,27 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import { APP_ROUTES, Icons } from "../../config/config";
-
-const AddExhibit = () => {
+import Modal from "../../components/Modal/Modal";
+import { useState } from "react";
+const CreateAccountAdmin = () => {
   const navigate = useNavigate(); // Correct hook for navigation
+  const [isModalOpen, setIsModalOpen] = useState(false); // Modal state
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = (e: { preventDefault: () => void }) => {
+    e.preventDefault();
+    setIsModalOpen(true); // Open the modal instead of directly saving
+  };
+  const handleModalConfirm = () => {
+    // Perform the actual save operation here (e.g., API call)
+    setLoading(true);
+    // Simulate a save (replace with your actual save logic)
+    setTimeout(() => {
+      setLoading(false);
+      alert("Account Added Successfully!");
+      navigate(-1); // Go back to the previous page after saving
+      setIsModalOpen(false); // Close the modal
+    }, 2000);
+  };
 
   return (
     <div>
@@ -58,29 +77,28 @@ const AddExhibit = () => {
               >
                 ROLE
               </label>
-              
-              <select
-              id="typeOfArt"
-              className="w-full p-3 text-black border border-black rounded-md focus:outline-none focus:ring-2 focus:ring-[#800000]"
-            >
-              <option value="" disabled>
-                Select type of role
-              </option>
-              <option value="Artist">Artist</option>
-              <option value="User">User</option>
-            
-            </select>
 
-             
-              
+              <select
+                id="typeOfArt"
+                className="w-full p-3 text-black border border-black rounded-md focus:outline-none focus:ring-2 focus:ring-[#800000]"
+              >
+                <option value="" disabled>
+                  Select type of role
+                </option>
+                <option value="Artist">Artist</option>
+                <option value="User">User</option>
+              </select>
 
               <div className="flex flex-col items-center mt-8 mx-7">
                 <button
-                  type="submit"
-                  className="bg-[#C62A35] hover:bg-red-700 text-white py-2 px-6 rounded-md font-bold transition-colors w-full"
+                  type="button"
+                  onClick={handleSubmit}
+                  className="bg-green-600 outline outline-2 outline-white mt-6 hover:bg-green-500 text-white py-2 px-6 rounded-md font-bold transition-colors w-full"
                 >
-                  CREATE
+                  {loading ? "Saving..." : "Save"}
                 </button>
+
+
 
                 <button
                   type="button"
@@ -89,6 +107,15 @@ const AddExhibit = () => {
                   CANCEL
                 </button>
               </div>
+              <Modal
+                isOpen={isModalOpen}
+                onClose={() => setIsModalOpen(false)}
+                title="Confirm Create Update"
+                message="Are you sure you create account?"
+                confirmButtonText="Create"
+                onConfirm={handleModalConfirm}
+              // itemData={formData} // Removed itemData
+              />
             </form>
           </div>
         </div>
@@ -115,4 +142,4 @@ const AddExhibit = () => {
   );
 };
 
-export default AddExhibit;
+export default CreateAccountAdmin;

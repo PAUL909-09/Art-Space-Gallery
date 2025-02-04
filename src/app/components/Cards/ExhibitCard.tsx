@@ -32,7 +32,7 @@ const ExhibitCard: React.FC<ExhibitCardProps> = ({
   };
 
   return (
-    <div className="bg-white shadow-lg rounded-lg overflow-hidden transform transition-transform duration-300 hover:scale-105 hover:shadow-2xl">
+    <div className="bg-white shadow-lg rounded-lg overflow-hidden transform transition-transform gap-10 duration-300 hover:scale-105 hover:shadow-2xl">
       {/* Image Section */}
       <div className="relative h-64">
         <img src={src} alt={alt} className="w-full h-full object-cover" />

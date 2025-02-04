@@ -87,7 +87,103 @@ import ViewExhibitsArtist from "../pages/artistPage/viewExhibitsArtist";
 import ViewArtistProfileArtist from "../pages/artistPage/viewArtistProfileArtist";
 import ViewExhibitsAdmin from "../pages/adminPage/viewExhibitsAdmin";
 import ViewArtistAdmin from "../pages/adminPage/viewArtistProfileAdmin";
+import Feedback from "../pages/adminPage/feedBack";
 // import createAccount from "../pages/userPage/createAccount";
+
+//Import Real Date//
+
+//profile picture
+import Lhalane_Arenque from "../../assets/Real_Data/Artist/Lhalane_Arenque.png";
+import Jopz_Buñag from "../../assets/Real_Data/Artist/Jopz_Buñag.png";
+import Justine_Olivarez from "../../assets/Real_Data/Artist/Justine_Olivarez.png";
+import Aann_Reynales from "../../assets/Real_Data/Artist/Aann_Reynales.png";
+import Tres_Roman from "../../assets/Real_Data/Artist/Tres_Roman.png";
+import Jaymar_Valdoria from "../../assets/Real_Data/Artist/Jaymar_Valdoria.png";
+
+//ArtWorks
+import Arenque_Art_1 from "../../assets/Real_Data/Arts/Arenque_Art_1.png";
+import Arenque_Art_2 from "../../assets/Real_Data/Arts/Arenque_Art_2.png";
+import Arenque_Art_3 from "../../assets/Real_Data/Arts/Arenque_Art_3.png";
+import Arenque_Art_4 from "../../assets/Real_Data/Arts/Arenque_Art_4.png";
+import Bunag_Art_1 from "../../assets/Real_Data/Arts/Bunag_Art_1.png";
+import Bunag_Art_2 from "../../assets/Real_Data/Arts/Bunag_Art_2.png";
+import Olivarez_Art_1 from "../../assets/Real_Data/Arts/Olivarez_Art_1.png";
+import Olivarez_Art_2 from "../../assets/Real_Data/Arts/Olivarez_Art_2.png";
+import Olivarez_Art_3 from "../../assets/Real_Data/Arts/Olivarez_Art_3.png";
+import Olivarez_Art_4 from "../../assets/Real_Data/Arts/Olivarez_Art_4.png";
+import Reynales_Art_1 from "../../assets/Real_Data/Arts/Reynales_Art_1.png";
+import Reynales_Art_2 from "../../assets/Real_Data/Arts/Reynales_Art_2.png";
+import Reynales_Art_3 from "../../assets/Real_Data/Arts/Reynales_Art_3.png";
+import Roman_Art_1 from "../../assets/Real_Data/Arts/Roman_Art_1.png";
+import Roman_Art_2 from "../../assets/Real_Data/Arts/Roman_Art_2.png";
+import Roman_Art_3 from "../../assets/Real_Data/Arts/Roman_Art_3.png";
+import Roman_Art_4 from "../../assets/Real_Data/Arts/Roman_Art_4.png";
+import Roman_Art_5 from "../../assets/Real_Data/Arts/Roman_Art_5.png";
+import ContactUsArtist from "../pages/artistPage/ContactUsArtist";
+import SendFeedBack from "../pages/adminPage/sendFeedBack";
+import GuestArtist from "../pages/artistPage/GuestArtist";
+import Valdorai_Art_1 from "../../assets/Real_Data/Arts/Valdorai_Art_1.png";
+import Valdorai_Art_2 from "../../assets/Real_Data/Arts/Valdorai_Art_2.png";
+import Valdorai_Art_3 from "../../assets/Real_Data/Arts/Valdorai_Art_3.png";
+import AddArtArtist from "../pages/artistPage/addArtArtist";
+
+
+// App Routes
+export const APP_ROUTES = {
+  MAIN: [
+    { path: "/", element: <LandingPage /> },
+    { path: "/exhibitionsPage", element: <ExhibitPage /> },
+    { path: "/featuredArtistPage", element: <FeaturedArtist /> },
+    { path: "/allArtPage", element: <AllArtPage /> },
+    { path: "/logIn", element: <LogIn /> },
+    { path: "/viewArtistProfile", element: <ViewArtistProfile /> },
+    { path: "/viewArts", element: <ViewArts /> },
+    { path: "/viewExhibits", element: <ViewExhibits /> },
+    { path: "/guest", element: <Guest /> },
+    { path: "/contactUs", element: <ContactUs /> },
+  ],
+  ADMIN: [
+    { path: "/admin", element: <LandingPageAdmin /> },
+    { path: "/exhibitionsPageAdmin", element: <ExhibitPageAdmin /> },
+    { path: "/featuredArtistPageAdmin", element: <FeaturedArtistPageAdmin /> },
+    { path: "/allArtPageAdmin", element: <AllArtPageAdmin /> },
+    { path: "/dashboardAdmin", element: <DashboardAdmin /> },
+    { path: "/addExhibitAdmin", element: <AddExhibitAdmin /> },
+    { path: "/createAccountAdmin", element: <CreateAccountAdmin /> },
+    { path: "/logInAdmin", element: <LogInAdmin /> },
+    { path: "/logOutAdmin", element: <LogOutAdmin /> },
+    { path: "/addArt", element: <AddArt /> },
+    { path: "/contactUsAdmin", element: <ContactUsAdmin /> },
+    { path: "/history", element: <History /> },
+    { path: "/guestAdmin", element: <GuestAdmin /> },
+    { path: "/viewArtsAdmin", element: <ViewArtsAdmin /> },
+    { path: "/dashboardAdmin", element: <DashboardAdmin /> },
+    { path: "/viewExhibitsAdmin", element: <ViewExhibitsAdmin /> },
+    { path: "/viewArtistProfileAdmin", element: <ViewArtistAdmin /> },
+    { path: "/feedback", element: <Feedback /> },
+    { path: "/sendFeedBack", element: <SendFeedBack /> },
+    // { path: "/profileAdmin", element: <ProfileAdmin /> },
+  ],
+  ARTIST: [
+    { path: "/artist", element: <LandingPageArtist /> },
+    { path: "/allArtArtist", element: <AllArtArtist /> },
+    { path: "/exhibitPageArtist", element: <ExhibitPageArtist /> },
+    { path: "/addExhibitArtist", element: <AddExhibitArtist /> },
+    { path: "/featuredArtistArtist", element: <FeaturedArtistPageArtist /> },
+    { path: "/landingPageArtist", element: <LandingPageArtist /> },
+    { path: "/addArtArtist", element: <AddArtArtist /> },
+    { path: "/logInArtist", element: <LogInArtist /> },
+    { path: "/logOutArtist", element: <LogOutArtist /> },
+    { path: "/profileArtist", element: <ProfileArtist /> },
+    { path: "/viewArtsArtist", element: <ViewArtsArtist /> },
+    { path: "/viewExhibitsArtist", element: <ViewExhibitsArtist /> },
+    { path: "/artistEditProfile", element: <ArtistEditProfile /> },
+    { path: "/viewArtistProfileArtist", element: <ViewArtistProfileArtist /> },
+    { path: "/contactUsArtist", element: <ContactUsArtist /> },
+    { path: "/guestArtist", element: <GuestArtist /> }
+
+  ],
+};
 
 //Images
 export const Image = [
@@ -105,109 +201,116 @@ export const ExhibitsData = [
   {
     id: "1",
     title: "Shades of Solitude",
-    date: "December 10–December 30, 2024",
-    location: "Serenity Art Gallery, Davao City",
+    date: "November 10, 2023 - December 10, 2023",
+    location: "Lopez, Quezon",
     description:
       "A collection of introspective artworks exploring solitude, self-reflection, and inner peace. Paintings, photographs, and installations reveal the profound power of stillness in a chaotic world.",
     image: {
       src: ExhibitImage1,
       alt: "ExhibitsImage1",
     },
-    views: 250,
+    views: 2500,
+    status: "Pass" // Added status
   },
   {
     id: "2",
     title: "The Art of Now",
-    date: "January 15–February 5, 2024",
-    location: "Boundless Arts Studio, Makati",
+    date: "December 15, 2023 - January 15, 2024",
+    location: "Lopez, Quezon",
     description:
       "Step into a realm where imagination knows no bounds. This exhibit brings together an eclectic collection of artworks that traverse diverse styles, mediums, and perspectives.",
     image: {
       src: ExhibitImage2,
       alt: "ExhibitsImage2",
     },
-    views: 400,
+    views: 3000,
+    status: "Past" // Added status
   },
   {
     id: "3",
     title: "Faces of Humanity",
-    date: "September 1–September 20, 2024",
-    location: "Cultural Center of the Philippines, Pasay City",
+    date: "January 1, 2024 - January 31, 2024",
+    location: "Lopez, Quezon",
     description:
       "A powerful exploration of identity and diversity. This exhibit features portraits, sculptures, and multimedia projects that celebrate the stories and struggles that define us as human beings.",
     image: {
       src: ExhibitImage3,
       alt: "ExhibitsImage3",
     },
-    views: 320,
+    views: 1500,
+    status: "Past" // Added status
   },
   {
     id: "4",
     title: "Fragments of Time",
-    date: "April 10–April 30, 2024",
-    location: "Metropolitan Art Museum, Quezon City",
+    date: "February 10, 2024 - March 10, 2024",
+    location: "Lopez, Quezon",
     description:
       "Explore the relationship between history and memory through mixed-media art and photography. 'Fragments of Time' captures moments that define our collective past and inspire reflections on our shared future.",
     image: {
       src: ExhibitImage4,
       alt: "ExhibitsImage4",
     },
-    views: 500,
+    views: 4600,
+    status: "Past" // Added status
   },
   {
     id: "5",
     title: "Brushstrokes of Heritage",
-    date: "January 15, 2025",
-    location: "National Museum of Fine Arts, Manila, Philippines",
+    date: "March 15, 2024 - April 15, 2024",
+    location: "Lopez, Quezon",
     description:
       "This exhibit showcases the richness of Filipino heritage through traditional and contemporary art forms. Featuring intricate paintings, sculptures, and crafts from local artists, 'Brushstrokes of Heritage' highlights the stories and culture of the Philippines. Visitors can also enjoy live painting sessions, craft demonstrations, and cultural performances that bring the artwork to life.",
     image: {
       src: Exhibit_1,
       alt: "Exhibit 1",
     },
-    views: 650,
+    views: 10000,
+    status: "Past" // Added status
   },
   {
     id: "6",
     title: "Cultural Kaleidoscope",
-    date: "February 20, 2025",
-    location: "Cultural Center of the Philippines, Pasay City",
+    date: "April 20, 2024 - May 20, 2024",
+    location: "Lopez, Quezon",
     description:
       "Experience a vibrant celebration of cultural diversity through an array of art forms, including painting, sculpture, and digital media. The 'Cultural Kaleidoscope' exhibit brings together artists from different backgrounds to showcase the beauty of cultural fusion and the power of artistic expression in fostering understanding among communities.",
     image: {
       src: Exhibit_4,
       alt: "Exhibit 4",
     },
-    views: 456,
+    views: 9000,
+    status: "Past" // Added status
   },
   {
     id: "7",
     title: "Art Beyond Boundaries",
-    date: "March 5, 2025",
-    location: "Ayala Museum, Makati City",
+    date: "May 5, 2024 - June 5, 2024",
+    location: "Lopez, Quezon",
     description:
       "Breaking traditional boundaries, 'Art Beyond Boundaries' features innovative works by contemporary artists who challenge the status quo. This exhibit explores themes of identity, technology, and the future, offering visitors a glimpse into the possibilities of art in a rapidly changing world.",
     image: {
       src: Exhibit_2,
       alt: "Exhibit 5",
     },
-    views: 54,
+    views: 793,
+    status: "Past" // Added status
   },
   {
     id: "8",
     title: "Nature's Symphony",
-    date: "March 25, 2025",
-    location: "The Mind Museum, Taguig City",
+    date: "June 25, 2024 - July 25, 2024",
+    location: "Lopez, Quezon",
     description:
       "Delve into the harmonious relationship between art and nature with 'Nature's Symphony.' This exhibit features breathtaking landscapes, wildlife art, and environmental installations that highlight the beauty and fragility of our natural world. Join us in celebrating the wonders of nature and the artists who capture its essence.",
     image: {
       src: Exhibit_3,
       alt: "Exhibit 6",
     },
-    views: 23,
+    views: 2300,
+    status: "Past" // Added status
   },
 ];
-
 export const ArtisyImage = [
   {
     src: Artist_1,
@@ -278,6 +381,9 @@ export const ArtisyImage = [
     Facebook: "JP Almazan Fine Arts",
     Description:
       "Traditional oil painter focused on Philippine landscapes and cultural scenes. Each piece tells a story of our rich heritage and natural beauty.",
+// import all the pages here
+
+//userPages
   },
   {
     src: Artist_1,
@@ -324,6 +430,7 @@ export const ArtsImage = [
   { src: art10, alt: "art10" },
   { src: art11, alt: "art11" },
 ];
+
 export const ArtsData = [
   {
     title: "Our Lady",
@@ -540,57 +647,6 @@ export const mockInvitedArtists: InvitedArtist[] = [
   },
 ];
 
-// App Routes
-export const APP_ROUTES = {
-  MAIN: [
-    { path: "/", element: <LandingPage /> },
-    { path: "/exhibitionsPage", element: <ExhibitPage /> },
-    { path: "/featuredArtistPage", element: <FeaturedArtist /> },
-    { path: "/allArtPage", element: <AllArtPage /> },
-    { path: "/logIn", element: <LogIn /> },
-    { path: "/viewArtistProfile", element: <ViewArtistProfile /> },
-    { path: "/viewArts", element: <ViewArts /> },
-    { path: "/viewExhibits", element: <ViewExhibits /> },
-    { path: "/guest", element: <Guest /> },
-    { path: "/contactUs", element: <ContactUs /> },
-  ],
-  ADMIN: [
-    { path: "/admin", element: <LandingPageAdmin /> },
-    { path: "/exhibitionsPageAdmin", element: <ExhibitPageAdmin /> },
-    { path: "/featuredArtistPageAdmin", element: <FeaturedArtistPageAdmin /> },
-    { path: "/allArtPageAdmin", element: <AllArtPageAdmin /> },
-    { path: "/dashboardAdmin", element: <DashboardAdmin /> },
-    { path: "/addExhibitAdmin", element: <AddExhibitAdmin /> },
-    { path: "/createAccountAdmin", element: <CreateAccountAdmin /> },
-    { path: "/logInAdmin", element: <LogInAdmin /> },
-    { path: "/logOutAdmin", element: <LogOutAdmin /> },
-    { path: "/addArt", element: <AddArt /> },
-    { path: "/contactUsAdmin", element: <ContactUsAdmin /> },
-    { path: "/history", element: <History /> },
-    { path: "/guestAdmin", element: <GuestAdmin /> },
-    { path: "/viewArtsAdmin", element: <ViewArtsAdmin /> },
-    { path: "/dashboardAdmin", element: <DashboardAdmin /> },
-    { path: "/viewExhibitsAdmin", element: <ViewExhibitsAdmin /> },
-    { path: "/viewArtistProfileAdmin", element: <ViewArtistAdmin /> },
-    // { path: "/profileAdmin", element: <ProfileAdmin /> },
-  ],
-  ARTIST: [
-    { path: "/artist", element: <LandingPageArtist /> },
-    { path: "/allArtArtist", element: <AllArtArtist /> },
-    { path: "/exhibitPageArtist", element: <ExhibitPageArtist /> },
-    { path: "/addExhibitArtist", element: <AddExhibitArtist /> },
-    { path: "/featuredArtistArtist", element: <FeaturedArtistPageArtist /> },
-    { path: "/landingPageArtist", element: <LandingPageArtist /> },
-    { path: "/logInArtist", element: <LogInArtist /> },
-    { path: "/logOutArtist", element: <LogOutArtist /> },
-    { path: "/profileArtist", element: <ProfileArtist /> },
-    { path: "/viewArtsArtist", element: <ViewArtsArtist /> },
-    { path: "/viewExhibitsArtist", element: <ViewExhibitsArtist /> },
-    { path: "/artistEditProfile", element: <ArtistEditProfile /> },
-    { path: "/viewArtistProfileArtist", element: <ViewArtistProfileArtist /> },
-  ],
-};
-
 //Login Image
 export const LoginPicture = [{ src: LoginImage, alt: "Login Picture" }];
 
@@ -612,3 +668,393 @@ export const APP_COLORS = {
   primary: "bg-[#FAF9F6]",
   secondary: "bg-[#C62A35]",
 };
+
+// REAL DATA
+export const ARTIST_PROFILE = [
+  {
+    Name: "Lhalane Arenque",
+    ArtistType: "Painter",
+    Email: "LhalaneArenque@gmail.com",
+    Instagram: "LhalaneArenque.art",
+    Facebook: "Lhalane Arenque",
+    Description:
+      "MARY ROLHALANE ROSE R. ARENQUE is a 22-year-old medical technologist. She paints spontaneously, expressing what comes to mind. Lhane is fond of landscapes, seascapes, nature, and women, but this exhibition gives her an opportunity to explore more. In 'Mag-aabaniko', for instance, the artist successfully challenged herself to depict in meticulous detail the intricacies of fan-weaving.",
+    ARTIST_DATA: {
+      Profile: {
+        src: Lhalane_Arenque,
+        alt: "Lhalane_Arenque",
+      },
+      ArtWork: [
+        {
+          title: "MAGAABANKIKO",
+          year: 2017,
+          type: "Oil on canvcas",
+          dimensions: "2ft. x 3ft.",
+          views: 123,
+          image: {
+            src: Arenque_Art_1,
+            alt: "Arenque_Art_1"
+          }
+        },
+        {
+          title: "MAGSISINUKO",
+          year: 2017,
+          type: "Oil on canvcas",
+          dimensions: "2ft. x 3ft.",
+          views: 189,
+          image: {
+            src: Arenque_Art_2,
+            alt: "Arenque_Art_2"
+          }
+        },
+        {
+          title: "KRISTO",
+          year: 2017,
+          type: "Oil on canvcas",
+          views: 167,
+          dimensions: "2ft. x 3ft.",
+          image: {
+            src: Arenque_Art_3,
+            alt: "Arenque_Art_3"
+          }
+        },
+        {
+          title: "MAGTUTUBLI",
+          year: 2017,
+          type: "Oil on canvcas",
+          views: 345,
+          dimensions: "2ft. x 3ft.",
+          image: {
+            src: Arenque_Art_4,
+            alt: "Arenque_Art_4"
+          }
+        }
+      ]
+    }
+  },
+  {
+    Name: "Jopz Buñag",
+    ArtistType: "Painter",
+    Email: "JopzBuñag@gmail.com",
+    Instagram: "JopzBuñag.art",
+    Facebook: "Jopz Buñag",
+    Description:
+      "JOPETH BALCE BUÑAG just graduated this year from the Polytechnec University of the Philippines in Lopea quezon with a degree of Bachelo of Arts in Business Administration. At 19 years of age, Jopeth claims that it was his friends who saw his potential as an artist and eventually convinced him to paint. He believes that art can be learned and that artistry can be developed.",
+    ARTIST_DATA: {
+      Profile: {
+        src: Jopz_Buñag,
+        alt: "Jopz_Buñag",
+      },
+      ArtWork: [
+        {
+          title: "Marilag sa Busay",
+          year: 2017,
+          type: "Watercolor on paper",
+          dimensions: "11in. x 16in.",
+          views: 900,
+          image: {
+            src: Bunag_Art_2,
+            alt: "Bunag_Art_2"
+          }
+        },
+        {
+          title: "Marilag sa Busay (Series)",
+          year: 2017,
+          type: "Oil on canvcas",
+          dimensions: "11in. x 16in. /pc",
+          views: 120,
+          image: {
+            src: Bunag_Art_1,
+            alt: "Bunag_Art_1"
+          }
+        }
+      ]
+    }
+  },
+  {
+    Name: "Justine Olivarez",
+    ArtistType: "Painter",
+    Email: "JustineOlivarez@gmail.com",
+    Instagram: "JustineOlivarez.art",
+    Facebook: "Justine Olivarez",
+    Description:
+      "JUSTINE JUSTINO' OLIVAREZ\n" +
+      "19, taking up Bachelor of Science in\n" +
+      "Education at the Philippine Normal\n" +
+      "University in Manila. He was one of the\n" +
+      "Top Ten Awardees at the International\n" +
+      "Eucharistic Congress Painting Competition\n" +
+      "in Cebu and was shortlisted at the\n" +
+      "Philippine Art Awards in 2015 and 2016\n" +
+      "respectively.\n\n" +
+      "Justino had been drawing since he\n" +
+      "was a child. \"Hindi pa ako nag-aaral,\n" +
+      "bata pa ako, pinapakain na ako ng\n" +
+      "pagpipinta.\" Finding his love for linear\n" +
+      "painting merely happened when he ran\n" +
+      "out of paint. He felt the outcome was\n" +
+      "good and he feels that he can make his\n" +
+      "artistic stamp with it.",
+    ARTIST_DATA: {
+      Profile: {
+        src: Justine_Olivarez,
+        alt: "Justine_Olivarez",
+      },
+      ArtWork: [
+        {
+          title: "Inalusan",
+          year: 2017,
+          type: "Acrylic on canvas",
+          dimensions: "2ft. x 3ft.",
+          views: 34,
+          image: {
+            src: Olivarez_Art_4,
+            alt: "Olivarez_Art_4"
+          }
+        },
+        {
+          title: "Talolong",
+          year: 2017,
+          type: "Acrylic on canvas",
+          dimensions: "2ft. x 3ft.",
+          views: 34,
+          image: {
+            src: Olivarez_Art_3,
+            alt: "Olivarez_Art_4"
+          }
+        },
+        {
+          title: "Matinik",
+          year: 2017,
+          type: "Acrylic on canvas",
+          dimensions: "2ft. x 3ft.",
+          views: 34,
+          image: {
+            src: Olivarez_Art_2,
+            alt: "Olivarez_Art_4"
+          }
+        },
+        {
+          title: "Manguisian",
+          year: 2017,
+          type: "Acrylic on canvas",
+          dimensions: "2ft. x 3ft.",
+          views: 34,
+          image: {
+            src: Olivarez_Art_1,
+            alt: "Olivarez_Art_4"
+          }
+        },
+      ]
+    }
+
+  },
+  {
+    Name: "Aann Reynales",
+    ArtistType: "Painter",
+    Email: "AannReynales@gmail.com",
+    Instagram: "AannReynales.art",
+    Facebook: "AannReynales ",
+    Description:
+      "ANALUZ 'Aann' REYNALES is a 19-year-old introver who expiesses.Ker emotions through art. She has been winning art competitions in the national and local levels since high schoole she was one of the finalists in the International Eucharistic Congress Painting Competition in Cebu (2015). She received the 3rd Prize in the Manila Bulletin Sketchfest in Manila (2016), and garnered first place in UP Manila's Ipag/aban (Stop the Lumad Killings) Poster Making Contest (2015). The artist says she was humbled and honored to see her entry to the Kristo Manila 2017 exhibition published in the Philippine Daily Inquirer along with the works of established and renowned artists.",
+    ARTIST_DATA: {
+      Profile: {
+        src: Aann_Reynales,
+        alt: "Aann_Reynales",
+      },
+      ArtWork: [
+        {
+          title: "Makukulay na Uban I",
+          year: 2017,
+          type: "Oil in canvas",
+          dimensions: "3ft. x 4ft.",
+          views: 34,
+          image: {
+            src: Reynales_Art_3,
+            alt: "Reynales_Art_3"
+          }
+        },
+        {
+          title: "Makukulay na Uban II",
+          year: 2017,
+          type: "Oil in canvas",
+          dimensions: "2ft. x 3ft.",
+          views: 394,
+          image: {
+            src: Reynales_Art_1,
+            alt: "Reynales_Art_1"
+          }
+        },
+        {
+          title: "Makukulay na Uban III",
+          year: 2017,
+          type: "Oil in canvas",
+          dimensions: "2ft. x 3ft.",
+          views: 312,
+          image: {
+            src: Reynales_Art_2,
+            alt: "Reynales_Art_2"
+          }
+        },
+      ]
+    }
+  },
+  {
+    ARTIST_DATA: {
+      Profile: {
+        src: Tres_Roman,
+        alt: "Tres_Roman",
+      },
+      ArtWork: [
+        {
+          title: "Anayo | BATI | GALAW",
+          year: 2017,
+          type: "Oil in canvas",
+          dimensions: "3ft. x 4ft.",
+          views: 354,
+          image: {
+            src: Roman_Art_1,
+            alt: "Roman_Art_1"
+          }
+        },
+        {
+          title: "Alagiag | Pakuspakus | Pasyahan",
+          year: 2017,
+          type: "Oil in canvas",
+          dimensions: "3ft. x 4ft.",
+          views: 543,
+          image: {
+            src: Roman_Art_2,
+            alt: "Roman_Art_2"
+          }
+        },
+        {
+          title: "Judith | Elena | Sentenciada",
+          year: 2017,
+          type: "Oil in canvas",
+          dimensions: "2ft. x 3ft.",
+          views: 312,
+          image: {
+            src: Roman_Art_3,
+            alt: "Roman_Art_3"
+          }
+        },
+        {
+          title: "Suyod | Hinguto | Hinutong",
+          year: 2017,
+          type: "Oil in canvas",
+          dimensions: "2ft. x 3ft.",
+          views: 87,
+          image: {
+            src: Roman_Art_4,
+            alt: "Roman_Art_4"
+          }
+        },
+        {
+          title: "Sipit | Impit | Kipit",
+          year: 2017,
+          type: "Oil in canvas",
+          dimensions: "2ft. x 3ft.",
+          views: 312,
+          image: {
+            src: Roman_Art_5,
+            alt: "Roman_Art_5"
+          }
+        },
+      ]
+    },
+    Name: "Tres Roman",
+    ArtistType: "Painter",
+    Email: "TresRoman@gmail.com",
+    Instagram: "TresRoman.art",
+    Facebook: "TresRoman ",
+    Description:
+      "ANALUZ 'Aann' REYNALES is a 19-year-old introver who expiesses.Ker emotions through art. She has been winning art competitions in the national and local levels since high schoole she was one of the finalists in the International Eucharistic Congress Painting Competition in Cebu (2015). She received the 3rd Prize in the Manila Bulletin Sketchfest in Manila (2016), and garnered first place in UP Manila's Ipag/aban (Stop the Lumad Killings) Poster Making Contest (2015). The artist says she was humbled and honored to see her entry to the Kristo Manila 2017 exhibition published in the Philippine Daily Inquirer along with the works of established and renowned artists."
+  },
+  {
+    Name: "Jaymar Valdoria ",
+    ArtistType: "Painter",
+    Email: "JaymarValdoria@gmail.com",
+    Instagram: "JaymarValdoria.art",
+    Facebook: "JaymarValdoria  ",
+    Description:
+      "JAYMAR VALDORIA graduated degree in Bachelor of Fine Arts from the Manuel S. Enverga University Foundation in Lucena City. Among the numerous group shows he has joined are e Fact Sheet #7 Down the Drain Human Rights Advocacy Tour from UP Los Banos to Quezon City to Manila from November 2064 to February 201S and Beauty and Disguise in 2015 at the Guni-Guri Artspace. His most recent *roup exhibition was Wasiwas 2 at the ispasyo Art Space in Lucena City. ",
+    ARTIST_DATA: {
+      Profile: {
+        src: Jaymar_Valdoria,
+        alt: "Jaymar_Valdoria",
+      },
+      ArtWork: [
+        {
+          title: "Anayo | BATI | GALAW",
+          year: 2017,
+          type: "Oil in canvas",
+          dimensions: "3ft. x 4ft.",
+          views: 354,
+          image: {
+            src: Valdorai_Art_1,
+            alt: "Valdorai_Art_1"
+          }
+        },
+        {
+          title: "Alagiag | Pakuspakus | Pasyahan",
+          year: 2017,
+          type: "Oil in canvas",
+          dimensions: "3ft. x 4ft.",
+          views: 543,
+          image: {
+            src: Valdorai_Art_2,
+            alt: "Valdorai_Art_2"
+          }
+        },
+        {
+          title: "Judith | Elena | Sentenciada",
+          year: 2017,
+          type: "Oil in canvas",
+          dimensions: "2ft. x 3ft.",
+          views: 312,
+          image: {
+            src: Valdorai_Art_3,
+            alt: "Valdorai_Art_3"
+          }
+        },
+      ]
+    },
+  }
+
+];
+
+//getalliamges
+export const allImages = [
+  { src: Arenque_Art_1, alt: "Arenque_Art_1" },
+  { src: Bunag_Art_1, alt: "Bunag_Art_1" },
+  { src: Olivarez_Art_1, alt: "Olivares_Art_1" },
+  { src: Roman_Art_1, alt: "Roman_Art_1" },
+  { src: Reynales_Art_1, alt: "Reynales_Art_1" },
+  { src: Bunag_Art_2, alt: "Bunag_Art_2" },
+  { src: Olivarez_Art_2, alt: "Olivarez_Art_2" },
+  { src: Roman_Art_5, alt: "Roman_Art_5" },
+  { src: Reynales_Art_3, alt: "Reynales_Art_3" },
+  { src: Olivarez_Art_4, alt: "Olivares_Art_4" },
+  { src: Olivarez_Art_3, alt: "Olivarez_Art_3" },
+  { src: Roman_Art_3, alt: "Roman_Art_3" },
+  // ARTIST_PROFILE[0].ARTIST_DATA.ArtWork[0].image.src,
+  // ARTIST_PROFILE[0].ARTIST_DATA.ArtWork[1].image.src,
+  // ARTIST_PROFILE[0].ARTIST_DATA.ArtWork[2].image.src,
+  // ARTIST_PROFILE[0].ARTIST_DATA.ArtWork[3].image.src,
+  // ARTIST_PROFILE[1].ARTIST_DATA.ArtWork[0].image.src,
+  // ARTIST_PROFILE[1].ARTIST_DATA.ArtWork[1].image.src,
+  // ARTIST_PROFILE[2].ARTIST_DATA.ArtWork[0].image.src,
+  // ARTIST_PROFILE[2].ARTIST_DATA.ArtWork[1].image.src,
+  // ARTIST_PROFILE[2].ARTIST_DATA.ArtWork[2].image.src,
+  // ARTIST_PROFILE[2].ARTIST_DATA.ArtWork[3].image.src,
+  // ARTIST_PROFILE[3].ARTIST_DATA.ArtWork[0].image.src,
+  // ARTIST_PROFILE[3].ARTIST_DATA.ArtWork[1].image.src,
+  // ARTIST_PROFILE[3].ARTIST_DATA.ArtWork[2].image.src,
+  // ARTIST_PROFILE[4].ARTIST_DATA.ArtWork[0].image.src,
+  // ARTIST_PROFILE[4].ARTIST_DATA.ArtWork[1].image.src,
+  // ARTIST_PROFILE[4].ARTIST_DATA.ArtWork[2].image.src,
+  // ARTIST_PROFILE[4].ARTIST_DATA.ArtWork[3].image.src,
+  // ARTIST_PROFILE[4].ARTIST_DATA.ArtWork[4].image.src,
+
+];

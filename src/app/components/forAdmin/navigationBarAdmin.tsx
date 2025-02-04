@@ -72,7 +72,7 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ hamburgerShow, role }) =>
           <span className="-m-4">ALL ARTS</span>
         </NavLink>
         <NavLink
-          to="/contactUs"
+          to="/contactUsAdmin"
           className={({ isActive }) =>
             isActive
               ? "text-[#C62A35] px-4 py-3 rounded-md flex items-center space-x-2"

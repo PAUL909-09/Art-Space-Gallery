@@ -1,48 +1,64 @@
-import React from "react";
-import { APP_COLORS, ArtsData, ArtsImage } from "../../config/config";
+import { APP_COLORS, ARTIST_PROFILE, allImages } from "../../config/config";
 import { useNavigate } from "react-router-dom";
+import ArtCard from "../../components/Cards/ArtCard";
+import { useState } from "react";
 
 const AllArt = () => {
   const navigate = useNavigate();
 
-  const handleViewMore = (art: {
-    title: string;
-    artist: string;
-    type: string;
-    description: string;
-    image: { src: string; alt: string };
-  }) => {
+  const handleViewMore = (art) => {
     navigate("/viewArts", { state: art });
-    window.scrollTo(0, 0); // scroll to the top of the page
+    window.scrollTo(0, 0);
   };
+
+  const allArtworks = ARTIST_PROFILE.flatMap((artist) =>
+    artist.ARTIST_DATA.ArtWork.map((art) => ({
+      ...art,
+      artist: artist.Name,
+    }))
+  );
 
   return (
     <div>
-      <section className={`relative min-h-screen bg-${APP_COLORS.primary} p-8`}>
+      <section
+        className="relative p-8"
+        style={{ backgroundColor: APP_COLORS.primary }}
+      >
         <h1
-          className={`text-6xl font-extrabold text-center mb-10 text-${APP_COLORS.secondary}`}
+          className="text-6xl font-extrabold text-center mb-10"
+          style={{ color: APP_COLORS.secondary }}
         >
           ALL ARTS
         </h1>
         <div className="relative w-full h-full flex flex-wrap justify-center items-center">
-          {ArtsImage.map((image, index) => {
+          {allImages.map((image, index) => {
             const isEven = index % 2 === 0;
+            const [imageLoaded, setImageLoaded] = useState(false);
+
             return (
               <div
                 key={index}
-                className={`relative rounded-lg shadow-lg overflow-hidden group transition-all duration-500 ease-in-out`}
+                className="relative rounded-lg shadow-lg overflow-hidden group transition-all duration-500 ease-in-out"
               >
                 <div
                   className={`transform ${
                     isEven
                       ? "rotate-3 translate-y-5"
                       : "-rotate-3 -translate-y-5"
-                  } group-hover:rotate-0 group-hover:translate-y-0 group-hover:scale-110 transition-all duration-500`}
+                  }
+                      group-hover:rotate-0 group-hover:translate-y-0 group-hover:scale-110 transition-all duration-500`}
                 >
+                  {!imageLoaded && (
+                    <div className="w-[200px] h-[200px] rounded-lg bg-gray-200 animate-pulse"></div>
+                  )}
                   <img
                     src={image.src}
                     alt={image.alt}
-                    className="object-cover w-full h-full"
+                    className={`object-cover w-[200px] h-[200px] rounded-lg ${
+                      imageLoaded ? "block" : "hidden"
+                    }`}
+                    loading="lazy"
+                    onLoad={() => setImageLoaded(true)}
                   />
                 </div>
               </div>
@@ -55,30 +71,20 @@ const AllArt = () => {
         <h1 className="text-4xl font-bold text-center text-black mb-12">
           ARTS
         </h1>
+        <h1 className="text-7xl font-extrabold text-center mb-12 relative">
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-black to-[#C62A35]">
+            ARTS
+          </span>
+
+          <div className="relative mt-4 flex justify-center items-center">
+            <div className="w-24 h-1 bg-gradient-to-r from-black to-[#C62A35] rounded"></div>
+          </div>
+        </h1>
+
+        {/* Display artworks dynamically */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-          {ArtsData.map((art, index) => (
-            <div
-              key={index}
-              className="bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300"
-            >
-              <img
-                src={art.image.src}
-                alt={art.image.alt}
-                className="w-full h-64 object-cover transition-transform duration-300 hover:scale-110"
-              />
-              <div className="p-6">
-                <h2 className="text-xl font-bold text-gray-800">{art.title}</h2>
-                <p className="text-red-600 font-medium">Artist: {art.artist}</p>
-                <p className="text-red-600 font-medium">Type: {art.type}</p>
-                <p className="text-gray-700 text-sm mt-4">{art.description}</p>
-                <button
-                  onClick={() => handleViewMore(art)}
-                  className="flex items-center justify-center mt-6 mx-auto bg-red-600 text-white px-6 py-2 shadow hover:bg-red-700 transform hover:scale-105 transition-all duration-300"
-                >
-                  View More
-                </button>
-              </div>
-            </div>
+          {allArtworks.map((art, index) => (
+            <ArtCard key={index} art={art} onViewMore={() => handleViewMore(art)} />
           ))}
         </div>
       </section>
@@ -86,22 +92,4 @@ const AllArt = () => {
   );
 };
 
-// Custom position styles for each image
-const getImagePositionStyles = (index: number) => {
-  const positions = [
-    { top: "10%", left: "90%" }, // Image 1
-    { top: "10%", left: "40%" }, // Image 2
-    { top: "10%", left: "75%" }, // Image 3
-    { top: "45%", left: "10%" }, // Image 4
-    { top: "45%", left: "50%" }, // Image 5
-    { top: "45%", left: "80%" }, // Image 6
-    { top: "70%", left: "5%" }, // Image 7
-    { top: "70%", left: "80%" }, // Image 8
-    { top: "100%", left: "10%" }, // Image 9
-  ];
-
-  return positions[index] || { top: "0%", left: "0%" };
-};
-
 export default AllArt;
-

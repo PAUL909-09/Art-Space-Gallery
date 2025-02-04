@@ -1,12 +1,34 @@
 // File: Guest.jsx
-
-import React from "react";
+import React, { useState } from "react";
+import { motion } from "framer-motion";
 
 const GuestAdmin = () => {
+    const [loading, setLoading] = useState(false);
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        setLoading(true);
+
+        setTimeout(() => {
+            setLoading(false);
+            alert("Your message has been sent successfully!");
+        }, 2000);
+    };
+
     return (
-        <div className="bg-[#FAF9F6] text-black min-h-screen p-6">
+        <motion.div 
+            initial={{ opacity: 0 }} 
+            animate={{ opacity: 1 }} 
+            transition={{ duration: 1 }}
+            className="bg-[#FAF9F6] text-black min-h-screen p-6"
+        >
             {/* Header Section */}
-            <div className="text-center mb-12 mt-8">
+            <motion.div 
+                initial={{ y: -50, opacity: 0 }} 
+                animate={{ y: 0, opacity: 1 }} 
+                transition={{ duration: 1 }}
+                className="text-center mb-12 mt-8"
+            >
                 <h1 className="text-5xl font-extrabold text-black mb-4">
                     Be a Guest at The Lopenze Art Space
                 </h1>
@@ -22,14 +44,19 @@ const GuestAdmin = () => {
                     upcoming exhibitions, and special events tailored for art enthusiasts.
                     Never miss a moment of inspiration!
                 </p>
-            </div>
+            </motion.div>
 
             {/* Form Section */}
-            <div className="bg-white shadow-lg rounded-lg max-w-lg mx-auto p-8 border-l-4 border-[#C62A35]">
+            <motion.div 
+                initial={{ scale: 0.8, opacity: 0 }} 
+                animate={{ scale: 1, opacity: 1 }} 
+                transition={{ duration: 0.5 }}
+                className="bg-white shadow-lg rounded-lg max-w-lg mx-auto p-8 border-l-4 border-[#C62A35]"
+            >
                 <h3 className="text-xl font-semibold text-center mb-6 text-black">
                     Send Us a Message!
                 </h3>
-                <form className="space-y-4">
+                <form className="space-y-4" onSubmit={handleSubmit}>
                     {/* Name and Contact */}
                     <div className="flex space-x-4">
                         <input
@@ -54,17 +81,17 @@ const GuestAdmin = () => {
                         required
                     />
 
-
                     {/* Submit Button */}
                     <button
                         type="submit"
-                        className="w-full bg-green-600 hover:bg-green-400 text-white font-semibold p-3 rounded-md shadow-lg transition duration-300 transform hover:scale-105"
+                        className="w-full bg-green-600 hover:bg-green-400 text-white font-semibold p-3 rounded-md shadow-lg transition duration-300 transform hover:scale-105 flex justify-center items-center"
+                        disabled={loading}
                     >
-                        SUBMIT
+                        {loading ? "Sending..." : "SUBMIT"}
                     </button>
                 </form>
-            </div>
-        </div>
+            </motion.div>
+        </motion.div>
     );
 };
 
