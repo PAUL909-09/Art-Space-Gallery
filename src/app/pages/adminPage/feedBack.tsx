@@ -1,9 +1,9 @@
-import { ChevronLeft, ChevronRight, ArrowUp } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import default_image_profile from "../../../assets/default_image_profile 1.png"
 import { APP_ROUTES } from "../../config/config";
-import { NavLink, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 // Enhanced Feedback Data
 const feedBack = [

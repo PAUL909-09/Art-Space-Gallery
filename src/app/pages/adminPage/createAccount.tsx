@@ -1,5 +1,5 @@
-import { NavLink, useNavigate } from "react-router-dom";
-import { APP_ROUTES, Icons } from "../../config/config";
+import { useNavigate } from "react-router-dom";
+import { APP_ROUTES } from "../../config/config";
 import Modal from "../../components/Modal/Modal";
 import { useState } from "react";
 const CreateAccountAdmin = () => {

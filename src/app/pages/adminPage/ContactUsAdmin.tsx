@@ -1,4 +1,3 @@
-import React from "react";
 import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt, FaClock } from "react-icons/fa";
 import { FaInstagram, FaFacebook, FaTwitter } from "react-icons/fa";
 

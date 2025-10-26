@@ -1,6 +1,6 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useCallback } from "react";  // Added useCallback import
 import { GiHamburgerMenu } from "react-icons/gi";
-import { NavLink, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 interface HamburgerMenuProps {
   isOpen: boolean; // Controls whether the dropdown is visible
@@ -16,8 +16,8 @@ const HamburgerMenuAdmin: React.FC<HamburgerMenuProps> = ({
   const dropdownRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
 
-  // Close menu when clicking outside
-  const handleClickOutside = (event: MouseEvent) => {
+  // Memoize handleClickOutside to avoid recreating it on every render
+  const handleClickOutside = useCallback((event: MouseEvent) => {
     if (
       dropdownRef.current &&
       !dropdownRef.current.contains(event.target as Node)
@@ -26,14 +26,14 @@ const HamburgerMenuAdmin: React.FC<HamburgerMenuProps> = ({
         onClick(); // Close the menu if it's open
       }
     }
-  };
+  }, [isOpen, onClick]);  // Include dependencies
 
   useEffect(() => {
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [isOpen]);
+  }, [handleClickOutside]);  // Include handleClickOutside in deps
 
   const handleNavigation = (path: string) => {
     navigate(path);
@@ -129,4 +129,3 @@ const HamburgerMenuAdmin: React.FC<HamburgerMenuProps> = ({
 };
 
 export default HamburgerMenuAdmin;
-

@@ -68,20 +68,38 @@
 //     window.scrollTo(0, 0);
 //   };
 
-//   const handleViewArtistProfile = (artist: any) => {
+//   // const handleViewArtistProfile = (artist: any) => {
+//   //   const artistData = {
+//   //     src: artist.ARTIST_DATA.Profile.src,
+//   //     alt: artist.ARTIST_DATA.Profile.Alt,
+//   //     name: artist.Name,
+//   //     artisttype: artist.ArtistType,
+//   //     email: artist.Email,
+//   //     instagram: artist.Instagram,
+//   //     facebook: artist.Facebook,
+//   //     description: artist.Description,
+//   //   };
+
+//   //   navigate("/viewArtistProfile", {
+//   //     state: { artistData: JSON.stringify(artistData) },
+//   //   });
+//   //   window.scrollTo(0, 0);
+//   // };
+//   const   handleViewArtistProfile = (artist: any) => {
 //     const artistData = {
-//       src: artist.ARTIST_DATA.Profile.src,
-//       alt: artist.ARTIST_DATA.Profile.Alt,
+//       src: artist.ARTIST_DATA.Profile.src, // Pass image src correctly
+//       alt: artist.ARTIST_DATA.Profile.alt, // Pass image alt correctly
 //       name: artist.Name,
 //       artisttype: artist.ArtistType,
 //       email: artist.Email,
 //       instagram: artist.Instagram,
 //       facebook: artist.Facebook,
 //       description: artist.Description,
+//       artworks: artist.ARTIST_DATA.ArtWork,
 //     };
 
-//     navigate("/viewArtistProfileArtist", {
-//       state: { artistData: JSON.stringify(artistData) },
+//     navigate("/viewArtistProfile", {
+//       state: { artistData }, // No need to stringify anymore
 //     });
 //     window.scrollTo(0, 0);
 //   };
@@ -258,8 +276,6 @@
 
 //         {/* Artists Grid */}
 //         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 mx-20">
-//           {/* Pagination Arrows */}
-
 //           {visibleArtists.map((artist, index) => (
 //             <ArtistProfileCard
 //               key={index}
@@ -378,8 +394,6 @@
 // };
 
 // export default LandingPageArtist;
-
-
 import {
   ArtisyImage,
   ExhibitsData,
@@ -393,7 +407,38 @@ import ArtistProfileCard from "../../components/Cards/ArtistProfileCard";
 import ArtCard from "../../components/Cards/ArtCard";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
+
 const ITEMS_PER_PAGE = 5;
+
+// Define interfaces for better type safety
+interface Exhibit {
+  id: string;
+  title: string;
+  date: string;
+  location: string;
+  description: string;
+  image: { src: string; alt: string };
+  views?: number;
+}
+
+interface Artist {
+  Name: string;
+  ArtistType: string;
+  Email: string;
+  Instagram?: string;
+  Facebook?: string;
+  Description?: string;
+  ARTIST_DATA: {
+    Profile: { src: string; alt: string };
+    ArtWork: Artwork[];
+  };
+}
+
+interface Artwork {
+  title: string;
+  image?: { src: string; alt: string };
+  // Add other properties if needed
+}
 
 const LandingPageArtist: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0); // Tracks the index of the first visible card
@@ -427,13 +472,12 @@ const LandingPageArtist: React.FC = () => {
   const handleNextPage = () => {
     if (endIndex < ARTIST_PROFILE.length) setCurrentPage((prev) => prev + 1);
   };
-  function handlePrev(): void {
-    throw new Error("Function not implemented.");
-  }
+
+  // Removed unused handlePrev function
 
   const navigate = useNavigate();
 
-  const handleViewExhibit = (exhibit: any) => {
+  const handleViewExhibit = (exhibit: Exhibit) => {
     const exhibitData = {
       id: exhibit.id,
       title: exhibit.title,
@@ -467,7 +511,7 @@ const LandingPageArtist: React.FC = () => {
   //   });
   //   window.scrollTo(0, 0);
   // };
-  const   handleViewArtistProfile = (artist: any) => {
+  const handleViewArtistProfile = (artist: Artist) => {
     const artistData = {
       src: artist.ARTIST_DATA.Profile.src, // Pass image src correctly
       alt: artist.ARTIST_DATA.Profile.alt, // Pass image alt correctly
@@ -501,7 +545,7 @@ const LandingPageArtist: React.FC = () => {
     }, 5000); // ✅ Background changes every 5s
 
     return () => clearInterval(interval); // ✅ Cleanup interval on unmount
-  }, [LandingPageImage.length]); // ✅ Dependencies fixed
+  }, []); // ✅ Removed unnecessary dependency
 
   // Entrance & Floating Animations
   const containerVariants = {
@@ -509,8 +553,7 @@ const LandingPageArtist: React.FC = () => {
     visible: { opacity: 1, y: 0, transition: { duration: 1.5, ease: "easeOut" } },
   };
 
-
-  const handleViewMore = (art: any) => {
+  const handleViewMore = (art: Artwork) => {
     navigate("/viewArtsArtist", { state: art });
     window.scrollTo(0, 0);
   };

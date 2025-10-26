@@ -1,12 +1,128 @@
+// import { APP_COLORS, ARTIST_PROFILE, allImages } from "../../config/config";
+// import { useNavigate } from "react-router-dom";
+// import ArtCard from "../../components/Cards/ArtCard";
+// import { useState } from "react";
+
+// const AllArt = () => {
+//   const navigate = useNavigate();
+
+//   const handleViewMore = (art: {
+//     artist: string;
+//     title: string;
+//     year: number;
+//     type: string;
+//     dimensions: string;
+//     views: number;
+//     image: { src: string; alt: string };
+//   }) => {
+//     navigate("/viewArts", { state: art });
+//     window.scrollTo(0, 0);
+//   };
+
+//   const allArtworks = ARTIST_PROFILE.flatMap((artist) =>
+//     artist.ARTIST_DATA.ArtWork.map((art) => ({
+//       ...art,
+//       artist: artist.Name,
+//     }))
+//   );
+
+//   return (
+//     <div>
+//       <section
+//         className="relative p-8"
+//         style={{ backgroundColor: APP_COLORS.primary }}
+//       >
+//         <h1
+//           className="text-6xl font-extrabold text-center mb-10"
+//           style={{ color: APP_COLORS.secondary }}
+//         >
+//           ALL ARTS
+//         </h1>
+//         <div className="relative w-full h-full flex flex-wrap justify-center items-center">
+//           {allImages.map((image, index) => {
+//             const isEven = index % 2 === 0;
+//             const [imageLoaded, setImageLoaded] = useState(false);
+
+//             return (
+//               <div
+//                 key={index}
+//                 className="relative rounded-lg shadow-lg overflow-hidden group transition-all duration-500 ease-in-out"
+//               >
+//                 <div
+//                   className={`transform ${
+//                     isEven
+//                       ? "rotate-3 translate-y-5"
+//                       : "-rotate-3 -translate-y-5"
+//                   }
+//                       group-hover:rotate-0 group-hover:translate-y-0 group-hover:scale-110 transition-all duration-500`}
+//                 >
+//                   {!imageLoaded && (
+//                     <div className="w-[200px] h-[200px] rounded-lg bg-gray-200 animate-pulse"></div>
+//                   )}
+//                   <img
+//                     src={image.src}
+//                     alt={image.alt}
+//                     className={`object-cover w-[200px] h-[200px] rounded-lg ${
+//                       imageLoaded ? "block" : "hidden"
+//                     }`}
+//                     loading="lazy"
+//                     onLoad={() => setImageLoaded(true)}
+//                   />
+//                 </div>
+//               </div>
+//             );
+//           })}
+//         </div>
+//       </section>
+
+//       <section className="bg-white py-16 px-5">
+//         <h1 className="text-4xl font-bold text-center text-black mb-12">
+//           ARTS
+//         </h1>
+//         <h1 className="text-7xl font-extrabold text-center mb-12 relative">
+//           <span className="text-transparent bg-clip-text bg-gradient-to-r from-black to-[#C62A35]">
+//             ARTS
+//           </span>
+
+//           <div className="relative mt-4 flex justify-center items-center">
+//             <div className="w-24 h-1 bg-gradient-to-r from-black to-[#C62A35] rounded"></div>
+//           </div>
+//         </h1>
+
+//         {/* Display artworks dynamically */}
+//         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+//           {allArtworks.map((art, index) => (
+//             <ArtCard
+//               key={index}
+//               art={art}
+//               onViewMore={() => handleViewMore(art)}
+//             />
+//           ))}
+//         </div>
+//       </section>
+//     </div>
+//   );
+// };
+
+// export default AllArt;
 import { APP_COLORS, ARTIST_PROFILE, allImages } from "../../config/config";
 import { useNavigate } from "react-router-dom";
 import ArtCard from "../../components/Cards/ArtCard";
-import { useState } from "react";
 
-const AllArt = () => {
+// Define the Artwork interface
+interface Artwork {
+  title: string;
+  image: {
+    src: string;
+    alt: string;
+  };
+  artist: string;
+}
+
+const AllArtAdmin = () => {
   const navigate = useNavigate();
 
-  const handleViewMore = (art) => {
+  const handleViewMore = (art: Artwork) => {
     navigate("/viewArts", { state: art });
     window.scrollTo(0, 0);
   };
@@ -14,7 +130,7 @@ const AllArt = () => {
   const allArtworks = ARTIST_PROFILE.flatMap((artist) =>
     artist.ARTIST_DATA.ArtWork.map((art) => ({
       ...art,
-      artist: artist.Name,
+      artist: artist.Name, // Add artist name to each artwork
     }))
   );
 
@@ -31,39 +147,24 @@ const AllArt = () => {
           ALL ARTS
         </h1>
         <div className="relative w-full h-full flex flex-wrap justify-center items-center">
-          {allImages.map((image, index) => {
-            const isEven = index % 2 === 0;
-            const [imageLoaded, setImageLoaded] = useState(false);
-
-            return (
+          {allImages.map((image, index) => (
+            <div
+              key={index}
+              className="relative rounded-lg shadow-lg overflow-hidden group transition-all duration-500 ease-in-out m-4" // Added m-4 for margin
+            >
               <div
-                key={index}
-                className="relative rounded-lg shadow-lg overflow-hidden group transition-all duration-500 ease-in-out"
+                className={`transform 
+                    group-hover:scale-110 transition-all duration-500`} // Removed rotate and translate
               >
-                <div
-                  className={`transform ${
-                    isEven
-                      ? "rotate-3 translate-y-5"
-                      : "-rotate-3 -translate-y-5"
-                  }
-                      group-hover:rotate-0 group-hover:translate-y-0 group-hover:scale-110 transition-all duration-500`}
-                >
-                  {!imageLoaded && (
-                    <div className="w-[200px] h-[200px] rounded-lg bg-gray-200 animate-pulse"></div>
-                  )}
-                  <img
-                    src={image.src}
-                    alt={image.alt}
-                    className={`object-cover w-[200px] h-[200px] rounded-lg ${
-                      imageLoaded ? "block" : "hidden"
-                    }`}
-                    loading="lazy"
-                    onLoad={() => setImageLoaded(true)}
-                  />
-                </div>
+                <img
+                  src={image.src}
+                  alt={image.alt}
+                  className="object-cover w-[200px] h-[200px] rounded-lg"
+                  loading="lazy"
+                />
               </div>
-            );
-          })}
+            </div>
+          ))}
         </div>
       </section>
 
@@ -75,7 +176,6 @@ const AllArt = () => {
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-black to-[#C62A35]">
             ARTS
           </span>
-
           <div className="relative mt-4 flex justify-center items-center">
             <div className="w-24 h-1 bg-gradient-to-r from-black to-[#C62A35] rounded"></div>
           </div>
@@ -92,4 +192,4 @@ const AllArt = () => {
   );
 };
 
-export default AllArt;
+export default AllArtAdmin;

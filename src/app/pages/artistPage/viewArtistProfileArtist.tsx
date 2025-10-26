@@ -12,6 +12,16 @@ import { useLocation, useNavigate } from "react-router-dom";
 import ArtCardPerArtist from "../../components/Cards/ArtCardPerArtist";
 import { useState } from "react";
 
+// Define a proper interface for artworks (based on how it's used in the code and ArtCardPerArtist)
+interface Artwork {
+    title: string;
+    image?: {
+        src: string;
+        alt: string;
+    };
+    // Add other properties if needed (e.g., description, date) based on your data structure
+}
+
 interface ArtistData {
     name: string;
     artisttype: string;
@@ -19,14 +29,14 @@ interface ArtistData {
     instagram?: string;
     facebook?: string;
     description?: string;
-    artworks: any[];
+    artworks: Artwork[];  // Replaced 'any[]' with proper type
     src: string;
     alt: string;
 }
-
+    
 const ViewArtistProfileArtist = () => {
     const [isSpeechOn, setIsSpeechOn] = useState(true);
-    const [speechInstance, setSpeechInstance] = useState(null);
+    // Removed speechInstance state as it's unused (see notes below)
     const location = useLocation();
     const navigate = useNavigate();
     // const artistData = location.state?.artistData
@@ -48,13 +58,12 @@ const ViewArtistProfileArtist = () => {
                 speech.lang = "en-US";
                 speech.rate = 1;
                 window.speechSynthesis.speak(speech);
-                setSpeechInstance(speech);
+                // Removed setSpeechInstance(speech) as speechInstance is no longer used
             } else {
                 alert("Sorry, your browser does not support text-to-speech.");
             }
         } else {
-            window.speechSynthesis.cancel(); // Stop speech if it’s playing
-            window.speechSynthesis.cancel();
+            window.speechSynthesis.cancel(); // Stop speech if it’s playing (removed duplicate call)
         }
         setIsSpeechOn(!isSpeechOn);
     };
@@ -153,7 +162,7 @@ const ViewArtistProfileArtist = () => {
                                     href={`https://facebook.com/${artistData.facebook}`}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="flex items-center gap-2 text-[#C62A35 font-medium hover:text-black transition mt-2"
+                                    className="flex items-center gap-2 text-[#C62A35] font-medium hover:text-black transition mt-2"  // Fixed missing closing ]
                                 >
                                     <FaFacebook className="text-xl" />
                                     {artistData.facebook}
@@ -193,7 +202,7 @@ const ViewArtistProfileArtist = () => {
                 >
                     <h1 className="flex justify-center pt-14 text-3xl lg:text-2xl font-bold text-left text-black mb-20 mt-20">
                         All Artworks by{" "}
-                        <span className="text-[#C62A35">"{artistData.name}"</span>
+                        <span className="text-[#C62A35]">"{artistData.name}"</span>  {/* Fixed missing closing ] */}
                     </h1>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
                         {artistArtworks.map((art, index) => (

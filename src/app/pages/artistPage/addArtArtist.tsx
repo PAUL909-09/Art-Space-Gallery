@@ -1,4 +1,3 @@
-import React from "react";
 import { Icons } from "../../config/config";
 import { useNavigate } from "react-router-dom";
 

@@ -1,4 +1,3 @@
-import { APP_COLORS } from "../../config/config";
 import { NavLink } from "react-router-dom";
 import SearchBar from "../searchBar";
 import lopenze_logo from "../../../assets/lopenze_logo.png";
