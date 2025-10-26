@@ -1,5 +1,4 @@
 // File: src/components/Profile.js
-import React from "react";
 import { ArtisyImage, ArtsData } from "../../config/config";
 import { FaInstagram, FaFacebook, FaShareSquare } from "react-icons/fa"; // Import React Icons for Instagram and Facebook
 

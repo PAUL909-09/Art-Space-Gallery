@@ -9,20 +9,21 @@ interface ExhibitCardProps {
   date: string;
   location: string;
   description: string;
-  isExpanded: boolean;
+  isExpanded: boolean;  // If this prop is meant to control expansion externally, use it instead of local state (see notes below)
   views?: number;
   onViewMore: () => void;
 }
 
 const ExhibitCard: React.FC<ExhibitCardProps> = ({
-  id,
+  // id,  // Commented out as unused
   src,
   alt,
   title,
   date,
   location,
   description,
-  views,
+  // isExpanded,  // Commented out as unused (local state is used instead)
+  // views,  // Commented out as unused
   onViewMore
 }) => {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -57,7 +58,13 @@ const ExhibitCard: React.FC<ExhibitCardProps> = ({
         >
           {description}
         </p>
-        <div className="flex flex-center justify-center mt-8">
+        {/* Add a button to toggle the description expansion */}
+        <div className="flex justify-center mt-4">
+          <Button onClick={toggleDescription} variant="secondary">
+            {isExpanded ? "Show Less" : "Read More"}
+          </Button>
+        </div>
+        <div className="flex justify-center mt-8">
           <Button onClick={onViewMore} variant="secondary">
             View More
           </Button>

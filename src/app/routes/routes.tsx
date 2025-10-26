@@ -1,6 +1,6 @@
 import { RouteObject } from "react-router-dom";
 import { APP_ROUTES } from "../config/config";
-import LandingPage from "../pages/userPage/landingPage";
+// import LandingPage from "../pages/userPage/landingPage";
 import PrivateRoute from "../config/privateRoute";
 import AdminLayout from "../layout/adminLayout";
 import UserLayout from "../layout/userLayout";

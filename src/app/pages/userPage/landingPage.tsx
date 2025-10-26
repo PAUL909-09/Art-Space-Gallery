@@ -1,10 +1,8 @@
 // import {
 //   ArtisyImage,
 //   ExhibitsData,
-//   ArtsData,
 //   LandingPageImage,
 //   ARTIST_PROFILE,
-//   allImages,
 // } from "../../config/config";
 // import ExhibitCard from "../../components/Cards/ExhibitCard";
 // import { useEffect, useState } from "react";
@@ -72,18 +70,19 @@
 
 //   const handleViewArtistProfile = (artist: any) => {
 //     const artistData = {
-//       src: artist.ARTIST_DATA.Profile.src,
-//       alt: artist.ARTIST_DATA.Profile.Alt,
+//       src: artist.ARTIST_DATA.Profile.src, // Pass image src correctly
+//       alt: artist.ARTIST_DATA.Profile.alt, // Pass image alt correctly
 //       name: artist.Name,
 //       artisttype: artist.ArtistType,
 //       email: artist.Email,
 //       instagram: artist.Instagram,
 //       facebook: artist.Facebook,
 //       description: artist.Description,
+//       artworks: artist.ARTIST_DATA.ArtWork,
 //     };
 
 //     navigate("/viewArtistProfile", {
-//       state: { artistData: JSON.stringify(artistData) },
+//       state: { artistData }, // No need to stringify anymore
 //     });
 //     window.scrollTo(0, 0);
 //   };
@@ -99,7 +98,9 @@
 
 //   useEffect(() => {
 //     const interval = setInterval(() => {
-//       setBackgroundIndex((prevIndex) => (prevIndex + 1) % LandingPageImage.length);
+//       setBackgroundIndex(
+//         (prevIndex) => (prevIndex + 1) % LandingPageImage.length
+//       );
 //     }, 5000); // ✅ Background changes every 5s
 
 //     return () => clearInterval(interval); // ✅ Cleanup interval on unmount
@@ -108,9 +109,17 @@
 //   // Entrance & Floating Animations
 //   const containerVariants = {
 //     hidden: { opacity: 0, y: 30 },
-//     visible: { opacity: 1, y: 0, transition: { duration: 1.5, ease: "easeOut" } },
+//     visible: {
+//       opacity: 1,
+//       y: 0,
+//       transition: { duration: 1.5, ease: "easeOut" },
+//     },
 //   };
 
+//   const handleViewMore = (art: any) => {
+//     navigate("/viewArts", { state: art });
+//     window.scrollTo(0, 0);
+//   };
 
 //   return (
 //     <div>
@@ -152,10 +161,12 @@
 //             </div>
 
 //             <p className="mt-6 text-gray-200">
-//               The Lopenze Art Space, often referred to as the Lopenze Art Gallery, is a vibrant
-//               cultural landmark dedicated to showcasing artistic expression and fostering creativity.
-//               Located at the heart of its community, the gallery is a sanctuary for artists, art
-//               enthusiasts, and visitors seeking to immerse themselves in diverse forms of art.
+//               The Lopenze Art Space, often referred to as the Lopenze Art
+//               Gallery, is a vibrant cultural landmark dedicated to showcasing
+//               artistic expression and fostering creativity. Located at the heart
+//               of its community, the gallery is a sanctuary for artists, art
+//               enthusiasts, and visitors seeking to immerse themselves in diverse
+//               forms of art.
 //             </p>
 //           </motion.div>
 //         </motion.div>
@@ -199,8 +210,9 @@
 //             <div
 //               className="flex transition-transform duration-500 ease-in-out"
 //               style={{
-//                 transform: `translateX(-${currentIndex * (100 / cardsPerPage)
-//                   }%)`,
+//                 transform: `translateX(-${
+//                   currentIndex * (100 / cardsPerPage)
+//                 }%)`,
 //                 width: `${(100 * ExhibitsData.length) / cardsPerPage}%`,
 //               }}
 //             >
@@ -255,8 +267,6 @@
 
 //         {/* Artists Grid */}
 //         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 mx-20">
-//           {/* Pagination Arrows */}
-
 //           {visibleArtists.map((artist, index) => (
 //             <ArtistProfileCard
 //               key={index}
@@ -272,7 +282,7 @@
 //             />
 //           ))}
 //         </div>
-//         <div className="flex justify-between mt-56" >
+//         <div className="flex justify-between mt-56">
 //           <SliderArrow
 //             direction="left"
 //             onClick={handlePrevPage}
@@ -346,7 +356,6 @@
 //         </div>
 //       </section> */}
 
-
 //       <section className="bg-white py-16 px-5">
 //         <h1 className="text-7xl font-extrabold text-center mb-12 relative">
 //           <span
@@ -366,7 +375,11 @@
 //         {/* Display artworks dynamically */}
 //         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
 //           {allArtworks.map((art, index) => (
-//             <ArtCard key={index} art={art} />
+//             <ArtCard
+//               key={index}
+//               art={art}
+//               onViewMore={() => handleViewMore(art)}
+//             />
 //           ))}
 //         </div>
 //       </section>
@@ -375,13 +388,11 @@
 // };
 
 // export default LandingPage;
-
-
 import {
   ArtisyImage,
   ExhibitsData,
   LandingPageImage,
-  ARTIST_PROFILE
+  ARTIST_PROFILE,
 } from "../../config/config";
 import ExhibitCard from "../../components/Cards/ExhibitCard";
 import { useEffect, useState } from "react";
@@ -390,7 +401,38 @@ import ArtistProfileCard from "../../components/Cards/ArtistProfileCard";
 import ArtCard from "../../components/Cards/ArtCard";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
+
 const ITEMS_PER_PAGE = 5;
+
+// Define interfaces for better type safety
+interface Exhibit {
+  id: string;
+  title: string;
+  date: string;
+  location: string;
+  description: string;
+  image: { src: string; alt: string };
+  views?: number;
+}
+
+interface Artist {
+  Name: string;
+  ArtistType: string;
+  Email: string;
+  Instagram?: string;
+  Facebook?: string;
+  Description?: string;
+  ARTIST_DATA: {
+    Profile: { src: string; alt: string };
+    ArtWork: Artwork[];
+  };
+}
+
+interface Artwork {
+  title: string;
+  image?: { src: string; alt: string };
+  // Add other properties if needed
+}
 
 const LandingPage: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0); // Tracks the index of the first visible card
@@ -424,13 +466,12 @@ const LandingPage: React.FC = () => {
   const handleNextPage = () => {
     if (endIndex < ARTIST_PROFILE.length) setCurrentPage((prev) => prev + 1);
   };
-  function handlePrev(): void {
-    throw new Error("Function not implemented.");
-  }
+
+  // Removed unused handlePrev function
 
   const navigate = useNavigate();
 
-  const handleViewExhibit = (exhibit: any) => {
+  const handleViewExhibit = (exhibit: Exhibit) => {
     const exhibitData = {
       id: exhibit.id,
       title: exhibit.title,
@@ -447,24 +488,7 @@ const LandingPage: React.FC = () => {
     window.scrollTo(0, 0);
   };
 
-  // const handleViewArtistProfile = (artist: any) => {
-  //   const artistData = {
-  //     src: artist.ARTIST_DATA.Profile.src,
-  //     alt: artist.ARTIST_DATA.Profile.Alt,
-  //     name: artist.Name,
-  //     artisttype: artist.ArtistType,
-  //     email: artist.Email,
-  //     instagram: artist.Instagram,
-  //     facebook: artist.Facebook,
-  //     description: artist.Description,
-  //   };
-
-  //   navigate("/viewArtistProfile", {
-  //     state: { artistData: JSON.stringify(artistData) },
-  //   });
-  //   window.scrollTo(0, 0);
-  // };
-  const   handleViewArtistProfile = (artist: any) => {
+  const handleViewArtistProfile = (artist: Artist) => {
     const artistData = {
       src: artist.ARTIST_DATA.Profile.src, // Pass image src correctly
       alt: artist.ARTIST_DATA.Profile.alt, // Pass image alt correctly
@@ -494,20 +518,25 @@ const LandingPage: React.FC = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setBackgroundIndex((prevIndex) => (prevIndex + 1) % LandingPageImage.length);
+      setBackgroundIndex(
+        (prevIndex) => (prevIndex + 1) % LandingPageImage.length
+      );
     }, 5000); // ✅ Background changes every 5s
 
     return () => clearInterval(interval); // ✅ Cleanup interval on unmount
-  }, [LandingPageImage.length]); // ✅ Dependencies fixed
+  }, []); // ✅ Removed unnecessary dependency
 
   // Entrance & Floating Animations
   const containerVariants = {
     hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0, transition: { duration: 1.5, ease: "easeOut" } },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 1.5, ease: "easeOut" },
+    },
   };
 
-
-  const handleViewMore = (art: any) => {
+  const handleViewMore = (art: Artwork) => {
     navigate("/viewArts", { state: art });
     window.scrollTo(0, 0);
   };
@@ -552,10 +581,12 @@ const LandingPage: React.FC = () => {
             </div>
 
             <p className="mt-6 text-gray-200">
-              The Lopenze Art Space, often referred to as the Lopenze Art Gallery, is a vibrant
-              cultural landmark dedicated to showcasing artistic expression and fostering creativity.
-              Located at the heart of its community, the gallery is a sanctuary for artists, art
-              enthusiasts, and visitors seeking to immerse themselves in diverse forms of art.
+              The Lopenze Art Space, often referred to as the Lopenze Art
+              Gallery, is a vibrant cultural landmark dedicated to showcasing
+              artistic expression and fostering creativity. Located at the heart
+              of its community, the gallery is a sanctuary for artists, art
+              enthusiasts, and visitors seeking to immerse themselves in diverse
+              forms of art.
             </p>
           </motion.div>
         </motion.div>
@@ -599,8 +630,9 @@ const LandingPage: React.FC = () => {
             <div
               className="flex transition-transform duration-500 ease-in-out"
               style={{
-                transform: `translateX(-${currentIndex * (100 / cardsPerPage)
-                  }%)`,
+                transform: `translateX(-${
+                  currentIndex * (100 / cardsPerPage)
+                }%)`,
                 width: `${(100 * ExhibitsData.length) / cardsPerPage}%`,
               }}
             >
@@ -670,7 +702,7 @@ const LandingPage: React.FC = () => {
             />
           ))}
         </div>
-        <div className="flex justify-between mt-56" >
+        <div className="flex justify-between mt-56">
           <SliderArrow
             direction="left"
             onClick={handlePrevPage}
@@ -744,7 +776,6 @@ const LandingPage: React.FC = () => {
         </div>
       </section> */}
 
-
       <section className="bg-white py-16 px-5">
         <h1 className="text-7xl font-extrabold text-center mb-12 relative">
           <span
@@ -764,7 +795,11 @@ const LandingPage: React.FC = () => {
         {/* Display artworks dynamically */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
           {allArtworks.map((art, index) => (
-            <ArtCard key={index} art={art} onViewMore={() => handleViewMore(art)} />
+            <ArtCard
+              key={index}
+              art={art}
+              onViewMore={() => handleViewMore(art)}
+            />
           ))}
         </div>
       </section>

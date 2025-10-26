@@ -1,4 +1,3 @@
-import React from "react";
 import { mockHistoryData } from "../../config/config";
 import HistoryTable from "../../components/Tables/HistoryTable";
 

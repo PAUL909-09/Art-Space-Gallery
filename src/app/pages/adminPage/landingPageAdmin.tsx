@@ -1,10 +1,8 @@
 // import {
 //   ArtisyImage,
 //   ExhibitsData,
-//   ArtsData,
 //   LandingPageImage,
-//   ARTIST_PROFILE,
-//   allImages,
+//   ARTIST_PROFILE
 // } from "../../config/config";
 // import ExhibitCard from "../../components/Cards/ExhibitCard";
 // import { useEffect, useState } from "react";
@@ -13,7 +11,6 @@
 // import ArtCard from "../../components/Cards/ArtCard";
 // import { useNavigate } from "react-router-dom";
 // import { motion } from "framer-motion";
-// import FeedBack from "./feedBack";
 // const ITEMS_PER_PAGE = 5;
 
 // const LandingPageAdmin: React.FC = () => {
@@ -65,26 +62,44 @@
 //       views: exhibit.views,
 //     };
 
-//     navigate("/viewExhibits", {
+//     navigate("/viewExhibitsAdmin", {
 //       state: { exhibitData: JSON.stringify(exhibitData) },
 //     });
 //     window.scrollTo(0, 0);
 //   };
 
-//   const handleViewArtistProfile = (artist: any) => {
+//   // const handleViewArtistProfile = (artist: any) => {
+//   //   const artistData = {
+//   //     src: artist.ARTIST_DATA.Profile.src,
+//   //     alt: artist.ARTIST_DATA.Profile.Alt,
+//   //     name: artist.Name,
+//   //     artisttype: artist.ArtistType,
+//   //     email: artist.Email,
+//   //     instagram: artist.Instagram,
+//   //     facebook: artist.Facebook,
+//   //     description: artist.Description,
+//   //   };
+
+//   //   navigate("/viewArtistProfile", {
+//   //     state: { artistData: JSON.stringify(artistData) },
+//   //   });
+//   //   window.scrollTo(0, 0);
+//   // };
+//   const   handleViewArtistProfile = (artist: any) => {
 //     const artistData = {
-//       src: artist.ARTIST_DATA.Profile.src,
-//       alt: artist.ARTIST_DATA.Profile.Alt,
+//       src: artist.ARTIST_DATA.Profile.src, // Pass image src correctly
+//       alt: artist.ARTIST_DATA.Profile.alt, // Pass image alt correctly
 //       name: artist.Name,
 //       artisttype: artist.ArtistType,
 //       email: artist.Email,
 //       instagram: artist.Instagram,
 //       facebook: artist.Facebook,
 //       description: artist.Description,
+//       artworks: artist.ARTIST_DATA.ArtWork,
 //     };
 
-//     navigate("/viewArtistProfile", {
-//       state: { artistData: JSON.stringify(artistData) },
+//     navigate("/viewArtistProfileAdmin", {
+//       state: { artistData }, // No need to stringify anymore
 //     });
 //     window.scrollTo(0, 0);
 //   };
@@ -112,6 +127,11 @@
 //     visible: { opacity: 1, y: 0, transition: { duration: 1.5, ease: "easeOut" } },
 //   };
 
+
+//   const handleViewMore = (art: any) => {
+//     navigate("/viewArtsAdmin", { state: art });
+//     window.scrollTo(0, 0);
+//   };
 
 //   return (
 //     <div>
@@ -258,6 +278,20 @@
 //         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 mx-20">
 //           {/* Pagination Arrows */}
 
+//           {/* {visibleArtists.map((artist, index) => (
+//             <ArtistProfileCard
+//               key={index}
+//               src={artist.ARTIST_DATA.Profile.src}
+//               alt={artist.ARTIST_DATA.Profile.alt}
+//               name={artist.Name}
+//               artisttype={artist.ArtistType}
+//               email={artist.Email}
+//               instagram={artist.Instagram}
+//               facebook={artist.Facebook}
+//               description={artist.Description}
+//               onViewProfile={() => handleViewArtistProfile(artist)}
+//             />
+//           ))} */}
 //           {visibleArtists.map((artist, index) => (
 //             <ArtistProfileCard
 //               key={index}
@@ -364,30 +398,18 @@
 //           </div>
 //         </h1>
 
-//         <div>
-          
-//         </div>
-
 //         {/* Display artworks dynamically */}
 //         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
 //           {allArtworks.map((art, index) => (
-//             <ArtCard key={index} art={art} />
+//             <ArtCard key={index} art={art} onViewMore={() => handleViewMore(art)} />
 //           ))}
 //         </div>
-//       </section>
-
-//       <section className="bg-gray-100 py-16 px-6">
-//         <h2 className="text-4xl font-bold text-center text-gray-900 mb-8">
-//           We Value Your Feedback
-//         </h2>
-//         <FeedBack />
 //       </section>
 //     </div>
 //   );
 // };
 
 // export default LandingPageAdmin;
-
 
 import {
   ArtisyImage,
@@ -402,7 +424,38 @@ import ArtistProfileCard from "../../components/Cards/ArtistProfileCard";
 import ArtCard from "../../components/Cards/ArtCard";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
+
 const ITEMS_PER_PAGE = 5;
+
+// Define interfaces for better type safety
+interface Exhibit {
+  id: string;
+  title: string;
+  date: string;
+  location: string;
+  description: string;
+  image: { src: string; alt: string };
+  views?: number;
+}
+
+interface Artist {
+  Name: string;
+  ArtistType: string;
+  Email: string;
+  Instagram?: string;
+  Facebook?: string;
+  Description?: string;
+  ARTIST_DATA: {
+    Profile: { src: string; alt: string };
+    ArtWork: Artwork[];
+  };
+}
+
+interface Artwork {
+  title: string;
+  image?: { src: string; alt: string };
+  // Add other properties if needed
+}
 
 const LandingPageAdmin: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0); // Tracks the index of the first visible card
@@ -436,13 +489,12 @@ const LandingPageAdmin: React.FC = () => {
   const handleNextPage = () => {
     if (endIndex < ARTIST_PROFILE.length) setCurrentPage((prev) => prev + 1);
   };
-  function handlePrev(): void {
-    throw new Error("Function not implemented.");
-  }
+
+  // Removed unused handlePrev function
 
   const navigate = useNavigate();
 
-  const handleViewExhibit = (exhibit: any) => {
+  const handleViewExhibit = (exhibit: Exhibit) => {
     const exhibitData = {
       id: exhibit.id,
       title: exhibit.title,
@@ -476,7 +528,7 @@ const LandingPageAdmin: React.FC = () => {
   //   });
   //   window.scrollTo(0, 0);
   // };
-  const   handleViewArtistProfile = (artist: any) => {
+  const handleViewArtistProfile = (artist: Artist) => {
     const artistData = {
       src: artist.ARTIST_DATA.Profile.src, // Pass image src correctly
       alt: artist.ARTIST_DATA.Profile.alt, // Pass image alt correctly
@@ -510,7 +562,7 @@ const LandingPageAdmin: React.FC = () => {
     }, 5000); // ✅ Background changes every 5s
 
     return () => clearInterval(interval); // ✅ Cleanup interval on unmount
-  }, [LandingPageImage.length]); // ✅ Dependencies fixed
+  }, []); // ✅ Removed unnecessary dependency
 
   // Entrance & Floating Animations
   const containerVariants = {
@@ -518,8 +570,7 @@ const LandingPageAdmin: React.FC = () => {
     visible: { opacity: 1, y: 0, transition: { duration: 1.5, ease: "easeOut" } },
   };
 
-
-  const handleViewMore = (art: any) => {
+  const handleViewMore = (art: Artwork) => {
     navigate("/viewArtsAdmin", { state: art });
     window.scrollTo(0, 0);
   };
